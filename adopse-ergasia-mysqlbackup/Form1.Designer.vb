@@ -39,7 +39,7 @@ Partial Class Form1
         '
         Me.Button2.Location = New System.Drawing.Point(74, 41)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(184, 23)
+        Me.Button2.Size = New System.Drawing.Size(213, 23)
         Me.Button2.TabIndex = 1
         Me.Button2.Text = "PRESS 2 CREATE BACKUP"
         Me.Button2.UseVisualStyleBackColor = True
