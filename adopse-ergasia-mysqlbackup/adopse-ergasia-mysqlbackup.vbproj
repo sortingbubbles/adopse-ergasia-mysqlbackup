@@ -43,11 +43,11 @@
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libraries\MySql.Data.dll</HintPath>
+      <HintPath>libs\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="MySqlBackup, Version=2.0.6.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libraries\MySqlBackup.dll</HintPath>
+      <HintPath>libs\MySqlBackup.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
