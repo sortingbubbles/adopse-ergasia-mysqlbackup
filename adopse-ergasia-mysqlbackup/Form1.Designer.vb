@@ -81,11 +81,11 @@ Partial Class Form1
         '
         'ToolStrip2
         '
-        Me.ToolStrip2.ImageScalingSize = New System.Drawing.Size(50, 50)
+        Me.ToolStrip2.ImageScalingSize = New System.Drawing.Size(30, 30)
         Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButtonNew, Me.ToolStripButtonOpen, Me.ToolStripButtonSave, Me.ToolStripSeparator1, Me.ToolStripButtonJobs, Me.ToolStripButtonLog})
         Me.ToolStrip2.Location = New System.Drawing.Point(0, 25)
         Me.ToolStrip2.Name = "ToolStrip2"
-        Me.ToolStrip2.Size = New System.Drawing.Size(522, 38)
+        Me.ToolStrip2.Size = New System.Drawing.Size(522, 72)
         Me.ToolStrip2.TabIndex = 3
         Me.ToolStrip2.Text = "ToolStripIcons"
         '
@@ -94,7 +94,7 @@ Partial Class Form1
         Me.ToolStripButtonNew.Image = Global.adopse_ergasia_mysqlbackup.My.Resources.Resources.download__3_
         Me.ToolStripButtonNew.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButtonNew.Name = "ToolStripButtonNew"
-        Me.ToolStripButtonNew.Size = New System.Drawing.Size(35, 35)
+        Me.ToolStripButtonNew.Size = New System.Drawing.Size(54, 69)
         Me.ToolStripButtonNew.Text = "New"
         Me.ToolStripButtonNew.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolStripButtonNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
@@ -104,7 +104,7 @@ Partial Class Form1
         Me.ToolStripButtonOpen.Image = Global.adopse_ergasia_mysqlbackup.My.Resources.Resources.images__1_
         Me.ToolStripButtonOpen.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButtonOpen.Name = "ToolStripButtonOpen"
-        Me.ToolStripButtonOpen.Size = New System.Drawing.Size(40, 35)
+        Me.ToolStripButtonOpen.Size = New System.Drawing.Size(54, 69)
         Me.ToolStripButtonOpen.Text = "Open"
         Me.ToolStripButtonOpen.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolStripButtonOpen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
@@ -114,7 +114,7 @@ Partial Class Form1
         Me.ToolStripButtonSave.Image = Global.adopse_ergasia_mysqlbackup.My.Resources.Resources.download__2_
         Me.ToolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButtonSave.Name = "ToolStripButtonSave"
-        Me.ToolStripButtonSave.Size = New System.Drawing.Size(35, 35)
+        Me.ToolStripButtonSave.Size = New System.Drawing.Size(54, 69)
         Me.ToolStripButtonSave.Text = "Save"
         Me.ToolStripButtonSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolStripButtonSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
@@ -122,14 +122,14 @@ Partial Class Form1
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 38)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 72)
         '
         'ToolStripButtonJobs
         '
         Me.ToolStripButtonJobs.Image = Global.adopse_ergasia_mysqlbackup.My.Resources.Resources.download__6_
         Me.ToolStripButtonJobs.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButtonJobs.Name = "ToolStripButtonJobs"
-        Me.ToolStripButtonJobs.Size = New System.Drawing.Size(34, 35)
+        Me.ToolStripButtonJobs.Size = New System.Drawing.Size(54, 69)
         Me.ToolStripButtonJobs.Text = "Jobs"
         Me.ToolStripButtonJobs.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolStripButtonJobs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
@@ -139,7 +139,7 @@ Partial Class Form1
         Me.ToolStripButtonLog.Image = Global.adopse_ergasia_mysqlbackup.My.Resources.Resources.download__5_
         Me.ToolStripButtonLog.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButtonLog.Name = "ToolStripButtonLog"
-        Me.ToolStripButtonLog.Size = New System.Drawing.Size(31, 35)
+        Me.ToolStripButtonLog.Size = New System.Drawing.Size(54, 69)
         Me.ToolStripButtonLog.Text = "Log"
         Me.ToolStripButtonLog.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolStripButtonLog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
@@ -181,7 +181,7 @@ Partial Class Form1
         '
         'ButtonConnectToMySQLServer
         '
-        Me.ButtonConnectToMySQLServer.Location = New System.Drawing.Point(12, 85)
+        Me.ButtonConnectToMySQLServer.Location = New System.Drawing.Point(12, 94)
         Me.ButtonConnectToMySQLServer.Name = "ButtonConnectToMySQLServer"
         Me.ButtonConnectToMySQLServer.Size = New System.Drawing.Size(127, 23)
         Me.ButtonConnectToMySQLServer.TabIndex = 8
