@@ -124,7 +124,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Debug\MyService.vshost.exe.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -136,7 +135,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\MyService.vshost.exe" />
     <Content Include="Library\AppLimit.CloudComputing.SharpBox.dll" />
     <Content Include="Library\AppLimit.CloudComputing.SharpBox.ExperimentalProvider.dll" />
     <Content Include="Library\DiffieHellman.dll" />
@@ -147,10 +145,6 @@
     <Content Include="Library\Rebex.Common.dll" />
     <Content Include="Library\Rebex.Zip.dll" />
     <Content Include="Library\Tamir.SharpSSH.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Release\" />
-    <Folder Include="obj\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
