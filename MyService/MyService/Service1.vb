@@ -1,14 +1,14 @@
 ﻿Imports MySql.Data.MySqlClient
 'Imports System.IO.Packaging
 Imports System.IO
-Imports Rebex.IO.Compression
-Imports Rebex.IO
 Imports System.Net.Mail
 Imports System.Collections
 Imports System.Threading
 Imports Tamir.SharpSsh
 Imports Tamir.Streams
 Imports System
+Imports Ionic.Zip
+
 Public Class Service1
 
     Protected Overrides Sub OnStart(ByVal args() As String)
@@ -60,10 +60,11 @@ Public Class Service1
         End Try
     End Sub
     Private Sub ZipMe()
+        ZippedBackupfile = "C:\TEMP\backup.zip"
         Try
-            ZippedBackupfile = "C:\TEMP\backup.zip"
-            Rebex.Licensing.Key = "==AK7pEwbc99VIOGsKjqXcVCEnDcqGMuBimRnxXjfMk7oQ=="
-            ZipArchive.Add(ZippedBackupfile, Backupfile, "/", TraversalMode.NonRecursive, TransferMethod.Copy, ActionOnExistingFiles.OverwriteAll)
+            Dim zip As ZipFile = New ZipFile()
+            zip.AddFile(Backupfile)
+            zip.Save(ZippedBackupfile)
             msg += "File Succesfully Zipped !!!<br/>"
         Catch ex As Exception
             msg += "!!!!!!!!!!ERROR @ FILE ZIP!!!!<br>"
@@ -79,7 +80,7 @@ Public Class Service1
             Dim Smtp_Server As New SmtpClient
             Dim e_mail As New MailMessage()
             Smtp_Server.UseDefaultCredentials = False
-            Smtp_Server.Credentials = New Net.NetworkCredential("mysqlbackupgr.adopse@gmail.com", "**********")
+            Smtp_Server.Credentials = New Net.NetworkCredential("mysqlbackupgr.adopse@gmail.com", "*********")
             Smtp_Server.Port = 587
             Smtp_Server.EnableSsl = True
             Smtp_Server.Host = "smtp.gmail.com"
@@ -87,8 +88,8 @@ Public Class Service1
             e_mail = New MailMessage()
             e_mail.From = New MailAddress("mysqlbackupgr.adopse@gmail.com")
             e_mail.To.Add("iliasseitanidis@gmail.com") ''
-            e_mail.To.Add("tazzyannie@gmail.com")
-            e_mail.To.Add("gcharita@it.teithe.gr")
+            'e_mail.To.Add("tazzyannie@gmail.com")
+            'e_mail.To.Add("gcharita@it.teithe.gr")
             e_mail.Subject = "MySQLBackUp Service Report"
             e_mail.IsBodyHtml = True
             e_mail.Body = msg

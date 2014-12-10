@@ -44,12 +44,12 @@
     <Reference Include="AppLimit.CloudComputing.SharpBox, Version=1.2.0.542, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="AppLimit.CloudComputing.SharpBox.ExperimentalProvider, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="DiffieHellman, Version=0.0.0.0, Culture=neutral" />
+    <Reference Include="Ionic.BZip2, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL" />
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySqlBackup, Version=2.0.6.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json.Net20, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="Org.Mentalis.Security, Version=1.0.13.715, Culture=neutral" />
-    <Reference Include="Rebex.Common, Version=2.0.5298.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL" />
-    <Reference Include="Rebex.Zip, Version=2.0.5298.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
@@ -95,7 +95,6 @@
     <Compile Include="Service1.Designer.vb">
       <DependentUpon>Service1.vb</DependentUpon>
     </Compile>
-    <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -138,12 +137,12 @@
     <Content Include="Library\AppLimit.CloudComputing.SharpBox.dll" />
     <Content Include="Library\AppLimit.CloudComputing.SharpBox.ExperimentalProvider.dll" />
     <Content Include="Library\DiffieHellman.dll" />
+    <Content Include="Library\Ionic.BZip2.dll" />
+    <Content Include="Library\Ionic.Zip.dll" />
     <Content Include="Library\MySql.Data.dll" />
     <Content Include="Library\MySqlBackup.dll" />
     <Content Include="Library\Newtonsoft.Json.Net20.dll" />
     <Content Include="Library\Org.Mentalis.Security.dll" />
-    <Content Include="Library\Rebex.Common.dll" />
-    <Content Include="Library\Rebex.Zip.dll" />
     <Content Include="Library\Tamir.SharpSSH.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
