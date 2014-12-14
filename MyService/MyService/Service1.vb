@@ -76,7 +76,7 @@ Public Class Service1
             Dim Smtp_Server As New SmtpClient
             Dim e_mail As New MailMessage()
             Smtp_Server.UseDefaultCredentials = False
-            Smtp_Server.Credentials = New Net.NetworkCredential("mysqlbackupgr.adopse@gmail.com", "ADOPSE8adopse")
+            Smtp_Server.Credentials = New Net.NetworkCredential("mysqlbackupgr.adopse@gmail.com", "********")
             Smtp_Server.Port = 587
             Smtp_Server.EnableSsl = True
             Smtp_Server.Host = "smtp.gmail.com"
@@ -99,9 +99,9 @@ Public Class Service1
     Private Sub MySFTP()
         Dim url As String = String.Empty
         Try
-            url = "aetos.it.teithe.gr"
-            Dim uname As String = "iseitani"
-            Dim passwd As String = "azoe4oGo"
+            url = "fileserver"
+            Dim uname As String = "uname"
+            Dim passwd As String = "passwd"
             'Dim port As Integer = 22
             Dim RemoteDirectory As String = "MySQLBackup"
             Dim sshCp As SshTransferProtocolBase
