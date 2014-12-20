@@ -8,21 +8,28 @@ Imports Tamir.SharpSsh
 Imports Tamir.Streams
 Imports System
 Imports Ionic.Zip
+Imports AppLimit.CloudComputing.SharpBox
+Imports AppLimit.CloudComputing.SharpBox.StorageProvider.DropBox
 Public Class Service1
     Private msg As String = String.Empty
     Private Backupfile As String = String.Empty
     Private ZippedBackupfile As String = String.Empty
-
+    'Epikoinwnia me thn Efarmogh(Windows Form)
+    'gia to pote na diabasei to xml arxeio
+    Protected Overrides Sub OnCustomCommand(command As Integer)
+        Select Case command
+            Case 129
+                CreateBackUp()
+            Case 130
+                ' ReadXML()
+        End Select
+        'MyBase.OnCustomCommand(command)
+    End Sub
     Protected Overrides Sub OnStart(ByVal args() As String)
         ' Add code here to start your service. This method should set things
         ' in motion so your service can do its work.
-        Backup()
-        ZipMe()
-        MySFTP()
-        'MySQLDropbox()
-        ' MyBox()
-        SentMail()
     End Sub
+
 
     Protected Overrides Sub OnStop()
         ' Add code here to perform any tear-down necessary to stop your service.
@@ -56,7 +63,7 @@ Public Class Service1
         End Try
     End Sub
     Private Sub ZipMe()
-        ZippedBackupfile = "C:\TEMP\backup.zip"
+        ZippedBackupfile = "C:\TEMP\backup.zip" ''''''''''''''''''''''''''''''''
         Try
             Dim zip As ZipFile = New ZipFile()
             zip.AddFile(Backupfile)
@@ -76,7 +83,7 @@ Public Class Service1
             Dim Smtp_Server As New SmtpClient
             Dim e_mail As New MailMessage()
             Smtp_Server.UseDefaultCredentials = False
-            Smtp_Server.Credentials = New Net.NetworkCredential("mysqlbackupgr.adopse@gmail.com", "********")
+            Smtp_Server.Credentials = New Net.NetworkCredential("mysqlbackupgr.adopse@gmail.com", "**************")
             Smtp_Server.Port = 587
             Smtp_Server.EnableSsl = True
             Smtp_Server.Host = "smtp.gmail.com"
@@ -99,9 +106,9 @@ Public Class Service1
     Private Sub MySFTP()
         Dim url As String = String.Empty
         Try
-            url = "***************"
-            Dim uname As String = "**********"
-            Dim passwd As String = "*************"
+            url = "***********"
+            Dim uname As String = "***********"
+            Dim passwd As String = "**********"
             'Dim port As Integer = 22
             Dim RemoteDirectory As String = "MySQLBackup"
             Dim sshCp As SshTransferProtocolBase
@@ -109,8 +116,7 @@ Public Class Service1
             sshCp.Password = passwd
             sshCp.Connect()
             'sshCp.Mkdir(RemoteDirectory)
-
-            sshCp.Put(ZippedBackupfile, RemoteDirectory & "/" & "backup.zip") ''
+            sshCp.Put(ZippedBackupfile, RemoteDirectory & "/" & "backup.zip") ''''''''''''''''''''''
             sshCp.Close()
             msg += "File Succesfully Uploaded @ FTP SERVER " & url & " !!!<br/>"
         Catch ex As Exception
@@ -118,5 +124,38 @@ Public Class Service1
             msg += ex.Message & "<br/>"
         End Try
     End Sub
+
+    Private Sub CreateBackUp()
+        Backup()
+        ZipMe()
+        MySFTP()
+        'MySQLDropbox()
+        ' MyBox()
+        SentMail()
+    End Sub
+    'Apostolh tou zip arxeiou pou periexei to backup ston
+    'logariasmo tou xrhsth ston katalogo "MySQLBackUp"
+    'ka8ws kai thn diagrafh prohgoumenou backup
+    Private Sub MySQLDropbox()
+        Try
+            Dim config As DropBoxConfiguration = TryCast(CloudStorage.GetCloudConfigurationEasy(nSupportedCloudConfigurations.DropBox), DropBoxConfiguration)
+            Dim DropboxStorage As New CloudStorage()
+            Dim accessToken As ICloudStorageAccessToken
+            Using fs = File.Open("C:\TEMP\MyToken.txt", FileMode.Open, FileAccess.Read, FileShare.None)
+                accessToken = DropboxStorage.DeserializeSecurityToken(fs)
+            End Using
+            DropboxStorage.Open(config, accessToken)
+            DropboxStorage.CreateFolder("/MySQLBackUp")
+            DropboxStorage.DeleteFileSystemEntry("/MySQLBackUp")
+            DropboxStorage.CreateFolder("/MySQLBackUp")
+            DropboxStorage.UploadFile(ZippedBackupfile, "/MySQLBackUp")
+            DropboxStorage.Close()
+            msg += "File Succesfully Uploaded @ DropBox !!!<br/>"
+        Catch ex As Exception
+            msg += "!!!!!!!!!!ERROR @ FILE Uploaded @ DropBox !!!!<br>"
+            msg += ex.Message & "<br/>"
+        End Try
+    End Sub
+
 End Class
 
