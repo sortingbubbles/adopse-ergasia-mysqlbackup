@@ -10,6 +10,9 @@ Imports System
 Imports Ionic.Zip
 Imports AppLimit.CloudComputing.SharpBox
 Imports AppLimit.CloudComputing.SharpBox.StorageProvider.DropBox
+Imports BoxApi.V2
+Imports BoxApi.V2.Authentication.OAuth2
+Imports BoxApi.V2.Model
 Public Class Service1
     Private msg As String = String.Empty
     Private Backupfile As String = String.Empty
@@ -26,6 +29,7 @@ Public Class Service1
         'MyBase.OnCustomCommand(command)
     End Sub
     Protected Overrides Sub OnStart(ByVal args() As String)
+        'CreateBackUp()
         ' Add code here to start your service. This method should set things
         ' in motion so your service can do its work.
     End Sub
@@ -44,6 +48,7 @@ Public Class Service1
     'kai to timestamp ths dhmiourgeias me format
     'yyyy-mm-dd hh-mm-ss
     Private Sub Backup()
+        ' Dim constring As String = "Server=192.168.6.153;Database=adopse;Uid=mysqlBackup;Pwd=;"
         Dim constring As String = "Server=192.168.6.153;Database=adopse;Uid=mysqlBackup;Pwd=;"
         Backupfile = "C:\TEMP\backup(" + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ").sql"
         Try
@@ -62,6 +67,9 @@ Public Class Service1
             ' MessageBox.Show(ex.Message)
         End Try
     End Sub
+    'Me8odos gia th dhmiourgeia 
+    'sympiesmenou arxeiou 
+    'pou periexei to backup File
     Private Sub ZipMe()
         ZippedBackupfile = "C:\TEMP\backup.zip" ''''''''''''''''''''''''''''''''
         Try
@@ -128,9 +136,9 @@ Public Class Service1
     Private Sub CreateBackUp()
         Backup()
         ZipMe()
-        MySFTP()
-        'MySQLDropbox()
-        ' MyBox()
+        ' MySFTP()
+        ' MySQLDropbox()
+        'MySQLBox()
         SentMail()
     End Sub
     'Apostolh tou zip arxeiou pou periexei to backup ston
@@ -141,7 +149,7 @@ Public Class Service1
             Dim config As DropBoxConfiguration = TryCast(CloudStorage.GetCloudConfigurationEasy(nSupportedCloudConfigurations.DropBox), DropBoxConfiguration)
             Dim DropboxStorage As New CloudStorage()
             Dim accessToken As ICloudStorageAccessToken
-            Using fs = File.Open("C:\TEMP\MyToken.txt", FileMode.Open, FileAccess.Read, FileShare.None)
+            Using fs = System.IO.File.Open("C:\TEMP\MyToken.txt", FileMode.Open, FileAccess.Read, FileShare.None)
                 accessToken = DropboxStorage.DeserializeSecurityToken(fs)
             End Using
             DropboxStorage.Open(config, accessToken)
@@ -156,6 +164,71 @@ Public Class Service1
             msg += ex.Message & "<br/>"
         End Try
     End Sub
+    'h me8odos pou ekkinei th diadikasia tou upload sto box.com
+    'opou metatrepoume se System.IO.Stream to arxeio pou 8eloume 
+    'na anebasoume
+    Private Sub MySQLBox()
+        Try
+            Dim fileName As String = "C:\TEMP\backup.zip"
+            Dim currentFileStream As System.IO.Stream = System.IO.File.Open(fileName, FileMode.Open)
+            Me.UploadToBox(fileName, currentFileStream)
+            currentFileStream.Close()
+            msg += "File Succesfully Uploaded @ Box !!!<br/>"
+        Catch ex As Exception
+            msg += "!!!!!!!!!!ERROR @ FILE Uploaded @ Box !!!!<br>"
+            msg += ex.Message & "<br/>"
+        End Try
+    End Sub
 
+    'h basikh me8odos me thn opoia ginetai to upload
+    'tou zipped backup file sto box.com ston katalogo MySQLBackUp
+    'psaxnoume ton root folder tou xrhsth gia na doume an 
+    'yparxei hdh o katalogos MySQLBackUp kai ton diagrafoume mazi me to
+    'periexomeno tou (recursive=true) kai sth synexeia dhmiourgoume
+    'ek neou ton katalogo MySQLBackUp kai anebazoume to zipped backup file
+        Function UploadToBox(ByVal attachedFilename As String, ByVal stream As System.IO.Stream) As Boolean
+        Dim newToken As BoxApi.V2.Authentication.OAuth2.OAuthToken = GetToken()
+        Dim boxManager As New BoxManager(newToken.AccessToken)
+        Dim rootFolder As Folder
+        'Dim Fid As String
+        For Each Fold As Folder In boxManager.GetFolder(Folder.Root).Folders
+            If Fold.Name = "MySQLBackUp" Then
+                'Fid = Fold.Id
+                boxManager.DeleteFolder(Fold.Id, True)
+            End If
+        Next
+        rootFolder = boxManager.CreateFolder(boxManager.GetFolder(Folder.Root), "MySQLBackUp")
+        boxManager.CreateFile(rootFolder, attachedFilename, ConvertStreamToByteArray(stream))
+        Return True
+    End Function
+    'boh8htikh me8odos ths UploadToBox gia thn metatroph tou 
+    'arxeiou se byte etsi wste na metafer8oun sto box
+    Private Function ConvertStreamToByteArray(ByVal stream As System.IO.Stream) As Byte()
+        Dim streamLength As Long = Convert.ToInt64(stream.Length)
+        Dim fileData As Byte() = New Byte(streamLength) {}
+        stream.Position = 0
+        stream.Read(fileData, 0, streamLength)
+        stream.Close()
+        Return fileData
+    End Function
+    'boh8htikh me8odos ths UploadToBox gia th dhmiourgeia enos nou RefreshToken
+    'me bash to palio RefreshToken po exoume apo8hkeysei sto arxeio C:\TEMP\MyTest12.txt 
+    'sth synexeia apo8hkeyoume to neo RefreshToken gia to epomeno backup
+    Function GetToken() As BoxApi.V2.Authentication.OAuth2.OAuthToken
+        Dim clientID As String = "*************************" ''''''''''''''
+        Dim clientSecret As String = "***********************" '''''''''''''''
+        Dim oldRefreshToken As String
+        Dim newToken As BoxApi.V2.Authentication.OAuth2.OAuthToken
+        Dim tokenProvider As New TokenProvider(clientID, clientSecret)
+        Dim streamReader As StreamReader
+        streamReader = System.IO.File.OpenText("C:\TEMP\MyTest12.txt")
+        oldRefreshToken = streamReader.ReadToEnd()
+        streamReader.Close()
+        newToken = tokenProvider.RefreshAccessToken(oldRefreshToken)
+        Dim streamWriter As New StreamWriter("C:\TEMP\MyTest12.txt")
+        streamWriter.Write(newToken.RefreshToken)
+        streamWriter.Close()
+        Return newToken
+    End Function
 End Class
 
