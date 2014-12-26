@@ -45,7 +45,7 @@ Partial Class webBrowser
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "webBrowser"
         Me.ResumeLayout(False)
-        WebBrowser1.Navigate(Form1.address)
+
 
     End Sub
     Friend WithEvents WebBrowser1 As System.Windows.Forms.WebBrowser
