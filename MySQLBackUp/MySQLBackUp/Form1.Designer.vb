@@ -24,33 +24,33 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.FirstTab = New System.Windows.Forms.Button()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.FirstTabUsername = New System.Windows.Forms.TextBox()
-        Me.Tab2Server = New System.Windows.Forms.TextBox()
-        Me.Tab2DataBase = New System.Windows.Forms.TextBox()
-        Me.Tab2Uid = New System.Windows.Forms.TextBox()
-        Me.Tab2Pwd = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.FirstTab = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Tab2Pwd = New System.Windows.Forms.TextBox()
+        Me.Tab2Uid = New System.Windows.Forms.TextBox()
+        Me.Tab2DataBase = New System.Windows.Forms.TextBox()
+        Me.Tab2Server = New System.Windows.Forms.TextBox()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Tab3Email = New System.Windows.Forms.TextBox()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.SFTP = New System.Windows.Forms.RadioButton()
         Me.GoogleDrive = New System.Windows.Forms.RadioButton()
         Me.OneDrive = New System.Windows.Forms.RadioButton()
         Me.Box = New System.Windows.Forms.RadioButton()
         Me.DropBox = New System.Windows.Forms.RadioButton()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Button8 = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -90,6 +90,40 @@ Partial Class Form1
         Me.TabPage1.Text = "STEP 1"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'FirstTabUsername
+        '
+        Me.FirstTabUsername.Location = New System.Drawing.Point(72, 67)
+        Me.FirstTabUsername.Name = "FirstTabUsername"
+        Me.FirstTabUsername.Size = New System.Drawing.Size(154, 20)
+        Me.FirstTabUsername.TabIndex = 3
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(7, 67)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(59, 13)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "username :"
+        '
+        'FirstTab
+        '
+        Me.FirstTab.Location = New System.Drawing.Point(81, 192)
+        Me.FirstTab.Name = "FirstTab"
+        Me.FirstTab.Size = New System.Drawing.Size(75, 23)
+        Me.FirstTab.TabIndex = 1
+        Me.FirstTab.Text = "Next"
+        Me.FirstTab.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(19, 20)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(202, 13)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Define a username to identify the process"
+        '
         'TabPage2
         '
         Me.TabPage2.Controls.Add(Me.Button1)
@@ -109,6 +143,79 @@ Partial Class Form1
         Me.TabPage2.Text = "STEP 2"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(65, 218)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 8
+        Me.Button1.Text = "Next"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(25, 179)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(59, 13)
+        Me.Label6.TabIndex = 7
+        Me.Label6.Text = "Password :"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(25, 125)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(61, 13)
+        Me.Label5.TabIndex = 6
+        Me.Label5.Text = "Username :"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(25, 84)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(60, 13)
+        Me.Label4.TabIndex = 5
+        Me.Label4.Text = "DataBase :"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(25, 37)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(44, 13)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "Server :"
+        '
+        'Tab2Pwd
+        '
+        Me.Tab2Pwd.Location = New System.Drawing.Point(135, 172)
+        Me.Tab2Pwd.Name = "Tab2Pwd"
+        Me.Tab2Pwd.Size = New System.Drawing.Size(100, 20)
+        Me.Tab2Pwd.TabIndex = 3
+        '
+        'Tab2Uid
+        '
+        Me.Tab2Uid.Location = New System.Drawing.Point(135, 125)
+        Me.Tab2Uid.Name = "Tab2Uid"
+        Me.Tab2Uid.Size = New System.Drawing.Size(100, 20)
+        Me.Tab2Uid.TabIndex = 2
+        '
+        'Tab2DataBase
+        '
+        Me.Tab2DataBase.Location = New System.Drawing.Point(135, 77)
+        Me.Tab2DataBase.Name = "Tab2DataBase"
+        Me.Tab2DataBase.Size = New System.Drawing.Size(100, 20)
+        Me.Tab2DataBase.TabIndex = 1
+        '
+        'Tab2Server
+        '
+        Me.Tab2Server.Location = New System.Drawing.Point(135, 37)
+        Me.Tab2Server.Name = "Tab2Server"
+        Me.Tab2Server.Size = New System.Drawing.Size(100, 20)
+        Me.Tab2Server.TabIndex = 0
+        '
         'TabPage3
         '
         Me.TabPage3.Controls.Add(Me.Tab3Email)
@@ -122,6 +229,40 @@ Partial Class Form1
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "STEP 3"
         Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'Tab3Email
+        '
+        Me.Tab3Email.Location = New System.Drawing.Point(63, 86)
+        Me.Tab3Email.Name = "Tab3Email"
+        Me.Tab3Email.Size = New System.Drawing.Size(172, 20)
+        Me.Tab3Email.TabIndex = 3
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(19, 86)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(38, 13)
+        Me.Label8.TabIndex = 2
+        Me.Label8.Text = "Email :"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(50, 25)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(143, 13)
+        Me.Label7.TabIndex = 1
+        Me.Label7.Text = "Define the confirmation email"
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(67, 223)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 0
+        Me.Button2.Text = "Next"
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'TabPage4
         '
@@ -139,165 +280,6 @@ Partial Class Form1
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "STEP 4"
         Me.TabPage4.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(19, 20)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(202, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Define a username to identify the process"
-        '
-        'FirstTab
-        '
-        Me.FirstTab.Location = New System.Drawing.Point(81, 192)
-        Me.FirstTab.Name = "FirstTab"
-        Me.FirstTab.Size = New System.Drawing.Size(75, 23)
-        Me.FirstTab.TabIndex = 1
-        Me.FirstTab.Text = "Next"
-        Me.FirstTab.UseVisualStyleBackColor = True
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(7, 67)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(59, 13)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "username :"
-        '
-        'FirstTabUsername
-        '
-        Me.FirstTabUsername.Location = New System.Drawing.Point(72, 67)
-        Me.FirstTabUsername.Name = "FirstTabUsername"
-        Me.FirstTabUsername.Size = New System.Drawing.Size(154, 20)
-        Me.FirstTabUsername.TabIndex = 3
-        '
-        'Tab2Server
-        '
-        Me.Tab2Server.Location = New System.Drawing.Point(135, 37)
-        Me.Tab2Server.Name = "Tab2Server"
-        Me.Tab2Server.Size = New System.Drawing.Size(100, 20)
-        Me.Tab2Server.TabIndex = 0
-        '
-        'Tab2DataBase
-        '
-        Me.Tab2DataBase.Location = New System.Drawing.Point(135, 77)
-        Me.Tab2DataBase.Name = "Tab2DataBase"
-        Me.Tab2DataBase.Size = New System.Drawing.Size(100, 20)
-        Me.Tab2DataBase.TabIndex = 1
-        '
-        'Tab2Uid
-        '
-        Me.Tab2Uid.Location = New System.Drawing.Point(135, 125)
-        Me.Tab2Uid.Name = "Tab2Uid"
-        Me.Tab2Uid.Size = New System.Drawing.Size(100, 20)
-        Me.Tab2Uid.TabIndex = 2
-        '
-        'Tab2Pwd
-        '
-        Me.Tab2Pwd.Location = New System.Drawing.Point(135, 172)
-        Me.Tab2Pwd.Name = "Tab2Pwd"
-        Me.Tab2Pwd.Size = New System.Drawing.Size(100, 20)
-        Me.Tab2Pwd.TabIndex = 3
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(25, 37)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(44, 13)
-        Me.Label3.TabIndex = 4
-        Me.Label3.Text = "Server :"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(25, 84)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(60, 13)
-        Me.Label4.TabIndex = 5
-        Me.Label4.Text = "DataBase :"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(25, 125)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(61, 13)
-        Me.Label5.TabIndex = 6
-        Me.Label5.Text = "Username :"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(25, 179)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(59, 13)
-        Me.Label6.TabIndex = 7
-        Me.Label6.Text = "Password :"
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(65, 218)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 8
-        Me.Button1.Text = "Next"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(67, 223)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 0
-        Me.Button2.Text = "Next"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(50, 25)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(143, 13)
-        Me.Label7.TabIndex = 1
-        Me.Label7.Text = "Define the confirmation email"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(19, 86)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(38, 13)
-        Me.Label8.TabIndex = 2
-        Me.Label8.Text = "Email :"
-        '
-        'Tab3Email
-        '
-        Me.Tab3Email.Location = New System.Drawing.Point(63, 86)
-        Me.Tab3Email.Name = "Tab3Email"
-        Me.Tab3Email.Size = New System.Drawing.Size(172, 20)
-        Me.Tab3Email.TabIndex = 3
-        '
-        'Button8
-        '
-        Me.Button8.Location = New System.Drawing.Point(80, 217)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(75, 23)
-        Me.Button8.TabIndex = 5
-        Me.Button8.Text = "Next"
-        Me.Button8.UseVisualStyleBackColor = True
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(61, 18)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(122, 13)
-        Me.Label9.TabIndex = 6
-        Me.Label9.Text = "Select the cloud storage"
         '
         'SFTP
         '
@@ -358,6 +340,24 @@ Partial Class Form1
         Me.DropBox.TabIndex = 7
         Me.DropBox.TabStop = True
         Me.DropBox.UseVisualStyleBackColor = True
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(61, 18)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(122, 13)
+        Me.Label9.TabIndex = 6
+        Me.Label9.Text = "Select the cloud storage"
+        '
+        'Button8
+        '
+        Me.Button8.Location = New System.Drawing.Point(80, 217)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(75, 23)
+        Me.Button8.TabIndex = 5
+        Me.Button8.Text = "Next"
+        Me.Button8.UseVisualStyleBackColor = True
         '
         'Form1
         '
