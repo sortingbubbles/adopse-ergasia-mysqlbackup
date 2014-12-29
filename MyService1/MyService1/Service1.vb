@@ -115,31 +115,7 @@ Public Class Service1
         Catch ex As Exception
         End Try
     End Sub
-    'Syndesh me to sftp server , dhmiourgeia tou katalogou
-    'MySQLBackup kai apostolh tou zipparismenou arxeiou
-    'pou periexei tis entoles ths mysql
-    Private Sub MySFTP()
-        Dim url As String = String.Empty
-        Try
-            url = "***********"
-            Dim uname As String = "***********"
-            Dim passwd As String = "**********"
-            'Dim port As Integer = 22
-            Dim RemoteDirectory As String = "MySQLBackup"
-            Dim sshCp As SshTransferProtocolBase
-            sshCp = New Sftp(url, uname)
-            sshCp.Password = passwd
-            sshCp.Connect()
-            'sshCp.Mkdir(RemoteDirectory)
-            sshCp.Put(ZippedBackupfile, RemoteDirectory & "/" & "backup.zip") ''''''''''''''''''''''
-            sshCp.Close()
-            msg += "File Succesfully Uploaded @ FTP SERVER " & url & " !!!<br/>"
-        Catch ex As Exception
-            msg += "!!!!!!!!!!ERROR @ FILE Uploaded @ FTP SERVER " & url & "!!!!<br>"
-            msg += ex.Message & "<br/>"
-        End Try
-    End Sub
-
+   
     Private Sub CreateBackUp()
         Backup()
         ZipMe()
@@ -149,6 +125,7 @@ Public Class Service1
         'MySQLGoogleDrive()
         SentMail()
     End Sub
+#Region "UPLOAD ZIPPEDFILE"
     'Apostolh tou zip arxeiou pou periexei to backup ston
     'logariasmo tou xrhsth ston katalogo "MySQLBackUp"
     'ka8ws kai thn diagrafh prohgoumenou backup
@@ -229,11 +206,11 @@ Public Class Service1
         Dim newToken As BoxApi.V2.Authentication.OAuth2.OAuthToken
         Dim tokenProvider As New TokenProvider(clientID, clientSecret)
         Dim streamReader As StreamReader
-        streamReader = System.IO.File.OpenText("C:\TEMP\MyTest12.txt")
+        streamReader = System.IO.File.OpenText("C:\TEMP\BoxToken.txt")
         oldRefreshToken = streamReader.ReadToEnd()
         streamReader.Close()
         newToken = tokenProvider.RefreshAccessToken(oldRefreshToken)
-        Dim streamWriter As New StreamWriter("C:\TEMP\MyTest12.txt")
+        Dim streamWriter As New StreamWriter("C:\TEMP\BoxToken.txt")
         streamWriter.Write(newToken.RefreshToken)
         streamWriter.Close()
         Return newToken
@@ -247,13 +224,14 @@ Public Class Service1
         Try
             Dim service As DriveService = getGoogleDriveService()
             Dim Title As String = "Backup.zip"
-            Dim Description As String = "A test document"
+            Dim Description As String = "The backup of your mysql database"
             Dim MimeType As String = "application/zip"
-            Dim FileName As String = "C:\TEMP\backup.zip"
-            Dim file As Google.Apis.Drive.v2.Data.File = insertFile(service, Title, Description, getFolderId(), MimeType, FileName)
+            ' Dim FileName As String = "C:\TEMP\backup.zip" ''''''''''
+            Dim file As Google.Apis.Drive.v2.Data.File = insertFile(service, Title, Description, getFolderId(), MimeType, ZippedBackupfile)
             Dim newfileId As String = file.Id
             DeleteFile(service, getOldFileId())
             setOldFileId(newfileId)
+            msg += "!!!!!!!!!! FILE Uploaded @ GoogleDrive !!!!<br>"
         Catch ex As Exception
             msg += "!!!!!!!!!!ERROR @ FILE Uploaded @ GoogleDrive !!!!<br>"
             msg += ex.Message & "<br/>"
@@ -331,5 +309,30 @@ Public Class Service1
     Private Sub setOldFileId(oldFileId As String)
 
     End Sub
+    'Syndesh me to sftp server , dhmiourgeia tou katalogou
+    'MySQLBackup kai apostolh tou zipparismenou arxeiou
+    'pou periexei tis entoles ths mysql
+    Private Sub MySFTP()
+        Dim url As String = String.Empty
+        Try
+            url = "***********"
+            Dim uname As String = "***********"
+            Dim passwd As String = "**********"
+            'Dim port As Integer = 22
+            Dim RemoteDirectory As String = "MySQLBackup"
+            Dim sshCp As SshTransferProtocolBase
+            sshCp = New Sftp(url, uname)
+            sshCp.Password = passwd
+            sshCp.Connect()
+            'sshCp.Mkdir(RemoteDirectory)
+            sshCp.Put(ZippedBackupfile, RemoteDirectory & "/" & "backup.zip") ''''''''''''''''''''''
+            sshCp.Close()
+            msg += "File Succesfully Uploaded @ FTP SERVER " & url & " !!!<br/>"
+        Catch ex As Exception
+            msg += "!!!!!!!!!!ERROR @ FILE Uploaded @ FTP SERVER " & url & "!!!!<br>"
+            msg += ex.Message & "<br/>"
+        End Try
+    End Sub
+#End Region
 End Class
 
