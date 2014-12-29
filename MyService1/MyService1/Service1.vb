@@ -227,10 +227,9 @@ Public Class Service1
             Dim Description As String = "The backup of your mysql database"
             Dim MimeType As String = "application/zip"
             ' Dim FileName As String = "C:\TEMP\backup.zip" ''''''''''
-            Dim file As Google.Apis.Drive.v2.Data.File = insertFile(service, Title, Description, getFolderId(), MimeType, ZippedBackupfile)
-            Dim newfileId As String = file.Id
-            DeleteFile(service, getOldFileId())
-            setOldFileId(newfileId)
+            Dim folderId As String = getFolderId()
+            DeleteFilesFromFolder(service, folderId)
+            Dim file As Google.Apis.Drive.v2.Data.File = insertFile(service, Title, Description, folderId, MimeType, ZippedBackupfile)
             msg += "!!!!!!!!!! FILE Uploaded @ GoogleDrive !!!!<br>"
         Catch ex As Exception
             msg += "!!!!!!!!!!ERROR @ FILE Uploaded @ GoogleDrive !!!!<br>"
@@ -292,23 +291,21 @@ Public Class Service1
     Public Shared Sub DeleteFile(ByVal service As DriveService, ByVal fileId As String)
         service.Files.Delete(fileId).Execute()
     End Sub
+    'Voithitiki methodos i opoia diagrafei ola ta arxeia apo ton katalogo
+    'me id <folderId>
+    Public Shared Sub DeleteFilesFromFolder(ByVal service As DriveService, ByVal folderId As String)
+        Dim request As ChildrenResource.ListRequest = service.Children.List(folderId)
+        Dim children As ChildList = request.Execute
+        For Each child As ChildReference In children.Items
+            DeleteFile(service, child.Id)
+        Next
+    End Sub
     'Voithitiki methodos i opoia epistrefei to id tou katalogou MySQLBackUp
     '(apo to xml arxeio) pou dimiourgite mia fora stin arxi
     Private Function getFolderId() As String
         Dim folderId As String = ""
         Return folderId
     End Function
-    'Voithitiki methodos i opoia epistrefei to id tou proigoumenou
-    'arxeiou backup.zip pou kaname upload (apo to xml arxeio) prokeimenou na diagrafei
-    Private Function getOldFileId() As String
-        Dim oldFilerId As String = ""
-        Return oldFilerId
-    End Function
-    'Voithitiki methodos i opoia orizei to id tou proigoumenou
-    'arxeiou backup.zip iso me to id tou arxeiou pou molis anevasame (sto xml arxeio)
-    Private Sub setOldFileId(oldFileId As String)
-
-    End Sub
     'Syndesh me to sftp server , dhmiourgeia tou katalogou
     'MySQLBackup kai apostolh tou zipparismenou arxeiou
     'pou periexei tis entoles ths mysql
