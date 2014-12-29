@@ -114,9 +114,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json.Net40">
-      <HintPath>..\packages\AppLimit.CloudComputing.SharpBox.1.2.0.542\lib\net40-full\Newtonsoft.Json.Net40.dll</HintPath>
-    </Reference>
     <Reference Include="Org.Mentalis.Security">
       <HintPath>..\packages\Org.Mentalis.Security.1.0.0\lib\net40\Org.Mentalis.Security.dll</HintPath>
     </Reference>
