@@ -13,6 +13,13 @@ Imports AppLimit.CloudComputing.SharpBox.StorageProvider.DropBox
 Imports BoxApi.V2
 Imports BoxApi.V2.Authentication.OAuth2
 Imports BoxApi.V2.Model
+Imports Google
+Imports Google.Apis.Auth.OAuth2
+Imports Google.Apis.Drive.v2
+Imports Google.Apis.Drive.v2.Data
+Imports Google.Apis.Services
+Imports Google.Apis.Util.Store
+
 Public Class Service1
     Private msg As String = String.Empty
     Private Backupfile As String = String.Empty
@@ -139,6 +146,7 @@ Public Class Service1
         ' MySFTP()
         ' MySQLDropbox()
         'MySQLBox()
+        'MySQLGoogleDrive()
         SentMail()
     End Sub
     'Apostolh tou zip arxeiou pou periexei to backup ston
@@ -186,7 +194,7 @@ Public Class Service1
     'yparxei hdh o katalogos MySQLBackUp kai ton diagrafoume mazi me to
     'periexomeno tou (recursive=true) kai sth synexeia dhmiourgoume
     'ek neou ton katalogo MySQLBackUp kai anebazoume to zipped backup file
-        Function UploadToBox(ByVal attachedFilename As String, ByVal stream As System.IO.Stream) As Boolean
+    Function UploadToBox(ByVal attachedFilename As String, ByVal stream As System.IO.Stream) As Boolean
         Dim newToken As BoxApi.V2.Authentication.OAuth2.OAuthToken = GetToken()
         Dim boxManager As New BoxManager(newToken.AccessToken)
         Dim rootFolder As Folder
@@ -230,5 +238,98 @@ Public Class Service1
         streamWriter.Close()
         Return newToken
     End Function
+    'I vasiki methodos me tin opoia ginete to upload
+    'tou zipped backup file sto Google Drive ston katalogo MySQLBackUp
+    'Dimiourgoume to protipo arxeio zip, orizoume ton parent iso me to
+    'id tou katalogou MySQLBackUp, kanoume upload to arxeio backup.zip
+    'kai diagrafoume to palio arxeio zip (me xrisi tou id tou)
+    Private Sub MySQLGoogleDrive()
+        Try
+            Dim service As DriveService = getGoogleDriveService()
+            Dim Title As String = "Backup.zip"
+            Dim Description As String = "A test document"
+            Dim MimeType As String = "application/zip"
+            Dim FileName As String = "C:\TEMP\backup.zip"
+            Dim file As Google.Apis.Drive.v2.Data.File = insertFile(service, Title, Description, getFolderId(), MimeType, FileName)
+            Dim newfileId As String = file.Id
+            DeleteFile(service, getOldFileId())
+            setOldFileId(newfileId)
+        Catch ex As Exception
+            msg += "!!!!!!!!!!ERROR @ FILE Uploaded @ GoogleDrive !!!!<br>"
+            msg += ex.Message & "<br/>"
+        End Try
+    End Sub
+    'Voithitiki methodos tis MySQLGoogleDrive i opoia kanei to authorization
+    'kai epistrefei antikeimeno tupou DriveService me to opoio 
+    'mporoume na diaxiristoume to Google Drive
+    Private Function getGoogleDriveService() As DriveService
+        Dim CLIENT_ID As String = "**********************************************"
+        Dim CLIENT_SECRET As String = "************************"
+        Dim APP_USER_AGENT As String = "Drive API Sample"
+        Dim SCOPES As String() = New String() {DriveService.Scope.Drive}
+        Dim credential As UserCredential = GoogleWebAuthorizationBroker.AuthorizeAsync(New ClientSecrets() With { _
+                .ClientId = CLIENT_ID, _
+                .ClientSecret = CLIENT_SECRET _
+            }, SCOPES, getUserId(), CancellationToken.None, getPersistentCredentialStore()).Result
+        Dim service As DriveService = New DriveService(New BaseClientService.Initializer() With { _
+                .HttpClientInitializer = credential, _
+                .ApplicationName = APP_USER_AGENT _
+            })
+        Return service
+    End Function
+    'Voithitiki methodos i opoia epistrefei to anagnoristiko tou xristi
+    '(den exei na kanei me gmail, apla einai katei tou prosdiorizei
+    'monadika ton xristi)
+    Private Shared Function getUserId() As String
+        Return "user"
+    End Function
+    'Voithitiki methodos i opoia epistrefei ena antikeimeno IDataStore
+    'Me tin xrisi autou tou antikeimenou ginete i apothikeusi ton
+    'tokens se enan fakelo (Dimiourgite ena arxeio gia kathe xristi)
+    'kathos episis kai i anaktisi oson einai apothikeumena
+    Private Shared Function getPersistentCredentialStore() As IDataStore
+        Return New FileDataStore("C:\TEMP\TestGoogleDrive", True)
+    End Function
+    'Voithitiki methodos i opoia kanei to upload tou arxeiou pou vriskete 
+    'stin topothesia <filename> me titlo <title>, perigrafi <description> kai
+    'tupo <mimeType> kato apo ton fakelo me id <parentId>. Epistrefete 
+    'ena antikeimeno tupou File pou periexei to id tou arxeiou pou molis anevike
+    Private Shared Function insertFile(ByVal service As DriveService, ByVal title As String, ByVal description As String, _
+                                    ByVal parentId As String, ByVal mimeType As String, ByVal filename As String) As Google.Apis.Drive.v2.Data.File
+        Dim body As Google.Apis.Drive.v2.Data.File = New Google.Apis.Drive.v2.Data.File
+        body.Title = title
+        body.Description = description
+        body.MimeType = mimeType
+        If Not String.IsNullOrEmpty(parentId) Then
+            body.Parents = {New ParentReference() With {.Id = parentId}}
+        End If
+        Dim byteArray() As Byte = System.IO.File.ReadAllBytes(filename)
+        Dim stream As MemoryStream = New MemoryStream(byteArray)
+        Dim request As FilesResource.InsertMediaUpload = service.Files.Insert(body, stream, mimeType)
+        request.Upload()
+        Dim file As Google.Apis.Drive.v2.Data.File = request.ResponseBody
+        Return file
+    End Function
+    'Voithitiki methodos i opoia diagrafei to arxeio me id <fileId>
+    Public Shared Sub DeleteFile(ByVal service As DriveService, ByVal fileId As String)
+        service.Files.Delete(fileId).Execute()
+    End Sub
+    'Voithitiki methodos i opoia epistrefei to id tou katalogou MySQLBackUp
+    '(apo to xml arxeio) pou dimiourgite mia fora stin arxi
+    Private Function getFolderId() As String
+        Dim folderId As String = ""
+        Return folderId
+    End Function
+    'Voithitiki methodos i opoia epistrefei to id tou proigoumenou
+    'arxeiou backup.zip pou kaname upload (apo to xml arxeio) prokeimenou na diagrafei
+    Private Function getOldFileId() As String
+        Dim oldFilerId As String = ""
+        Return oldFilerId
+    End Function
+    'Voithitiki methodos i opoia orizei to id tou proigoumenou
+    'arxeiou backup.zip iso me to id tou arxeiou pou molis anevasame (sto xml arxeio)
+    Private Sub setOldFileId(oldFileId As String)
+
+    End Sub
 End Class
 
