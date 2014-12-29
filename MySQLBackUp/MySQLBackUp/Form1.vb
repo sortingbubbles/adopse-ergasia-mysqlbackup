@@ -102,7 +102,13 @@ Public Class Form1
     End Sub
 
     Private Sub MyOneDrive()
-        Throw New NotImplementedException
+        tokenPath = "c:\TEMP\OneDriveRefreshToken.txt"
+        Dim clientID As String = "***********" ' client id της εφαρμογής
+        Dim clientSecret As String = "*******************" ' client secret της εφαρμογής
+
+        Dim url As String = String.Format("https://login.live.com/oauth20_authorize.srf?client_id={0}&scope=wl.skydrive_update%20wl.offline_access&response_type=code&redirect_uri=https://login.live.com/oauth20_desktop.srf", clientID)
+        OneDriveBrowser.OneDriveAuth.Url = New Uri(url)
+        OneDriveBrowser.Show()
     End Sub
 
     Private Sub MyGoogleDrive()

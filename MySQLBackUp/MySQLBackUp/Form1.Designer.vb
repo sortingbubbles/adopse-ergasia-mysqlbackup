@@ -102,7 +102,7 @@ Partial Class Form1
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(7, 67)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(59, 13)
+        Me.Label2.Size = New System.Drawing.Size(69, 15)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "username :"
         '
@@ -120,7 +120,7 @@ Partial Class Form1
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(19, 20)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(202, 13)
+        Me.Label1.Size = New System.Drawing.Size(232, 15)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Define a username to identify the process"
         '
@@ -157,7 +157,7 @@ Partial Class Form1
         Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(25, 179)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(59, 13)
+        Me.Label6.Size = New System.Drawing.Size(67, 15)
         Me.Label6.TabIndex = 7
         Me.Label6.Text = "Password :"
         '
@@ -166,7 +166,7 @@ Partial Class Form1
         Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(25, 125)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(61, 13)
+        Me.Label5.Size = New System.Drawing.Size(71, 15)
         Me.Label5.TabIndex = 6
         Me.Label5.Text = "Username :"
         '
@@ -175,7 +175,7 @@ Partial Class Form1
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(25, 84)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(60, 13)
+        Me.Label4.Size = New System.Drawing.Size(67, 15)
         Me.Label4.TabIndex = 5
         Me.Label4.Text = "DataBase :"
         '
@@ -184,7 +184,7 @@ Partial Class Form1
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(25, 37)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(44, 13)
+        Me.Label3.Size = New System.Drawing.Size(48, 15)
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "Server :"
         '
@@ -242,7 +242,7 @@ Partial Class Form1
         Me.Label8.AutoSize = True
         Me.Label8.Location = New System.Drawing.Point(19, 86)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(38, 13)
+        Me.Label8.Size = New System.Drawing.Size(45, 15)
         Me.Label8.TabIndex = 2
         Me.Label8.Text = "Email :"
         '
@@ -251,7 +251,7 @@ Partial Class Form1
         Me.Label7.AutoSize = True
         Me.Label7.Location = New System.Drawing.Point(50, 25)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(143, 13)
+        Me.Label7.Size = New System.Drawing.Size(168, 15)
         Me.Label7.TabIndex = 1
         Me.Label7.Text = "Define the confirmation email"
         '
@@ -346,7 +346,7 @@ Partial Class Form1
         Me.Label9.AutoSize = True
         Me.Label9.Location = New System.Drawing.Point(61, 18)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(122, 13)
+        Me.Label9.Size = New System.Drawing.Size(138, 15)
         Me.Label9.TabIndex = 6
         Me.Label9.Text = "Select the cloud storage"
         '
