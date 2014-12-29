@@ -2,13 +2,14 @@
 Imports System.IO
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
+Imports Microsoft.Live
+
 Public Class webBrowser
 
 
     Public token As String = ""
     Public code As String = ""
-    Private refreshToken As String = ""
-
+    Public refreshToken As String = ""
 
     'Μετά το φόρτωμα της σελίδας ελέγχεται εάν το url έχει το access token
     'Εάν υπάρχει το αποθηκεύει στη μεταβλητή token
@@ -23,12 +24,6 @@ Public Class webBrowser
 
             GetTokens(url)
         End If
-
-
-        ' για debugging του upload
-        'Console.WriteLine(WebBrowser1.Url.ToString())
-
-
     End Sub
 
     Private Sub GetTokens(url As String)
@@ -36,19 +31,16 @@ Public Class webBrowser
         req = HttpWebRequest.Create(url)
 
         Dim objStream As Stream
-
         objStream = req.GetResponse().GetResponseStream()
-
         Dim objReader As New StreamReader(objStream)
-
         Dim json As String = objReader.ReadLine()
+
+        saveToFile(json, "C:\Users\Annie\Desktop\authentication.json")
+
         Dim ser As JObject = JObject.Parse(json)
         Dim data As List(Of JToken) = ser.Children().ToList
 
-
-
         For Each item As JProperty In data
-            'Console.WriteLine(item.Name.ToString + " " + item.Value.ToString)
             If (item.Name.ToString.Equals("refresh_token")) Then
                 refreshToken = item.Value
             ElseIf (item.Name.ToString.Equals("access_token")) Then
@@ -69,10 +61,19 @@ Public Class webBrowser
     End Sub
 
 
+
     Private Sub refreshTokens()
         Dim url As String = String.Format("https://login.live.com/oauth20_token.srf?client_id={0}&client_secret=qkMMeEhpLbM5GAfVJRWVPfo9PzuIjEGD&code={1}&refresh_token={2}&grant_type=refresh_token&redirect_uri=https://login.live.com/oauth20_desktop.srf", Form1.client_id, code, refreshToken)
 
         GetTokens(url)
+    End Sub
+
+
+    Public Sub saveToFile(json As String, filePath As String)
+        Dim file As System.IO.StreamWriter
+        file = My.Computer.FileSystem.OpenTextFileWriter(filePath, True)
+        file.WriteLine(json)
+        file.Close()
     End Sub
 
 End Class
