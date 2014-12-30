@@ -137,7 +137,7 @@ Public Class Service1
             Dim config As DropBoxConfiguration = TryCast(CloudStorage.GetCloudConfigurationEasy(nSupportedCloudConfigurations.DropBox), DropBoxConfiguration)
             Dim DropboxStorage As New CloudStorage()
             Dim accessToken As ICloudStorageAccessToken
-            Using fs = System.IO.File.Open("C:\TEMP\MyToken.txt", FileMode.Open, FileAccess.Read, FileShare.None)
+            Using fs = System.IO.File.Open("C:\TEMP\DropBoxToken.txt", FileMode.Open, FileAccess.Read, FileShare.None)
                 accessToken = DropboxStorage.DeserializeSecurityToken(fs)
             End Using
             DropboxStorage.Open(config, accessToken)
@@ -152,6 +152,7 @@ Public Class Service1
             msg += ex.Message & "<br/>"
         End Try
     End Sub
+#Region "Box Region"
     'h me8odos pou ekkinei th diadikasia tou upload sto box.com
     'opou metatrepoume se System.IO.Stream to arxeio pou 8eloume 
     'na anebasoume
@@ -218,6 +219,9 @@ Public Class Service1
         streamWriter.Close()
         Return newToken
     End Function
+
+#End Region
+#Region "Google Drive Region"
     'I vasiki methodos me tin opoia ginete to upload
     'tou zipped backup file sto Google Drive ston katalogo MySQLBackUp
     'Dimiourgoume to protipo arxeio zip, orizoume ton parent iso me to
@@ -309,7 +313,8 @@ Public Class Service1
         Dim folderId As String = ""
         Return folderId
     End Function
-
+#End Region
+#Region "OneDrive Region"
 
     'Ανέβασμα του backup.zip στο onedrive
     Private Sub MySQLOneDrive()
@@ -496,7 +501,7 @@ Public Class Service1
         Next
         Return ""
     End Function
-
+#End Region
     'Syndesh me to sftp server , dhmiourgeia tou katalogou
     'MySQLBackup kai apostolh tou zipparismenou arxeiou
     'pou periexei tis entoles ths mysql
