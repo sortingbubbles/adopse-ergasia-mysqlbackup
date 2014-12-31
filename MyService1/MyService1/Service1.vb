@@ -122,10 +122,11 @@ Public Class Service1
     Private Sub CreateBackUp()
         Backup()
         ZipMe()
-        ' MySFTP()
-        ' MySQLDropbox()
+        'MySFTP()
+        'MySQLDropbox()
         'MySQLBox()
         'MySQLGoogleDrive()
+        'MySQLOneDrive()
         SentMail()
     End Sub
 #Region "UPLOAD ZIPPEDFILE"
