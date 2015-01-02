@@ -49,6 +49,8 @@ Public Class Form1
         'Save to the XML file
         FileIO.SpecialDirectories.MyDocuments.ToString()
         xmlDoc.Save(FileIO.SpecialDirectories.MyDocuments.ToString() & "\categories.xml")
+
+        MessageBox.Show("XML file Created !!")
     End Sub
 
 End Class
