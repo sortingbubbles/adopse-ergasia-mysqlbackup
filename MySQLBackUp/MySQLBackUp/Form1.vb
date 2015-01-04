@@ -48,7 +48,8 @@ Public Class Form1
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         ' Dim constring As String = "Server=192.168.6.153;Database=adopse;Uid=mysqlBackup;Pwd=;"
-        constring = "Server=" & Tab2Server.Text & ";Database=" & Tab2DataBase.Text & ";Uid=" & Tab2Uid.Text & ";Pwd=" & Tab2Pwd.Text & ";"
+        constring = "Server=" & Tab2Server.Text & Tab2DataBase.Text & ";Uid=" & Tab2Uid.Text & ";Pwd=" & Tab2Pwd.Text & ";Database="
+        Dim databases As String = Tab2DataBase.Text
         TabControl1.TabPages("TabPage3").Enabled = True
         TabControl1.TabPages("TabPage2").Enabled = False
         TabControl1.SelectedTab = TabControl1.TabPages("TabPage3")
