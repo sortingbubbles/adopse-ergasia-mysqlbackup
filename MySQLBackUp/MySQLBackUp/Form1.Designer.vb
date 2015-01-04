@@ -29,7 +29,7 @@ Partial Class Form1
         Me.FirstTab = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.SecondTab = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -42,7 +42,7 @@ Partial Class Form1
         Me.Tab3Email = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.ThirdTab = New System.Windows.Forms.Button()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.SFTP = New System.Windows.Forms.RadioButton()
         Me.GoogleDrive = New System.Windows.Forms.RadioButton()
@@ -50,12 +50,21 @@ Partial Class Form1
         Me.Box = New System.Windows.Forms.RadioButton()
         Me.DropBox = New System.Windows.Forms.RadioButton()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.Button8 = New System.Windows.Forms.Button()
+        Me.FourtTab = New System.Windows.Forms.Button()
+        Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.CreateEverything = New System.Windows.Forms.Button()
+        Me.SecondsCombo = New System.Windows.Forms.ComboBox()
+        Me.MinuteCombo = New System.Windows.Forms.ComboBox()
+        Me.HourCombo = New System.Windows.Forms.ComboBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Hour = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.TabPage4.SuspendLayout()
+        Me.TabPage5.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -65,6 +74,7 @@ Partial Class Form1
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Controls.Add(Me.TabPage4)
+        Me.TabControl1.Controls.Add(Me.TabPage5)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
         Me.TabControl1.ItemSize = New System.Drawing.Size(30, 120)
@@ -126,7 +136,7 @@ Partial Class Form1
         '
         'TabPage2
         '
-        Me.TabPage2.Controls.Add(Me.Button1)
+        Me.TabPage2.Controls.Add(Me.SecondTab)
         Me.TabPage2.Controls.Add(Me.Label6)
         Me.TabPage2.Controls.Add(Me.Label5)
         Me.TabPage2.Controls.Add(Me.Label4)
@@ -143,14 +153,14 @@ Partial Class Form1
         Me.TabPage2.Text = "STEP 2"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
-        'Button1
+        'SecondTab
         '
-        Me.Button1.Location = New System.Drawing.Point(65, 218)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 8
-        Me.Button1.Text = "Next"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.SecondTab.Location = New System.Drawing.Point(65, 218)
+        Me.SecondTab.Name = "SecondTab"
+        Me.SecondTab.Size = New System.Drawing.Size(75, 23)
+        Me.SecondTab.TabIndex = 8
+        Me.SecondTab.Text = "Next"
+        Me.SecondTab.UseVisualStyleBackColor = True
         '
         'Label6
         '
@@ -221,7 +231,7 @@ Partial Class Form1
         Me.TabPage3.Controls.Add(Me.Tab3Email)
         Me.TabPage3.Controls.Add(Me.Label8)
         Me.TabPage3.Controls.Add(Me.Label7)
-        Me.TabPage3.Controls.Add(Me.Button2)
+        Me.TabPage3.Controls.Add(Me.ThirdTab)
         Me.TabPage3.Location = New System.Drawing.Point(124, 4)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
@@ -255,14 +265,14 @@ Partial Class Form1
         Me.Label7.TabIndex = 1
         Me.Label7.Text = "Define the confirmation email"
         '
-        'Button2
+        'ThirdTab
         '
-        Me.Button2.Location = New System.Drawing.Point(67, 223)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 0
-        Me.Button2.Text = "Next"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.ThirdTab.Location = New System.Drawing.Point(67, 223)
+        Me.ThirdTab.Name = "ThirdTab"
+        Me.ThirdTab.Size = New System.Drawing.Size(75, 23)
+        Me.ThirdTab.TabIndex = 0
+        Me.ThirdTab.Text = "Next"
+        Me.ThirdTab.UseVisualStyleBackColor = True
         '
         'TabPage4
         '
@@ -272,7 +282,7 @@ Partial Class Form1
         Me.TabPage4.Controls.Add(Me.Box)
         Me.TabPage4.Controls.Add(Me.DropBox)
         Me.TabPage4.Controls.Add(Me.Label9)
-        Me.TabPage4.Controls.Add(Me.Button8)
+        Me.TabPage4.Controls.Add(Me.FourtTab)
         Me.TabPage4.Location = New System.Drawing.Point(124, 4)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
@@ -350,14 +360,91 @@ Partial Class Form1
         Me.Label9.TabIndex = 6
         Me.Label9.Text = "Select the cloud storage"
         '
-        'Button8
+        'FourtTab
         '
-        Me.Button8.Location = New System.Drawing.Point(80, 217)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(75, 23)
-        Me.Button8.TabIndex = 5
-        Me.Button8.Text = "Next"
-        Me.Button8.UseVisualStyleBackColor = True
+        Me.FourtTab.Location = New System.Drawing.Point(80, 217)
+        Me.FourtTab.Name = "FourtTab"
+        Me.FourtTab.Size = New System.Drawing.Size(75, 23)
+        Me.FourtTab.TabIndex = 5
+        Me.FourtTab.Text = "Next"
+        Me.FourtTab.UseVisualStyleBackColor = True
+        '
+        'TabPage5
+        '
+        Me.TabPage5.Controls.Add(Me.CreateEverything)
+        Me.TabPage5.Controls.Add(Me.SecondsCombo)
+        Me.TabPage5.Controls.Add(Me.MinuteCombo)
+        Me.TabPage5.Controls.Add(Me.HourCombo)
+        Me.TabPage5.Controls.Add(Me.Label12)
+        Me.TabPage5.Controls.Add(Me.Label11)
+        Me.TabPage5.Controls.Add(Me.Hour)
+        Me.TabPage5.Location = New System.Drawing.Point(124, 4)
+        Me.TabPage5.Name = "TabPage5"
+        Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage5.Size = New System.Drawing.Size(243, 259)
+        Me.TabPage5.TabIndex = 4
+        Me.TabPage5.Text = "TabPage5"
+        Me.TabPage5.UseVisualStyleBackColor = True
+        '
+        'CreateEverything
+        '
+        Me.CreateEverything.Location = New System.Drawing.Point(80, 228)
+        Me.CreateEverything.Name = "CreateEverything"
+        Me.CreateEverything.Size = New System.Drawing.Size(75, 23)
+        Me.CreateEverything.TabIndex = 6
+        Me.CreateEverything.Text = "Finish"
+        Me.CreateEverything.UseVisualStyleBackColor = True
+        '
+        'SecondsCombo
+        '
+        Me.SecondsCombo.FormattingEnabled = True
+        Me.SecondsCombo.Location = New System.Drawing.Point(183, 102)
+        Me.SecondsCombo.Name = "SecondsCombo"
+        Me.SecondsCombo.Size = New System.Drawing.Size(42, 21)
+        Me.SecondsCombo.TabIndex = 5
+        '
+        'MinuteCombo
+        '
+        Me.MinuteCombo.FormattingEnabled = True
+        Me.MinuteCombo.Location = New System.Drawing.Point(97, 102)
+        Me.MinuteCombo.Name = "MinuteCombo"
+        Me.MinuteCombo.Size = New System.Drawing.Size(42, 21)
+        Me.MinuteCombo.TabIndex = 4
+        '
+        'HourCombo
+        '
+        Me.HourCombo.FormattingEnabled = True
+        Me.HourCombo.Location = New System.Drawing.Point(22, 102)
+        Me.HourCombo.Name = "HourCombo"
+        Me.HourCombo.Size = New System.Drawing.Size(42, 21)
+        Me.HourCombo.TabIndex = 3
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(181, 61)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(44, 13)
+        Me.Label12.TabIndex = 2
+        Me.Label12.Text = "Second"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(94, 61)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(39, 13)
+        Me.Label11.TabIndex = 1
+        Me.Label11.Text = "Minute"
+        '
+        'Hour
+        '
+        Me.Hour.AutoSize = True
+        Me.Hour.Location = New System.Drawing.Point(19, 61)
+        Me.Hour.Name = "Hour"
+        Me.Hour.Size = New System.Drawing.Size(30, 13)
+        Me.Hour.TabIndex = 0
+        Me.Hour.Text = "Hour"
         '
         'Form1
         '
@@ -376,6 +463,8 @@ Partial Class Form1
         Me.TabPage3.PerformLayout()
         Me.TabPage4.ResumeLayout(False)
         Me.TabPage4.PerformLayout()
+        Me.TabPage5.ResumeLayout(False)
+        Me.TabPage5.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -388,7 +477,7 @@ Partial Class Form1
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents FirstTab As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents SecondTab As System.Windows.Forms.Button
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
@@ -400,13 +489,21 @@ Partial Class Form1
     Friend WithEvents Tab3Email As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents ThirdTab As System.Windows.Forms.Button
     Friend WithEvents SFTP As System.Windows.Forms.RadioButton
     Friend WithEvents GoogleDrive As System.Windows.Forms.RadioButton
     Friend WithEvents OneDrive As System.Windows.Forms.RadioButton
     Friend WithEvents Box As System.Windows.Forms.RadioButton
     Friend WithEvents DropBox As System.Windows.Forms.RadioButton
     Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents Button8 As System.Windows.Forms.Button
+    Friend WithEvents FourtTab As System.Windows.Forms.Button
+    Friend WithEvents TabPage5 As System.Windows.Forms.TabPage
+    Friend WithEvents CreateEverything As System.Windows.Forms.Button
+    Friend WithEvents SecondsCombo As System.Windows.Forms.ComboBox
+    Friend WithEvents MinuteCombo As System.Windows.Forms.ComboBox
+    Friend WithEvents HourCombo As System.Windows.Forms.ComboBox
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents Hour As System.Windows.Forms.Label
 
 End Class
