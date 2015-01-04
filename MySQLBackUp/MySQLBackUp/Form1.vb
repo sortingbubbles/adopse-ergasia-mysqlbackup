@@ -7,6 +7,8 @@ Public Class Form1
     Private tokenPath As String
     Private constring As String
     Private sftpClient As MyNewSftpClient
+    Private CloudeServices As List(Of CloudService)
+
     ''Emfanizei to Tabpage.Text orizontia anti ka8eta pou einai to default
     Private Sub TabControl1_DrawItem(sender As Object, e As DrawItemEventArgs) Handles TabControl1.DrawItem
         Dim g As Graphics
