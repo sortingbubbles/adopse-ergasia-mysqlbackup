@@ -50,16 +50,23 @@ Module Module1
     'yyyy-mm-dd hh-mm-ss
     Private Sub Backup()
         ' Dim constring As String = "Server=192.168.6.153;Database=adopse;Uid=mysqlBackup;Pwd=;"
-        Dim constring As String = "Server=192.168.6.153;Database=adopse;Uid=mysqlBackup;Pwd=;"
+        Dim constring As String = "Server=192.168.6.153;Uid=mysqlBackup;Pwd=;Database=;"
         Backupfile = "C:\TEMP\backup(" + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ").sql"
         Try
-            Dim conn As MySqlConnection = New MySqlConnection(constring)
-            Dim cmd As MySqlCommand = New MySqlCommand()
-            Dim mb As MySqlBackup = New MySqlBackup(cmd)
-            cmd.Connection = conn
-            conn.Open()
-            mb.ExportToFile(Backupfile)
-            conn.Close()
+            Dim databases() As String = Split("databases", ",")
+            For Each database As String In databases
+                constring = "Server=192.168.6.153;Uid=mysqlBackup;Pwd=;Database=" + database + ";"
+                Backupfile = "C:\TEMP\backup(" + database + "  " + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ").sql"
+                Dim conn As MySqlConnection = New MySqlConnection(constring)
+                Dim cmd As MySqlCommand = New MySqlCommand()
+                Dim mb As MySqlBackup = New MySqlBackup(cmd)
+                cmd.Connection = conn
+                conn.Open()
+                mb.ExportToFile(Backupfile)
+                conn.Close()
+            Next
+            
+
             msg = "File Succesfully Copied !!!<br/>"
         Catch ex As Exception
             msg = "!!!!!!!!!!ERROR @ FILE COPY!!!!<br>"
@@ -73,14 +80,21 @@ Module Module1
 
     'Me8odos gia th dhmiourgeia 
     'sympiesmenou arxeiou 
-    'pou periexei to backup File
+    'pou periexei ta backup Files
+    'diagrafh olwn twn .sql arxeiwn pou yparxoun ston katalogo 
+    '  C:\TEMP
     Private Sub ZipMe()
         ZippedBackupfile = "C:\TEMP\backup.zip"
         Try
             Dim zip As ZipFile = New ZipFile()
-            zip.AddFile(Backupfile)
+            zip.AddSelectedFiles("*.sql", "C:\TEMP")
             zip.Save(ZippedBackupfile)
             msg += "File Succesfully Zipped !!!<br/>"
+            Dim myFile As String
+            Dim mydir As String = "C:\TEMP"
+            For Each myFile In Directory.GetFiles(mydir, "*.sql")
+                File.Delete(myFile)
+            Next
         Catch ex As Exception
             msg += "!!!!!!!!!!ERROR @ FILE ZIP!!!!<br>"
             msg += ex.Message & "<br/>"
