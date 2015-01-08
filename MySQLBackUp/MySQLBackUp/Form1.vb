@@ -154,7 +154,7 @@ Public Class Form1
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub MySFTP()
-      
+
         Dim mysftpform As New SftpForm
         mysftpform.Show()
     End Sub

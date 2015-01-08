@@ -12,8 +12,10 @@ Public MustInherit Class CloudService
         End Set
     End Property
 
-    Public MustOverride Sub Save(ByRef xmlDoc As XmlDocument)
+    'Methodos pou apothikevei to antikeimeno sto XmlDocument pou perniete parametrika
+    Public MustOverride Sub Save(ByVal XmlDocPath As String)
 
+    'Authentikopoiisi tou xristi gia to Cloud Service
     Public MustOverride Sub Authenticate()
 
 End Class
