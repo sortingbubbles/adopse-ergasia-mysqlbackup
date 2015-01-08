@@ -98,23 +98,37 @@ Public Class Form1
     End Sub
 
     Private Sub GoogleDriveButton_Click(sender As Object, e As EventArgs) Handles GoogleDriveButton.Click
-        MyGoogleDrive()
+        Dim GDrive As GoogleDrive = New GoogleDrive(tokenPath, username)
+        GDrive.Authenticate()
+        CloudeServices.Add(GDrive)
     End Sub
 
     Private Sub OneDriveButton_Click(sender As Object, e As EventArgs) Handles OneDriveButton.Click
-        MyOneDrive()
+        'MyOneDrive()
+        Dim myserv As OneDrive = New OneDrive()
+        myserv.Authenticate()
+        CloudeServices.Add(myserv)
     End Sub
 
     Private Sub SFTPButton_Click(sender As Object, e As EventArgs) Handles SFTPButton.Click
         ' MySFTP()
+        Dim sftp As MyNewSftpClient = New MyNewSftpClient()
+        sftp.Authenticate()
+        CloudeServices.Add(sftp)
     End Sub
 
     Private Sub DropBoxButton_Click(sender As Object, e As EventArgs) Handles DropBoxButton.Click
         '  MyDropBox()
+        Dim dropBox As DropBox = New DropBox(username)
+        dropBox.Authenticate()
+        CloudeServices.Add(dropBox)
     End Sub
 
     Private Sub BoxButton_Click(sender As Object, e As EventArgs) Handles BoxButton.Click
         '  MyBox()
+        Dim box As MyBoxClient = New MyBoxClient(username)
+        box.Authenticate()
+        CloudeServices.Add(box)
     End Sub
 #End Region
 
@@ -145,10 +159,6 @@ Public Class Form1
 
         myserv.Authenticate()
 
-    End Sub
-
-    Private Sub MyGoogleDrive()
-        Throw New NotImplementedException
     End Sub
 
     'Private Sub MySFTP()
