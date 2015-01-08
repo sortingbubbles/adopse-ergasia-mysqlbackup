@@ -11,27 +11,23 @@ Public Class Form1
     Private Hours() As String = {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}
     Private Minutes(60) As String
     Private Seconds(60) As String
-    Private Sub fillMyfirstMinutes()
+    '8etei stous antistoixous pinakes ta lepta kai ta deyterolepta 
+    'apo 0-9
+    Private Sub fillMyfirstMinutesSeconds()
         For i As Integer = 0 To 9
             Minutes(i) = "0" & i
-        Next
-    End Sub
-    Private Sub fillMyfirstSeconds()
-        For i As Integer = 0 To 9
             Seconds(i) = "0" & i
         Next
     End Sub
-
-    Private Sub FillMinutes()
+    '8etei stous antistoixous pinakes ta lepta kai ta deyterolepta 
+    'apo 10-59
+    Private Sub FillMinutesSeconds()
         For i As Integer = 10 To 59
             Minutes(i) = i
-        Next
-    End Sub
-    Private Sub FillSeconds()
-        For i As Integer = 0 To 59
             Seconds(i) = i
         Next
     End Sub
+   
     ''Emfanizei to Tabpage.Text orizontia anti ka8eta pou einai to default
     Private Sub TabControl1_DrawItem(sender As Object, e As DrawItemEventArgs) Handles TabControl1.DrawItem
         Dim g As Graphics
@@ -60,10 +56,10 @@ Public Class Form1
         TabControl1.TabPages("TabPage2").Enabled = False
         TabControl1.TabPages("TabPage3").Enabled = False
         TabControl1.TabPages("TabPage4").Enabled = False
-        fillMyfirstMinutes()
-        fillMyfirstSeconds()
-        FillMinutes()
-        FillSeconds()
+
+        fillMyfirstMinutesSeconds()
+        FillMinutesSeconds()
+
         HourCombo.DataSource = Hours
         MinuteCombo.DataSource = Minutes
         SecondsCombo.DataSource = Seconds
