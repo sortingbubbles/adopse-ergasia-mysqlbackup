@@ -3,24 +3,36 @@ Imports System.IO
 Imports Newtonsoft.Json.Linq
 
 Public Class OneDriveBrowser
+    Private clientID As String
+    Private clientSecret As String
+
+    Sub New(_clientID As String, _clientSecret As String)
+
+        clientID = _clientID
+        clientSecret = _clientSecret
+        InitializeComponent()
+
+    End Sub
+
+
+
 
     Private Sub OneDriveAuth_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs) Handles OneDriveAuth.Navigated
         Dim uriString() As String
-        Dim authCode As String = ""
-        Dim clientID As String = "*****************" ' client id της εφαρμογής
-        Dim clientSecret As String = "*******************" ' client secret της εφαρμογής
         If (OneDriveAuth.Url.ToString.Contains("?code")) Then
             uriString = OneDriveAuth.Url.ToString.Split("=&".ToCharArray)
-            authCode = uriString(1)
+            Dim authCode As String = uriString(1)
             'Αποθήκευση του authorization code σε αρχείο για μελλοντική χρήση
             saveToFile(authCode, "c:\TEMP\authCode.txt")
 
             OneDriveAuth.Visible = False
+            Dim url As String = String.Format("https://login.live.com/oauth20_token.srf?client_id={0}&client_secret={1}&code={2}&grant_type=authorization_code&redirect_uri=https://login.live.com/oauth20_desktop.srf", clientID, clientSecret, authCode)
 
             'Προετοιμασία διεύθυνσης για αίτηση των tokens
-            Dim url As String = String.Format("https://login.live.com/oauth20_token.srf?client_id={0}&client_secret=qkMMeEhpLbM5GAfVJRWVPfo9PzuIjEGD&code={1}&grant_type=authorization_code&redirect_uri=https://login.live.com/oauth20_desktop.srf", clientID, authCode)
             'Αίτηση για tokens
             GetToken(url)
+            Me.Visible = False
+            Form1.Show()
         End If
     End Sub
 

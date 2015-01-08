@@ -27,7 +27,7 @@ Public Class Form1
             Seconds(i) = i
         Next
     End Sub
-   
+
     ''Emfanizei to Tabpage.Text orizontia anti ka8eta pou einai to default
     Private Sub TabControl1_DrawItem(sender As Object, e As DrawItemEventArgs) Handles TabControl1.DrawItem
         Dim g As Graphics
@@ -133,13 +133,8 @@ Public Class Form1
     'End Sub
 
     Private Sub MyOneDrive()
-        tokenPath = "c:\TEMP\OneDriveRefreshToken.txt"
-        Dim clientID As String = "***********" ' client id της εφαρμογής
-        Dim clientSecret As String = "*******************" ' client secret της εφαρμογής
-
-        Dim url As String = String.Format("https://login.live.com/oauth20_authorize.srf?client_id={0}&scope=wl.skydrive_update%20wl.offline_access&response_type=code&redirect_uri=https://login.live.com/oauth20_desktop.srf", clientID)
-        OneDriveBrowser.OneDriveAuth.Url = New Uri(url)
-        OneDriveBrowser.Show()
+        Dim myserv As OneDrive = New OneDrive()
+        myserv.Authenticate()
     End Sub
 
     Private Sub MyGoogleDrive()
