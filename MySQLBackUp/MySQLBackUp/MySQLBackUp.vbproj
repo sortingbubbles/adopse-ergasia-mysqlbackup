@@ -192,6 +192,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GoogleDrive.vb" />
+    <Compile Include="MyBoxClient.vb" />
     <Compile Include="OneDriveBrowser.Designer.vb">
       <DependentUpon>OneDriveBrowser.vb</DependentUpon>
     </Compile>

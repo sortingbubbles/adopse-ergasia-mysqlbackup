@@ -106,31 +106,31 @@ Public Class Form1
     End Sub
 
     Private Sub SFTPButton_Click(sender As Object, e As EventArgs) Handles SFTPButton.Click
-        MySFTP()
+        ' MySFTP()
     End Sub
 
     Private Sub DropBoxButton_Click(sender As Object, e As EventArgs) Handles DropBoxButton.Click
-        MyDropBox()
+        '  MyDropBox()
     End Sub
 
     Private Sub BoxButton_Click(sender As Object, e As EventArgs) Handles BoxButton.Click
-        MyBox()
+        '  MyBox()
     End Sub
 #End Region
 
 #Region "Authentication Methods"
-    Private Sub MyDropBox()
-        Dim nj As New DropBox()
-        nj.AuthorizeMe()
-        nj.saveMyAuth()
-    End Sub
+    'Private Sub MyDropBox()
+    '    Dim nj As New DropBox()
+    '    nj.AuthorizeMe()
+    '    nj.saveMyAuth()
+    'End Sub
 
-    Private Sub MyBox()
-        tokenPath = "C:\TEMP\BoxToken.txt"
-        Dim br As New BoxAuth(tokenPath)
-        br.wb.Url = New Uri("https://app.box.com/api/oauth2/authorize?response_type=code&client_id=0sl2q9wxpjq6cun6khctch1sg0g86g2u")
-        br.ShowDialog()
-    End Sub
+    'Private Sub MyBox()
+    '    tokenPath = "C:\TEMP\BoxToken.txt"
+    '    Dim br As New BoxAuth(tokenPath)
+    '    br.wb.Url = New Uri("https://app.box.com/api/oauth2/authorize?response_type=code&client_id=0sl2q9wxpjq6cun6khctch1sg0g86g2u")
+    '    br.ShowDialog()
+    'End Sub
 
     Private Sub MyOneDrive()
         tokenPath = "c:\TEMP\OneDriveRefreshToken.txt"
@@ -145,15 +145,12 @@ Public Class Form1
     Private Sub MyGoogleDrive()
         Throw New NotImplementedException
     End Sub
-    ''' <summary>
-    ''' ''''''''''''''''
-    ''' </summary>
-    ''' <remarks></remarks>
-    Private Sub MySFTP()
 
-        Dim mysftpform As New SftpForm
-        mysftpform.Show()
-    End Sub
+    'Private Sub MySFTP()
+
+    '    Dim mysftpform As New SftpForm
+    '    mysftpform.Show()
+    'End Sub
 
 #End Region
 
