@@ -157,6 +157,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="MyNewSftpClient.vb" />
+    <Compile Include="SftpForm.Designer.vb">
+      <DependentUpon>SftpForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SftpForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BoxAuth.resx">
@@ -173,6 +179,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SftpForm.resx">
+      <DependentUpon>SftpForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

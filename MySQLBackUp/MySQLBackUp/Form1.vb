@@ -152,9 +152,9 @@ Public Class Form1
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub MySFTP()
-        sftpClient.Server = ""
-        sftpClient.Username = ""
-        sftpClient.Password = ""
+      
+        Dim mysftpform As New SftpForm
+        mysftpform.Show()
     End Sub
 
 #End Region
@@ -163,7 +163,7 @@ Public Class Form1
         Dim str123 As String = " " & HourCombo.SelectedItem.ToString & ":" & MinuteCombo.SelectedItem.ToString & ":" & SecondsCombo.SelectedItem.ToString
         Using ts As New TaskService()
             Dim td As TaskDefinition = ts.NewTask()
-            td.RegistrationInfo.Description = "This task is for the backup process for user " + username
+            td.RegistrationInfo.Description = "This task is for the backup process for user : " + username
             td.Principal.RunLevel = TaskRunLevel.Highest
             Dim daily As New DailyTrigger()
             daily.StartBoundary = Convert.ToDateTime(DateTime.Today.ToShortDateString() + str123) '" 19:38:00")
