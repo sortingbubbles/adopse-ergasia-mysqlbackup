@@ -29,6 +29,7 @@ Partial Class SftpForm
         Me.SFTPUsername = New System.Windows.Forms.TextBox()
         Me.SFTPPassword = New System.Windows.Forms.TextBox()
         Me.SFTPServer = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'SFTPOKButton
@@ -89,11 +90,21 @@ Partial Class SftpForm
         Me.SFTPServer.Size = New System.Drawing.Size(100, 20)
         Me.SFTPServer.TabIndex = 6
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(90, 19)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(89, 13)
+        Me.Label4.TabIndex = 7
+        Me.Label4.Text = "SFTP Credentials"
+        '
         'SftpForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.SFTPServer)
         Me.Controls.Add(Me.SFTPPassword)
         Me.Controls.Add(Me.SFTPUsername)
@@ -114,4 +125,5 @@ Partial Class SftpForm
     Friend WithEvents SFTPUsername As System.Windows.Forms.TextBox
     Friend WithEvents SFTPPassword As System.Windows.Forms.TextBox
     Friend WithEvents SFTPServer As System.Windows.Forms.TextBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
 End Class

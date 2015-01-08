@@ -44,11 +44,11 @@ Partial Class Form1
         Me.Label7 = New System.Windows.Forms.Label()
         Me.ThirdTab = New System.Windows.Forms.Button()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.SFTP = New System.Windows.Forms.RadioButton()
-        Me.GoogleDrive = New System.Windows.Forms.RadioButton()
-        Me.OneDrive = New System.Windows.Forms.RadioButton()
-        Me.Box = New System.Windows.Forms.RadioButton()
-        Me.DropBox = New System.Windows.Forms.RadioButton()
+        Me.DropBoxButton = New System.Windows.Forms.Button()
+        Me.BoxButton = New System.Windows.Forms.Button()
+        Me.SFTPButton = New System.Windows.Forms.Button()
+        Me.OneDriveButton = New System.Windows.Forms.Button()
+        Me.GoogleDriveButton = New System.Windows.Forms.Button()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.FourtTab = New System.Windows.Forms.Button()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
@@ -276,11 +276,11 @@ Partial Class Form1
         '
         'TabPage4
         '
-        Me.TabPage4.Controls.Add(Me.SFTP)
-        Me.TabPage4.Controls.Add(Me.GoogleDrive)
-        Me.TabPage4.Controls.Add(Me.OneDrive)
-        Me.TabPage4.Controls.Add(Me.Box)
-        Me.TabPage4.Controls.Add(Me.DropBox)
+        Me.TabPage4.Controls.Add(Me.DropBoxButton)
+        Me.TabPage4.Controls.Add(Me.BoxButton)
+        Me.TabPage4.Controls.Add(Me.SFTPButton)
+        Me.TabPage4.Controls.Add(Me.OneDriveButton)
+        Me.TabPage4.Controls.Add(Me.GoogleDriveButton)
         Me.TabPage4.Controls.Add(Me.Label9)
         Me.TabPage4.Controls.Add(Me.FourtTab)
         Me.TabPage4.Location = New System.Drawing.Point(124, 4)
@@ -291,65 +291,51 @@ Partial Class Form1
         Me.TabPage4.Text = "STEP 4"
         Me.TabPage4.UseVisualStyleBackColor = True
         '
-        'SFTP
+        'DropBoxButton
         '
-        Me.SFTP.Appearance = System.Windows.Forms.Appearance.Button
-        Me.SFTP.AutoSize = True
-        Me.SFTP.Image = Global.MySQLBackUp.My.Resources.Resources.sftp
-        Me.SFTP.Location = New System.Drawing.Point(25, 146)
-        Me.SFTP.Name = "SFTP"
-        Me.SFTP.Size = New System.Drawing.Size(54, 38)
-        Me.SFTP.TabIndex = 11
-        Me.SFTP.TabStop = True
-        Me.SFTP.UseVisualStyleBackColor = True
+        Me.DropBoxButton.Image = Global.MySQLBackUp.My.Resources.Resources.dropbox
+        Me.DropBoxButton.Location = New System.Drawing.Point(16, 136)
+        Me.DropBoxButton.Name = "DropBoxButton"
+        Me.DropBoxButton.Size = New System.Drawing.Size(54, 50)
+        Me.DropBoxButton.TabIndex = 11
+        Me.DropBoxButton.UseVisualStyleBackColor = True
         '
-        'GoogleDrive
+        'BoxButton
         '
-        Me.GoogleDrive.Appearance = System.Windows.Forms.Appearance.Button
-        Me.GoogleDrive.AutoSize = True
-        Me.GoogleDrive.Image = Global.MySQLBackUp.My.Resources.Resources.googledrive
-        Me.GoogleDrive.Location = New System.Drawing.Point(165, 72)
-        Me.GoogleDrive.Name = "GoogleDrive"
-        Me.GoogleDrive.Size = New System.Drawing.Size(54, 54)
-        Me.GoogleDrive.TabIndex = 10
-        Me.GoogleDrive.TabStop = True
-        Me.GoogleDrive.UseVisualStyleBackColor = True
+        Me.BoxButton.Image = Global.MySQLBackUp.My.Resources.Resources.box
+        Me.BoxButton.Location = New System.Drawing.Point(169, 136)
+        Me.BoxButton.Name = "BoxButton"
+        Me.BoxButton.Size = New System.Drawing.Size(56, 50)
+        Me.BoxButton.TabIndex = 10
+        Me.BoxButton.UseVisualStyleBackColor = True
         '
-        'OneDrive
+        'SFTPButton
         '
-        Me.OneDrive.Appearance = System.Windows.Forms.Appearance.Button
-        Me.OneDrive.AutoSize = True
-        Me.OneDrive.Image = Global.MySQLBackUp.My.Resources.Resources.onedrive
-        Me.OneDrive.Location = New System.Drawing.Point(154, 142)
-        Me.OneDrive.Name = "OneDrive"
-        Me.OneDrive.Size = New System.Drawing.Size(56, 46)
-        Me.OneDrive.TabIndex = 9
-        Me.OneDrive.TabStop = True
-        Me.OneDrive.UseVisualStyleBackColor = True
+        Me.SFTPButton.Image = Global.MySQLBackUp.My.Resources.Resources.sftp
+        Me.SFTPButton.Location = New System.Drawing.Point(172, 64)
+        Me.SFTPButton.Name = "SFTPButton"
+        Me.SFTPButton.Size = New System.Drawing.Size(53, 55)
+        Me.SFTPButton.TabIndex = 9
+        Me.SFTPButton.UseVisualStyleBackColor = True
         '
-        'Box
+        'OneDriveButton
         '
-        Me.Box.Appearance = System.Windows.Forms.Appearance.Button
-        Me.Box.AutoSize = True
-        Me.Box.Image = Global.MySQLBackUp.My.Resources.Resources.box
-        Me.Box.Location = New System.Drawing.Point(95, 72)
-        Me.Box.Name = "Box"
-        Me.Box.Size = New System.Drawing.Size(46, 46)
-        Me.Box.TabIndex = 8
-        Me.Box.TabStop = True
-        Me.Box.UseVisualStyleBackColor = True
+        Me.OneDriveButton.Image = Global.MySQLBackUp.My.Resources.Resources.onedrive
+        Me.OneDriveButton.Location = New System.Drawing.Point(90, 64)
+        Me.OneDriveButton.Name = "OneDriveButton"
+        Me.OneDriveButton.Size = New System.Drawing.Size(65, 55)
+        Me.OneDriveButton.TabIndex = 8
+        Me.OneDriveButton.UseVisualStyleBackColor = True
         '
-        'DropBox
+        'GoogleDriveButton
         '
-        Me.DropBox.Appearance = System.Windows.Forms.Appearance.Button
-        Me.DropBox.AutoSize = True
-        Me.DropBox.Image = Global.MySQLBackUp.My.Resources.Resources.dropbox
-        Me.DropBox.Location = New System.Drawing.Point(25, 68)
-        Me.DropBox.Name = "DropBox"
-        Me.DropBox.Size = New System.Drawing.Size(54, 54)
-        Me.DropBox.TabIndex = 7
-        Me.DropBox.TabStop = True
-        Me.DropBox.UseVisualStyleBackColor = True
+        Me.GoogleDriveButton.Image = Global.MySQLBackUp.My.Resources.Resources.googledrive
+        Me.GoogleDriveButton.Location = New System.Drawing.Point(16, 64)
+        Me.GoogleDriveButton.Name = "GoogleDriveButton"
+        Me.GoogleDriveButton.Size = New System.Drawing.Size(52, 55)
+        Me.GoogleDriveButton.TabIndex = 7
+        Me.GoogleDriveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.GoogleDriveButton.UseVisualStyleBackColor = True
         '
         'Label9
         '
@@ -490,11 +476,6 @@ Partial Class Form1
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents ThirdTab As System.Windows.Forms.Button
-    Friend WithEvents SFTP As System.Windows.Forms.RadioButton
-    Friend WithEvents GoogleDrive As System.Windows.Forms.RadioButton
-    Friend WithEvents OneDrive As System.Windows.Forms.RadioButton
-    Friend WithEvents Box As System.Windows.Forms.RadioButton
-    Friend WithEvents DropBox As System.Windows.Forms.RadioButton
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents FourtTab As System.Windows.Forms.Button
     Friend WithEvents TabPage5 As System.Windows.Forms.TabPage
@@ -505,5 +486,10 @@ Partial Class Form1
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Hour As System.Windows.Forms.Label
+    Friend WithEvents DropBoxButton As System.Windows.Forms.Button
+    Friend WithEvents BoxButton As System.Windows.Forms.Button
+    Friend WithEvents SFTPButton As System.Windows.Forms.Button
+    Friend WithEvents OneDriveButton As System.Windows.Forms.Button
+    Friend WithEvents GoogleDriveButton As System.Windows.Forms.Button
 
 End Class

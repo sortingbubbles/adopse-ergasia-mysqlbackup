@@ -7,7 +7,6 @@ Public Class Form1
     Private email As String
     Private tokenPath As String
     Private constring As String
-    Private sftpClient As MyNewSftpClient
     Private CloudeServices As List(Of CloudService)
     Private Hours() As String = {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}
     Private Minutes(60) As String
@@ -80,6 +79,7 @@ Public Class Form1
 
     Private Sub FirstTab_Click(sender As Object, e As EventArgs) Handles FirstTab.Click
         username = FirstTabUsername.Text
+        My.Computer.FileSystem.CreateDirectory("C:\TEMP\" & username)
         TabControl1.TabPages("TabPage2").Enabled = True
         TabControl1.TabPages("TabPage1").Enabled = False
         TabControl1.SelectedTab = TabControl1.TabPages("TabPage2")
@@ -101,23 +101,25 @@ Public Class Form1
         TabControl1.SelectedTab = TabControl1.TabPages("TabPage4")
     End Sub
 
-    Private Sub FourtTab_Click(sender As Object, e As EventArgs) Handles FourtTab.Click
-        If DropBox.Checked Then
-            MyDropBox()
-        ElseIf Box.Checked Then
-            MyBox()
-        ElseIf OneDrive.Checked Then
-            MyOneDrive()
-        ElseIf GoogleDrive.Checked Then
-            MyGoogleDrive()
-        ElseIf SFTP.Checked Then
-            MySFTP()
-        End If
-        TabControl1.TabPages("TabPage5").Enabled = True
-        TabControl1.TabPages("TabPage4").Enabled = False
-        TabControl1.SelectedTab = TabControl1.TabPages("TabPage5")
+    Private Sub GoogleDriveButton_Click(sender As Object, e As EventArgs) Handles GoogleDriveButton.Click
+        MyGoogleDrive()
     End Sub
 
+    Private Sub OneDriveButton_Click(sender As Object, e As EventArgs) Handles OneDriveButton.Click
+        MyOneDrive()
+    End Sub
+
+    Private Sub SFTPButton_Click(sender As Object, e As EventArgs) Handles SFTPButton.Click
+        MySFTP()
+    End Sub
+
+    Private Sub DropBoxButton_Click(sender As Object, e As EventArgs) Handles DropBoxButton.Click
+        MyDropBox()
+    End Sub
+
+    Private Sub BoxButton_Click(sender As Object, e As EventArgs) Handles BoxButton.Click
+        MyBox()
+    End Sub
 #End Region
 
 #Region "Authentication Methods"
@@ -182,4 +184,8 @@ Public Class Form1
         MessageBox.Show("Task Created!!!")
         Me.Close()
     End Sub
+
+
 End Class
+
+
