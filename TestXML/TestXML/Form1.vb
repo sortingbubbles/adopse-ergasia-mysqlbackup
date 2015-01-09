@@ -47,10 +47,42 @@ Public Class Form1
         activeNode.AppendChild(activeText)
 
         'Save to the XML file
-        FileIO.SpecialDirectories.MyDocuments.ToString()
         xmlDoc.Save(FileIO.SpecialDirectories.MyDocuments.ToString() & "\categories.xml")
 
         MessageBox.Show("XML file Created !!")
     End Sub
 
+    Private Sub testEditXMLFile(ByRef XmlDocPath As XmlDocument)
+        'Dim myXmlDocument As XmlDocument = New XmlDocument()
+        'myXmlDocument.Load(XmlDocPath)
+        Dim root As XmlNodeList = XmlDocPath.GetElementsByTagName("tasks")
+
+        Dim node As XmlNode = root.Item(0)
+
+        Dim taskNode As XmlElement = XmlDocPath.CreateElement("task")
+        taskNode.SetAttribute("app_id", "googledrive")
+        node.AppendChild(taskNode)
+
+        Dim folderIDNode As XmlElement = XmlDocPath.CreateElement("folderID")
+        Dim tokenPathNode As XmlElement = XmlDocPath.CreateElement("tokenPath")
+
+        Dim folderID As String = "test_folderID"
+        Dim tokenPath As String = "test_tokenPath"
+
+        Dim folderIDText As XmlText = XmlDocPath.CreateTextNode(folderID)
+        Dim tokenPathText As XmlText = XmlDocPath.CreateTextNode(tokenPath)
+
+        taskNode.AppendChild(folderIDNode)
+        taskNode.AppendChild(tokenPathNode)
+
+        folderIDNode.AppendChild(folderIDText)
+        tokenPathNode.AppendChild(tokenPathText)
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim myXmlDocument As XmlDocument = New XmlDocument()
+        myXmlDocument.Load("C:\Users\Charitakis\Desktop\testXmlFile.xml")
+        testEditXMLFile(myXmlDocument)
+        myXmlDocument.Save("C:\Users\Charitakis\Desktop\testXmlFile.xml")
+    End Sub
 End Class
