@@ -32,7 +32,7 @@ Module Module1
         If sArgs.Length > 0 Then  'elegxoume an yparxoun parametroi
             username = sArgs(0).ToString() 'to username pou tha pername 
             Backup()
-            ZipMe()
+            ZipBackUpFile()
             MySQLDropbox()
             SendMail()
         End If
@@ -75,14 +75,14 @@ Module Module1
 
 #End Region
 
-#Region "Zip The BackUp.sql File And Unzip the user folder"
+#Region "Zip The BackUp.sql File And Zip & Unzip the user folder"
 
     'Me8odos gia th dhmiourgeia 
     'sympiesmenou arxeiou 
     'pou periexei ta backup Files
     'diagrafh olwn twn .sql arxeiwn pou yparxoun ston katalogo 
     '  C:\TEMP
-    Private Sub ZipMe()
+    Private Sub ZipBackUpFile()
         ZippedBackupfile = "C:\TEMP\backup.zip"
         Try
             Dim zip As ZipFile = New ZipFile()
@@ -94,7 +94,7 @@ Module Module1
                 File.Delete(myFile)
                 '  System.IO.File.Delete(myFile)
             Next
-             msg += "File Succesfully Zipped !!!<br/>"
+            msg += "File Succesfully Zipped !!!<br/>"
         Catch ex As Exception
             msg += "!!!!!!!!!!ERROR @ FILE ZIP!!!!<br>"
             msg += ex.Message & "<br/>"
@@ -112,6 +112,19 @@ Module Module1
             Next
         End Using
         My.Computer.FileSystem.DeleteFile(ZippedUserFolder)
+    End Sub
+
+    Private Sub ZipMe()
+        Dim Userfolder As String = "C:\TEMP\" & username
+        Dim ZippedUserfolder As String = "C:\TEMP\" & username & ".zip"
+        Using zip As ZipFile = New ZipFile()
+            zip.Encryption = EncryptionAlgorithm.WinZipAes256
+            zip.Password = "AsprhPetra3e3asprhKaiApoTonHlio3e3asproterh"
+            zip.AddDirectory(Userfolder)
+            zip.Save(ZippedUserfolder)
+        End Using
+        My.Computer.FileSystem.DeleteDirectory(Userfolder, FileIO.DeleteDirectoryOption.DeleteAllContents)
+
     End Sub
 
 #End Region
