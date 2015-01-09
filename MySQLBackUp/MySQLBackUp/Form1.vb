@@ -205,11 +205,12 @@ Public Class Form1
     Private Sub ZipMe()
         Dim Userfolder As String = "C:\TEMP\" & username
         Dim ZippedUserfolder As String = "C:\TEMP\" & username & ".zip"
-        Dim zip As ZipFile = New ZipFile()
-        zip.Encryption = EncryptionAlgorithm.WinZipAes256
-        zip.Password = "AsprhPetra3e3asprhKaiApoTonHlio3e3asproterh"
-        zip.AddDirectory(Userfolder)
-        zip.Save(ZippedUserfolder)
+        Using zip As ZipFile = New ZipFile()
+            zip.Encryption = EncryptionAlgorithm.WinZipAes256
+            zip.Password = "AsprhPetra3e3asprhKaiApoTonHlio3e3asproterh"
+            zip.AddDirectory(Userfolder)
+            zip.Save(ZippedUserfolder)
+        End Using
     End Sub
 
 End Class
