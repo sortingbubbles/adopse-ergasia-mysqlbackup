@@ -35,10 +35,14 @@ Public Class MyNewSftpClient
         mysftpform.Show()
     End Sub
 
+    Sub New()
+        Me.AppID = "sftp"
+    End Sub
+
     Public Overrides Sub Save(ByRef XmlDoc As XmlDocument)
         Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("tasks").Item(0)
         Dim taskNode As XmlElement = XmlDoc.CreateElement("task")
-        taskNode.SetAttribute("app_id", "sftp")
+        taskNode.SetAttribute("app_id", Me.AppID)
         tasksNode.AppendChild(taskNode)
         Dim serverNode As XmlElement = XmlDoc.CreateElement("Server")
         Dim usernameNode As XmlElement = XmlDoc.CreateElement("Username")

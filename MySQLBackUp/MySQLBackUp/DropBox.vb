@@ -14,6 +14,7 @@ Public Class DropBox
 
 
     Sub New(ByVal username As String)
+        Me.AppID = "dropbox"
         tokenPath = "C:\TEMP\" & username & "\MyDropBoxToken.txt"
     End Sub
 
@@ -48,7 +49,7 @@ Public Class DropBox
         saveMyAuth()
         Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("tasks").Item(0)
         Dim taskNode As XmlElement = XmlDoc.CreateElement("task")
-        taskNode.SetAttribute("app_id", "dropbox")
+        taskNode.SetAttribute("app_id", Me.AppID)
         tasksNode.AppendChild(taskNode)
         Dim tokenPathNode As XmlElement = XmlDoc.CreateElement("tokenPath")
         Dim tokenPathText As XmlText = XmlDoc.CreateTextNode(tokenPath)

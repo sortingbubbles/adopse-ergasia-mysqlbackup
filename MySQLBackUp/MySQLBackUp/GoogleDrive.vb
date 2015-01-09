@@ -23,9 +23,9 @@ Public Class GoogleDrive
     'Domitis. Me tin dimiourgeia tou antikeimenou pernountai san parametroi
     'to TokenPath: O fakelos opou tha topothetithoun ta token (json arxeia) kai
     'to Username: To onoma xristi pou exei eisagei o xristis stin forma
-    Sub New(ByVal TokenPath As String, ByVal Username As String)
+    Sub New(ByVal Username As String)
         Me.AppID = "googledrive"
-        Me.tokenPath = TokenPath
+        Me.tokenPath = "C:\TEMP\" & Username
         Me.UserID = Username
     End Sub
 
@@ -76,7 +76,7 @@ Public Class GoogleDrive
         'Dimiourgeia komvou <task>
         Dim taskNode As XmlElement = XmlDoc.CreateElement("task")
         'Orismos enos atribute ston komvo
-        taskNode.SetAttribute("app_id", "googledrive")
+        taskNode.SetAttribute("app_id", Me.AppID)
         'Emfanisi tou komvou <task> kato apo ton komvo <tasks>
         tasksNode.AppendChild(taskNode)
 

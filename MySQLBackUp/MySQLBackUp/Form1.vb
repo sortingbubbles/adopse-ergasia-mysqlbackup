@@ -117,7 +117,7 @@ Public Class Form1
     End Sub
 #Region "Call auth classes and add @ CloudeServices List"
     Private Sub GoogleDriveButton_Click(sender As Object, e As EventArgs) Handles GoogleDriveButton.Click
-        Dim GDrive As GoogleDrive = New GoogleDrive(tokenPath, username)
+        Dim GDrive As GoogleDrive = New GoogleDrive(username)
         GDrive.Authenticate()
         CloudeServices.Add(GDrive)
     End Sub

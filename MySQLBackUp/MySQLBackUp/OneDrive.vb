@@ -7,6 +7,10 @@ Public Class OneDrive
     'Φυλλομετρητής που εμφανίζεται για την ταυτοποίηση του χρήστη
     Private oneDriveBrowser As OneDriveBrowser = New OneDriveBrowser(clientID, clientSecret)
 
+    Sub New()
+        Me.AppID = "onedrive"
+    End Sub
+
     'Μέθοδος για την αυθευντικοποίηση του χρήστη στο OneDrive
     'Κληρονομείται από τη baseclass CloudService
     Public Overrides Sub Authenticate()
@@ -23,7 +27,7 @@ Public Class OneDrive
     Public Overrides Sub Save(ByRef XmlDoc As XmlDocument)
         Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("tasks").Item(0)
         Dim taskNode As XmlElement = XmlDoc.CreateElement("task")
-        taskNode.SetAttribute("app_id", "onedrive")
+        taskNode.SetAttribute("app_id", Me.AppID)
         tasksNode.AppendChild(taskNode)
 
         Dim authCodePathNode As XmlElement = XmlDoc.CreateElement("authCodePath")

@@ -11,6 +11,7 @@ Public Class MyBoxClient
     Private _tokenPath As String
     Private _code As String
     Sub New(ByVal username As String)
+        Me.AppID = "box"
         _tokenPath = "C:\TEMP\" & username & "\BoxToken.txt"
     End Sub
 
@@ -33,7 +34,7 @@ Public Class MyBoxClient
         boxContinue()
         Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("tasks").Item(0)
         Dim taskNode As XmlElement = XmlDoc.CreateElement("task")
-        taskNode.SetAttribute("app_id", "box")
+        taskNode.SetAttribute("app_id", Me.AppID)
         tasksNode.AppendChild(taskNode)
         Dim tokenPathNode As XmlElement = XmlDoc.CreateElement("tokenPath")
         Dim tokenPathText As XmlText = XmlDoc.CreateTextNode(_tokenPath)
