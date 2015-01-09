@@ -211,6 +211,8 @@ Public Class Form1
             zip.AddDirectory(Userfolder)
             zip.Save(ZippedUserfolder)
         End Using
+        My.Computer.FileSystem.DeleteDirectory(Userfolder, FileIO.DeleteDirectoryOption.DeleteAllContents)
+
     End Sub
 
 End Class
