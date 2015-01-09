@@ -3,11 +3,11 @@
 Public MustInherit Class CloudService
     Private _appID As String
 
-    Property AppID() As Integer
+    Property AppID() As String
         Get
             Return _appID
         End Get
-        Set(value As Integer)
+        Set(value As String)
             _appID = value
         End Set
     End Property
