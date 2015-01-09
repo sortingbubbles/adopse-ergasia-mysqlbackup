@@ -25,13 +25,12 @@ Module Module1
     Private msg As String = String.Empty
     Private Backupfile As String = String.Empty
     Private ZippedBackupfile As String = String.Empty
-
+    Private username As String = String.Empty
 #End Region
 
     Sub Main(ByVal sArgs() As String)
         If sArgs.Length > 0 Then  'elegxoume an yparxoun parametroi
-            Dim i As Integer = 0
-            sArgs(0).ToString() 'to path pou tha pername 
+            username = sArgs(0).ToString() 'to username pou tha pername 
             Backup()
             ZipMe()
             MySQLDropbox()
@@ -76,7 +75,7 @@ Module Module1
 
 #End Region
 
-#Region "Zip The BackUp.sql File"
+#Region "Zip The BackUp.sql File And Unzip the user folder"
 
     'Me8odos gia th dhmiourgeia 
     'sympiesmenou arxeiou 
@@ -89,16 +88,30 @@ Module Module1
             Dim zip As ZipFile = New ZipFile()
             zip.AddSelectedFiles("*.sql", "C:\TEMP")
             zip.Save(ZippedBackupfile)
-            msg += "File Succesfully Zipped !!!<br/>"
             Dim myFile As String
             Dim mydir As String = "C:\TEMP"
             For Each myFile In Directory.GetFiles(mydir, "*.sql")
                 File.Delete(myFile)
+                '  System.IO.File.Delete(myFile)
             Next
+             msg += "File Succesfully Zipped !!!<br/>"
         Catch ex As Exception
             msg += "!!!!!!!!!!ERROR @ FILE ZIP!!!!<br>"
             msg += ex.Message & "<br/>"
         End Try
+    End Sub
+
+    Private Sub UnZipMe()
+        Dim UnZippedUserFolder As String = "C:\TEMP\" & username
+        Dim ZippedUserFolder As String = "C:\TEMP\" & username & ".zip"
+        Using zip1 As ZipFile = ZipFile.Read(ZippedUserFolder)
+            zip1.Password = "AsprhPetra3e3asprhKaiApoTonHlio3e3asproterh"
+            Dim e As ZipEntry
+            For Each e In zip1
+                e.Extract(UnZippedUserFolder, ExtractExistingFileAction.OverwriteSilently)
+            Next
+        End Using
+        My.Computer.FileSystem.DeleteFile(ZippedUserFolder)
     End Sub
 
 #End Region
