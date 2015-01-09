@@ -2,11 +2,10 @@
 Imports System.IO
 Imports Microsoft.Win32.TaskScheduler
 Imports System.Xml
-
+Imports Ionic.Zip
 #End Region
 Public Class Form1
     Private username As String
-    Private tokenPath As String
     Private CloudeServices As List(Of CloudService)
     Private xmlDocument As XmlDocument
     Private Hours() As String = {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}
@@ -102,13 +101,15 @@ Public Class Form1
         TabControl1.TabPages("TabPage3").Enabled = False
         TabControl1.SelectedTab = TabControl1.TabPages("TabPage4")
     End Sub
-
+    'gia ka8e epilogh tou xrhsth
+    '(Google drive, One Drive, DropBox, Box, Sftp)
+    'swzoume ta token tou ka8e xrhsth
     Private Sub FourtTab_Click(sender As Object, e As EventArgs) Handles FourtTab.Click
         'grapse ta trela sou
 
-        'For i As Integer = 0 To CloudeServices.Count - 1
-        '    CloudeServices.Item(i).Save(xmlDocument)
-        'Next
+        For i As Integer = 0 To CloudeServices.Count - 1
+            CloudeServices.Item(i).Save(xmlDocument)
+        Next
         'trela start 
         TabControl1.TabPages("TabPage4").Enabled = False
         TabControl1.TabPages("TabPage5").Enabled = True
@@ -147,44 +148,7 @@ Public Class Form1
     End Sub
 #End Region
 #End Region
-
-#Region "Authentication Methods"
-    'Private Sub MyDropBox()
-    '    Dim nj As New DropBox()
-    '    nj.AuthorizeMe()
-    '    nj.saveMyAuth()
-    'End Sub
-
-    'Private Sub MyBox()
-    '    tokenPath = "C:\TEMP\BoxToken.txt"
-    '    Dim br As New BoxAuth(tokenPath)
-    '    br.wb.Url = New Uri("https://app.box.com/api/oauth2/authorize?response_type=code&client_id=0sl2q9wxpjq6cun6khctch1sg0g86g2u")
-    '    br.ShowDialog()
-    'End Sub
-
-    Private Sub MyOneDrive()
-        'tokenPath = "c:\TEMP\OneDriveRefreshToken.txt"
-        'Dim clientID As String = "***********" ' client id της εφαρμογής
-        'Dim clientSecret As String = "*******************" ' client secret της εφαρμογής
-
-        'Dim url As String = String.Format("https://login.live.com/oauth20_authorize.srf?client_id={0}&scope=wl.skydrive_update%20wl.offline_access&response_type=code&redirect_uri=https://login.live.com/oauth20_desktop.srf", clientID)
-        'OneDriveBrowser.OneDriveAuth.Url = New Uri(url)
-        'OneDriveBrowser.Show()
-
-        Dim myserv As OneDrive = New OneDrive()
-
-        myserv.Authenticate()
-
-    End Sub
-
-    'Private Sub MySFTP()
-
-    '    Dim mysftpform As New SftpForm
-    '    mysftpform.Show()
-    'End Sub
-
-#End Region
-
+#Region "XML Document Creation & Saving"
     Private Function createXmlDoc() As XmlDocument
         Dim xmlDoc As XmlDocument = New XmlDocument()
         ' Write down the XML declaration
@@ -210,6 +174,7 @@ Public Class Form1
         parentNode.AppendChild(newNode)
         newNode.AppendChild(newNodeText)
     End Sub
+#End Region
 
     Private Sub CreateTaskAtWTS_Click(sender As Object, e As EventArgs) Handles CreateTaskAtWTS.Click
         Dim strtime As String = " " & HourCombo.SelectedItem.ToString & ":" & MinuteCombo.SelectedItem.ToString & ":" & SecondsCombo.SelectedItem.ToString
@@ -219,7 +184,7 @@ Public Class Form1
             td.Principal.RunLevel = TaskRunLevel.Highest
             Dim daily As New DailyTrigger()
             daily.StartBoundary = Convert.ToDateTime(DateTime.Today.ToShortDateString() + strtime) '" 19:38:00")
-            daily.DaysInterval = CType(DaysInterval.Value, Integer) 'na balw to value apo to numbox
+            daily.DaysInterval = CType(DaysInterval.Value, Integer)
             td.Triggers.Add(daily)
             td.Settings.MultipleInstances = TaskInstancesPolicy.Parallel
             td.Settings.DisallowStartIfOnBatteries = False
@@ -231,10 +196,21 @@ Public Class Form1
             ts.RootFolder.RegisterTaskDefinition(username, td)
 
         End Using
+        'ZipMe() '' na to energopoihsw sto telos
         MessageBox.Show("Task Created!!!")
         Me.Close()
     End Sub
 
+    'Zip for data protection
+    Private Sub ZipMe()
+        Dim Userfolder As String = "C:\TEMP\" & username
+        Dim ZippedUserfolder As String = "C:\TEMP\" & username & ".zip"
+        Dim zip As ZipFile = New ZipFile()
+        zip.Encryption = EncryptionAlgorithm.WinZipAes256
+        zip.Password = "AsprhPetra3e3asprhKaiApoTonHlio3e3asproterh"
+        zip.AddDirectory(Userfolder)
+        zip.Save(ZippedUserfolder)
+    End Sub
 
 End Class
 
