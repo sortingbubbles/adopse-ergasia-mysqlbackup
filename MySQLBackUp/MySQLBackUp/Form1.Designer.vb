@@ -376,7 +376,7 @@ Partial Class Form1
         Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage5.Size = New System.Drawing.Size(243, 259)
         Me.TabPage5.TabIndex = 4
-        Me.TabPage5.Text = "TabPage5"
+        Me.TabPage5.Text = "STEP5"
         Me.TabPage5.UseVisualStyleBackColor = True
         '
         'DaysInterval
@@ -385,6 +385,7 @@ Partial Class Form1
         Me.DaysInterval.Maximum = New Decimal(New Integer() {5, 0, 0, 0})
         Me.DaysInterval.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.DaysInterval.Name = "DaysInterval"
+        Me.DaysInterval.ReadOnly = True
         Me.DaysInterval.Size = New System.Drawing.Size(42, 20)
         Me.DaysInterval.TabIndex = 9
         Me.DaysInterval.Value = New Decimal(New Integer() {1, 0, 0, 0})

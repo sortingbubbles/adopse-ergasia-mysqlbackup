@@ -106,9 +106,9 @@ Public Class Form1
     Private Sub FourtTab_Click(sender As Object, e As EventArgs) Handles FourtTab.Click
         'grapse ta trela sou
 
-        For i As Integer = 0 To CloudeServices.Count - 1
-            CloudeServices.Item(i).Save(xmlDocument)
-        Next
+        'For i As Integer = 0 To CloudeServices.Count - 1
+        '    CloudeServices.Item(i).Save(xmlDocument)
+        'Next
         'trela start 
         TabControl1.TabPages("TabPage4").Enabled = False
         TabControl1.TabPages("TabPage5").Enabled = True
@@ -219,7 +219,7 @@ Public Class Form1
             td.Principal.RunLevel = TaskRunLevel.Highest
             Dim daily As New DailyTrigger()
             daily.StartBoundary = Convert.ToDateTime(DateTime.Today.ToShortDateString() + strtime) '" 19:38:00")
-            daily.DaysInterval = 1 'na balw to value apo to numbox
+            daily.DaysInterval = CType(DaysInterval.Value, Integer) 'na balw to value apo to numbox
             td.Triggers.Add(daily)
             td.Settings.MultipleInstances = TaskInstancesPolicy.Parallel
             td.Settings.DisallowStartIfOnBatteries = False
