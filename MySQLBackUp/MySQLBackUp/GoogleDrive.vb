@@ -69,47 +69,31 @@ Public Class GoogleDrive
     End Function
 #End Region
 
-    Public Overrides Sub Save(ByVal XmlDocPath As String)
-        'Anoigma tou XML arxeiou
-        Dim myXmlDocument As XmlDocument = New XmlDocument()
-        myXmlDocument.Load(XmlDocPath)
+    Public Overrides Sub Save(ByRef XmlDoc As XmlDocument)
+        'Pernoume ton <tasks> node
+        Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("tasks").Item(0)
 
-        'Pernoume ton root node
-        Dim root As XmlNode = myXmlDocument.DocumentElement
+        'Dimiourgeia komvou <task>
+        Dim taskNode As XmlElement = XmlDoc.CreateElement("task")
+        'Orismos enos atribute ston komvo
+        taskNode.SetAttribute("app_id", "googledrive")
+        'Emfanisi tou komvou <task> kato apo ton komvo <tasks>
+        tasksNode.AppendChild(taskNode)
 
-        'Anazitoume se olous tou komvous paidia tou root
-        For Each node As XmlNode In root.ChildNodes
+        'Dimiourgeia komvon paidia tou komvou <task>
+        Dim folderIDNode As XmlElement = XmlDoc.CreateElement("folderID")
+        Dim tokenPathNode As XmlElement = XmlDoc.CreateElement("tokenPath")
 
-            'Poios exei Name = "tasks" (<tasks>). Se auton ton komvo tha prosthesoume enan
-            'komvo <task> pou tha exei san paidia tou allois 2 komvous (ta pedia pou theloume na apothikeusoume)
-            If node.Name = "tasks" Then
+        'Dimiourgeia ton timon tou kathe komvou (text)
+        Dim folderIDText As XmlText = XmlDoc.CreateTextNode(folderID)
+        Dim tokenPathText As XmlText = XmlDoc.CreateTextNode(tokenPath)
 
-                'Dimiourgeia komvou <task>
-                Dim taskNode As XmlElement = myXmlDocument.CreateElement("task")
-                'Orismos enos atribute ston komvo
-                taskNode.SetAttribute("app_id", "googledrive")
-                'Emfanisi tou komvou <task> kato apo ton komvo <tasks>
-                node.AppendChild(taskNode)
+        'Eisagogei ton komvon kato apo ton patera (komvos <task>) xoris tis times tous
+        taskNode.AppendChild(folderIDNode)
+        taskNode.AppendChild(tokenPathNode)
 
-                'Dimiourgeia komvon paidia tou komvou <task>
-                Dim folderIDNode As XmlElement = myXmlDocument.CreateElement("folderID")
-                Dim tokenPathNode As XmlElement = myXmlDocument.CreateElement("tokenPath")
-
-                'Dimiourgeia ton timon tou kathe komvou (text)
-                Dim folderIDText As XmlText = myXmlDocument.CreateTextNode(folderID)
-                Dim tokenPathText As XmlText = myXmlDocument.CreateTextNode(tokenPath)
-
-                'Eisagogei ton komvon kato apo ton patera (komvos <task>) xoris tis times tous
-                taskNode.AppendChild(folderIDNode)
-                taskNode.AppendChild(tokenPathNode)
-
-                'Eisagogi timon tou kathe komvou
-                folderIDNode.AppendChild(folderIDText)
-                tokenPathNode.AppendChild(tokenPathText)
-            End If
-        Next
-
-        'Apothikeusi kai Overrid tou arxikou XML arxeiou
-        myXmlDocument.Save(XmlDocPath)
+        'Eisagogi timon tou kathe komvou
+        folderIDNode.AppendChild(folderIDText)
+        tokenPathNode.AppendChild(tokenPathText)
     End Sub
 End Class
