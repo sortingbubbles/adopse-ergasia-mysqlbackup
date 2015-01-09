@@ -35,29 +35,22 @@ Public Class MyNewSftpClient
         mysftpform.Show()
     End Sub
 
-    Public Overrides Sub Save(XmlDocPath As String)
-        Dim myXmlDocument As XmlDocument = New XmlDocument()
-        myXmlDocument.Load(XmlDocPath)
-        Dim root As XmlNode = myXmlDocument.DocumentElement
-        For Each node As XmlNode In root.ChildNodes
-            If node.Name = "tasks" Then
-                Dim taskNode As XmlElement = myXmlDocument.CreateElement("task")
-                taskNode.SetAttribute("app_id", "sftp")
-                node.AppendChild(taskNode)
-                Dim serverNode As XmlElement = myXmlDocument.CreateElement("Server")
-                Dim usernameNode As XmlElement = myXmlDocument.CreateElement("Username")
-                Dim passwordNode As XmlElement = myXmlDocument.CreateElement("Password")
-                Dim serverText As XmlText = myXmlDocument.CreateTextNode(_server)
-                Dim usernameText As XmlText = myXmlDocument.CreateTextNode(_username)
-                Dim passwordText As XmlText = myXmlDocument.CreateTextNode(_password)
-                taskNode.AppendChild(serverNode)
-                taskNode.AppendChild(usernameNode)
-                taskNode.AppendChild(passwordNode)
-                serverNode.AppendChild(serverText)
-                usernameNode.AppendChild(usernameText)
-                passwordNode.AppendChild(passwordText)
-            End If
-        Next
-        myXmlDocument.Save(XmlDocPath)
+    Public Overrides Sub Save(ByRef XmlDoc As XmlDocument)
+        Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("tasks").Item(0)
+        Dim taskNode As XmlElement = XmlDoc.CreateElement("task")
+        taskNode.SetAttribute("app_id", "sftp")
+        tasksNode.AppendChild(taskNode)
+        Dim serverNode As XmlElement = XmlDoc.CreateElement("Server")
+        Dim usernameNode As XmlElement = XmlDoc.CreateElement("Username")
+        Dim passwordNode As XmlElement = XmlDoc.CreateElement("Password")
+        Dim serverText As XmlText = XmlDoc.CreateTextNode(_server)
+        Dim usernameText As XmlText = XmlDoc.CreateTextNode(_username)
+        Dim passwordText As XmlText = XmlDoc.CreateTextNode(_password)
+        taskNode.AppendChild(serverNode)
+        taskNode.AppendChild(usernameNode)
+        taskNode.AppendChild(passwordNode)
+        serverNode.AppendChild(serverText)
+        usernameNode.AppendChild(usernameText)
+        passwordNode.AppendChild(passwordText)
     End Sub
 End Class

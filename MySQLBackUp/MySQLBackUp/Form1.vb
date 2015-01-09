@@ -6,9 +6,7 @@ Imports System.Xml
 #End Region
 Public Class Form1
     Private username As String
-    Private email As String
     Private tokenPath As String
-    Private constring As String
     Private CloudeServices As List(Of CloudService)
     Private xmlDocument As XmlDocument
     Private Hours() As String = {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}
@@ -88,7 +86,7 @@ Public Class Form1
 
     Private Sub SecondTab_Click(sender As Object, e As EventArgs) Handles SecondTab.Click
         ' Dim constring As String = "Server=192.168.6.153;Database=adopse;Uid=mysqlBackup;Pwd=;"
-        constring = "Server=" & Tab2Server.Text & Tab2DataBase.Text & ";Uid=" & Tab2Uid.Text & ";Pwd=" & Tab2Pwd.Text & ";Database="
+        Dim constring As String = "Server=" & Tab2Server.Text & Tab2DataBase.Text & ";Uid=" & Tab2Uid.Text & ";Pwd=" & Tab2Pwd.Text & ";Database="
         createNode("connection")
         createNodeWithText("conString", constring, "connection")
         createNodeWithText("databases", Tab2DataBase.Text, "connection")
@@ -107,11 +105,17 @@ Public Class Form1
 
     Private Sub FourtTab_Click(sender As Object, e As EventArgs) Handles FourtTab.Click
         'grapse ta trela sou
+
         For i As Integer = 0 To CloudeServices.Count - 1
             CloudeServices.Item(i).Save(xmlDocument)
         Next
+        'trela start 
+        TabControl1.TabPages("TabPage4").Enabled = False
+        TabControl1.TabPages("TabPage5").Enabled = True
+        TabControl1.SelectedTab = TabControl1.TabPages("TabPage5")
+        'trela end
     End Sub
-
+#Region "Call auth classes and add @ CloudeServices List"
     Private Sub GoogleDriveButton_Click(sender As Object, e As EventArgs) Handles GoogleDriveButton.Click
         Dim GDrive As GoogleDrive = New GoogleDrive(tokenPath, username)
         GDrive.Authenticate()
@@ -141,6 +145,7 @@ Public Class Form1
         box.Authenticate()
         CloudeServices.Add(box)
     End Sub
+#End Region
 #End Region
 
 #Region "Authentication Methods"
@@ -206,15 +211,15 @@ Public Class Form1
         newNode.AppendChild(newNodeText)
     End Sub
 
-    Private Sub CreateEverything_Click(sender As Object, e As EventArgs) Handles CreateEverything.Click
-        Dim str123 As String = " " & HourCombo.SelectedItem.ToString & ":" & MinuteCombo.SelectedItem.ToString & ":" & SecondsCombo.SelectedItem.ToString
+    Private Sub CreateTaskAtWTS_Click(sender As Object, e As EventArgs) Handles CreateTaskAtWTS.Click
+        Dim strtime As String = " " & HourCombo.SelectedItem.ToString & ":" & MinuteCombo.SelectedItem.ToString & ":" & SecondsCombo.SelectedItem.ToString
         Using ts As New TaskService()
             Dim td As TaskDefinition = ts.NewTask()
             td.RegistrationInfo.Description = "This task is for the backup process for user : " + username
             td.Principal.RunLevel = TaskRunLevel.Highest
             Dim daily As New DailyTrigger()
-            daily.StartBoundary = Convert.ToDateTime(DateTime.Today.ToShortDateString() + str123) '" 19:38:00")
-            daily.DaysInterval = 1
+            daily.StartBoundary = Convert.ToDateTime(DateTime.Today.ToShortDateString() + strtime) '" 19:38:00")
+            daily.DaysInterval = 1 'na balw to value apo to numbox
             td.Triggers.Add(daily)
             td.Settings.MultipleInstances = TaskInstancesPolicy.Parallel
             td.Settings.DisallowStartIfOnBatteries = False

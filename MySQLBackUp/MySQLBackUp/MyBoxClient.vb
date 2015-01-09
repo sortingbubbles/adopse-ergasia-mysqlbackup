@@ -29,23 +29,16 @@ Public Class MyBoxClient
         br.ShowDialog()
     End Sub
 
-    Public Overrides Sub Save(XmlDocPath As String)
+    Public Overrides Sub Save(ByRef XmlDoc As XmlDocument)
         boxContinue()
-        Dim myXmlDocument As XmlDocument = New XmlDocument()
-        myXmlDocument.Load(XmlDocPath)
-        Dim root As XmlNode = myXmlDocument.DocumentElement
-        For Each node As XmlNode In root.ChildNodes
-            If node.Name = "tasks" Then
-                Dim taskNode As XmlElement = myXmlDocument.CreateElement("task")
-                taskNode.SetAttribute("app_id", "box")
-                node.AppendChild(taskNode)
-                Dim tokenPathNode As XmlElement = myXmlDocument.CreateElement("tokenPath")
-                Dim tokenPathText As XmlText = myXmlDocument.CreateTextNode(_tokenPath)
-                taskNode.AppendChild(tokenPathNode)
-                tokenPathNode.AppendChild(tokenPathText)
-            End If
-        Next
-        myXmlDocument.Save(XmlDocPath)
+        Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("tasks").Item(0)
+        Dim taskNode As XmlElement = XmlDoc.CreateElement("task")
+        taskNode.SetAttribute("app_id", "box")
+        tasksNode.AppendChild(taskNode)
+        Dim tokenPathNode As XmlElement = XmlDoc.CreateElement("tokenPath")
+        Dim tokenPathText As XmlText = XmlDoc.CreateTextNode(_tokenPath)
+        taskNode.AppendChild(tokenPathNode)
+        tokenPathNode.AppendChild(tokenPathText)
     End Sub
     'me th me8odo boxContinue metatrepoume to code pou phrame 
     'apo to prohgoumeno bhma kai to metatrepoume se access_token 

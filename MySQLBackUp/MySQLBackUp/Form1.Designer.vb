@@ -52,7 +52,10 @@ Partial Class Form1
         Me.Label9 = New System.Windows.Forms.Label()
         Me.FourtTab = New System.Windows.Forms.Button()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
-        Me.CreateEverything = New System.Windows.Forms.Button()
+        Me.DaysInterval = New System.Windows.Forms.NumericUpDown()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.CreateTaskAtWTS = New System.Windows.Forms.Button()
         Me.SecondsCombo = New System.Windows.Forms.ComboBox()
         Me.MinuteCombo = New System.Windows.Forms.ComboBox()
         Me.HourCombo = New System.Windows.Forms.ComboBox()
@@ -65,6 +68,7 @@ Partial Class Form1
         Me.TabPage3.SuspendLayout()
         Me.TabPage4.SuspendLayout()
         Me.TabPage5.SuspendLayout()
+        CType(Me.DaysInterval, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -357,7 +361,10 @@ Partial Class Form1
         '
         'TabPage5
         '
-        Me.TabPage5.Controls.Add(Me.CreateEverything)
+        Me.TabPage5.Controls.Add(Me.DaysInterval)
+        Me.TabPage5.Controls.Add(Me.Label13)
+        Me.TabPage5.Controls.Add(Me.Label10)
+        Me.TabPage5.Controls.Add(Me.CreateTaskAtWTS)
         Me.TabPage5.Controls.Add(Me.SecondsCombo)
         Me.TabPage5.Controls.Add(Me.MinuteCombo)
         Me.TabPage5.Controls.Add(Me.HourCombo)
@@ -372,14 +379,42 @@ Partial Class Form1
         Me.TabPage5.Text = "TabPage5"
         Me.TabPage5.UseVisualStyleBackColor = True
         '
-        'CreateEverything
+        'DaysInterval
         '
-        Me.CreateEverything.Location = New System.Drawing.Point(80, 228)
-        Me.CreateEverything.Name = "CreateEverything"
-        Me.CreateEverything.Size = New System.Drawing.Size(75, 23)
-        Me.CreateEverything.TabIndex = 6
-        Me.CreateEverything.Text = "Finish"
-        Me.CreateEverything.UseVisualStyleBackColor = True
+        Me.DaysInterval.Location = New System.Drawing.Point(97, 156)
+        Me.DaysInterval.Maximum = New Decimal(New Integer() {5, 0, 0, 0})
+        Me.DaysInterval.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.DaysInterval.Name = "DaysInterval"
+        Me.DaysInterval.Size = New System.Drawing.Size(42, 20)
+        Me.DaysInterval.TabIndex = 9
+        Me.DaysInterval.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(159, 158)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(31, 13)
+        Me.Label13.TabIndex = 8
+        Me.Label13.Text = "Days"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(7, 158)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(85, 13)
+        Me.Label10.TabIndex = 7
+        Me.Label10.Text = "BackUp Every : "
+        '
+        'CreateTaskAtWTS
+        '
+        Me.CreateTaskAtWTS.Location = New System.Drawing.Point(80, 228)
+        Me.CreateTaskAtWTS.Name = "CreateTaskAtWTS"
+        Me.CreateTaskAtWTS.Size = New System.Drawing.Size(75, 23)
+        Me.CreateTaskAtWTS.TabIndex = 6
+        Me.CreateTaskAtWTS.Text = "Finish"
+        Me.CreateTaskAtWTS.UseVisualStyleBackColor = True
         '
         'SecondsCombo
         '
@@ -451,6 +486,7 @@ Partial Class Form1
         Me.TabPage4.PerformLayout()
         Me.TabPage5.ResumeLayout(False)
         Me.TabPage5.PerformLayout()
+        CType(Me.DaysInterval, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -479,7 +515,7 @@ Partial Class Form1
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents FourtTab As System.Windows.Forms.Button
     Friend WithEvents TabPage5 As System.Windows.Forms.TabPage
-    Friend WithEvents CreateEverything As System.Windows.Forms.Button
+    Friend WithEvents CreateTaskAtWTS As System.Windows.Forms.Button
     Friend WithEvents SecondsCombo As System.Windows.Forms.ComboBox
     Friend WithEvents MinuteCombo As System.Windows.Forms.ComboBox
     Friend WithEvents HourCombo As System.Windows.Forms.ComboBox
@@ -491,5 +527,8 @@ Partial Class Form1
     Friend WithEvents SFTPButton As System.Windows.Forms.Button
     Friend WithEvents OneDriveButton As System.Windows.Forms.Button
     Friend WithEvents GoogleDriveButton As System.Windows.Forms.Button
+    Friend WithEvents DaysInterval As System.Windows.Forms.NumericUpDown
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents Label10 As System.Windows.Forms.Label
 
 End Class
