@@ -15,8 +15,6 @@ Public Class OneDriveBrowser
     End Sub
 
 
-
-
     Private Sub OneDriveAuth_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs) Handles OneDriveAuth.Navigated
         Dim uriString() As String
         If (OneDriveAuth.Url.ToString.Contains("?code")) Then
@@ -66,7 +64,7 @@ Public Class OneDriveBrowser
     'Χρησιμοποιείται για την αποθήκευση του authorization code και του refresh token
     Private Sub saveToFile(text As String, fileName As String)
         Dim file As System.IO.StreamWriter
-        file = My.Computer.FileSystem.OpenTextFileWriter(fileName, True)
+        file = My.Computer.FileSystem.OpenTextFileWriter(fileName, False)
         file.WriteLine(text)
         file.Close()
     End Sub
