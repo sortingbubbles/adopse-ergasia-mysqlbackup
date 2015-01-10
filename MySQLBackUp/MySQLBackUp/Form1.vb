@@ -195,6 +195,8 @@ Public Class Form1
 
     Private Sub FifthTab_Click(sender As Object, e As EventArgs) Handles FifthTab.Click
         CreateTaskAtWTS()
+        xmlDocument.Save("C:\TEMP\" & username & "\" & username & ".xml")
+        ZipMe() '' na to energopoihsw sto telos
         TabControl1.TabPages("TabPage5").Enabled = False
         TabControl1.TabPages("TabPage6").Enabled = True
         TabControl1.SelectedTab = TabControl1.TabPages("TabPage6")
@@ -219,7 +221,6 @@ Public Class Form1
             ts.RootFolder.RegisterTaskDefinition(username, td)
 
         End Using
-        'ZipMe() '' na to energopoihsw sto telos
     End Sub
 
     'Zip for data protection
