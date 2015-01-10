@@ -68,6 +68,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\applogo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AppLimit.CloudComputing.SharpBox">
       <HintPath>..\packages\AppLimit.CloudComputing.SharpBox.1.2.0.542\lib\net40-full\AppLimit.CloudComputing.SharpBox.dll</HintPath>
@@ -311,6 +314,7 @@
     <None Include="Resources\twitter_50.jpg" />
     <None Include="Resources\Facebook-04.png" />
     <None Include="Resources\Google-Plus-Logo-50x50.png" />
+    <Content Include="Resources\applogo.ico" />
     <Content Include="Resources\Microsoft.Win32.TaskScheduler.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
