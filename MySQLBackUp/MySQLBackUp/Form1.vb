@@ -5,12 +5,14 @@ Imports System.Xml
 Imports Ionic.Zip
 #End Region
 Public Class Form1
+#Region "Variables"
     Private username As String
     Private CloudeServices As List(Of CloudService)
     Private xmlDocument As XmlDocument
     Private Hours() As String = {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}
     Private Minutes(60) As String
     Private Seconds(60) As String
+    Private Cloudservice As Boolean
     '8etei stous antistoixous pinakes ta lepta kai ta deyterolepta 
     'apo 0-9
     Private Sub fillMyfirstMinutesSeconds()
@@ -27,6 +29,7 @@ Public Class Form1
             Seconds(i) = i
         Next
     End Sub
+#End Region
 
     ''Emfanizei to Tabpage.Text orizontia anti ka8eta pou einai to default
     Private Sub TabControl1_DrawItem(sender As Object, e As DrawItemEventArgs) Handles TabControl1.DrawItem
@@ -106,45 +109,53 @@ Public Class Form1
     'swzoume ta token tou ka8e xrhsth
     Private Sub FourtTab_Click(sender As Object, e As EventArgs) Handles FourtTab.Click
         'grapse ta trela sou
-
-        For i As Integer = 0 To CloudeServices.Count - 1
-            CloudeServices.Item(i).Save(xmlDocument)
-        Next
-        'trela start 
-        TabControl1.TabPages("TabPage4").Enabled = False
-        TabControl1.TabPages("TabPage5").Enabled = True
-        TabControl1.SelectedTab = TabControl1.TabPages("TabPage5")
-        'trela end
+        If Cloudservice = False Then
+            MessageBox.Show("Please select at Least One Upload Provider!")
+        Else
+            For i As Integer = 0 To CloudeServices.Count - 1
+                CloudeServices.Item(i).Save(xmlDocument)
+            Next
+            'trela start 
+            TabControl1.TabPages("TabPage4").Enabled = False
+            TabControl1.TabPages("TabPage5").Enabled = True
+            TabControl1.SelectedTab = TabControl1.TabPages("TabPage5")
+            'trela end
+        End If
     End Sub
 #Region "Call auth classes and add @ CloudeServices List"
     Private Sub GoogleDriveButton_Click(sender As Object, e As EventArgs) Handles GoogleDriveButton.Click
         Dim GDrive As GoogleDrive = New GoogleDrive(username)
         GDrive.Authenticate()
         CloudeServices.Add(GDrive)
+        Cloudservice = True
     End Sub
 
     Private Sub OneDriveButton_Click(sender As Object, e As EventArgs) Handles OneDriveButton.Click
         Dim myserv As OneDrive = New OneDrive()
         myserv.Authenticate()
         CloudeServices.Add(myserv)
+        Cloudservice = True
     End Sub
 
     Private Sub SFTPButton_Click(sender As Object, e As EventArgs) Handles SFTPButton.Click
         Dim sftp As MyNewSftpClient = New MyNewSftpClient()
         sftp.Authenticate()
         CloudeServices.Add(sftp)
+        Cloudservice = True
     End Sub
 
     Private Sub DropBoxButton_Click(sender As Object, e As EventArgs) Handles DropBoxButton.Click
         Dim dropBox As DropBox = New DropBox(username)
         dropBox.Authenticate()
         CloudeServices.Add(dropBox)
+        Cloudservice = True
     End Sub
 
     Private Sub BoxButton_Click(sender As Object, e As EventArgs) Handles BoxButton.Click
         Dim box As MyBoxClient = New MyBoxClient(username)
         box.Authenticate()
         CloudeServices.Add(box)
+        Cloudservice = True
     End Sub
 #End Region
 #End Region
