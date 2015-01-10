@@ -85,4 +85,19 @@ Public Class Form1
         testEditXMLFile(myXmlDocument)
         myXmlDocument.Save("C:\Users\Charitakis\Desktop\testXmlFile.xml")
     End Sub
+
+    Private Sub testGetElementByTagNameOnChieldNode(ByRef XmlDocPath As XmlDocument)
+        Dim conStringNode As XmlNode = XmlDocPath.GetElementsByTagName("conString").Item(0)
+
+        Dim conStringText As XmlText = XmlDocPath.CreateTextNode("Test Connection String")
+
+        conStringNode.AppendChild(conStringText)
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim myXmlDocument As XmlDocument = New XmlDocument()
+        myXmlDocument.Load("C:\Users\Charitakis\Desktop\testXmlFile.xml")
+        testGetElementByTagNameOnChieldNode(myXmlDocument)
+        myXmlDocument.Save("C:\Users\Charitakis\Desktop\testXmlFile.xml")
+    End Sub
 End Class
