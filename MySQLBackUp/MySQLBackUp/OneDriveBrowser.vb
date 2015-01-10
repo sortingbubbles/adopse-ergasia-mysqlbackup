@@ -5,11 +5,12 @@ Imports Newtonsoft.Json.Linq
 Public Class OneDriveBrowser
     Private clientID As String
     Private clientSecret As String
-
-    Sub New(_clientID As String, _clientSecret As String)
+    Private userName As String
+    Sub New(_clientID As String, _clientSecret As String, _username As String)
 
         clientID = _clientID
         clientSecret = _clientSecret
+        userName = _username
         InitializeComponent()
 
     End Sub
@@ -21,7 +22,7 @@ Public Class OneDriveBrowser
             uriString = OneDriveAuth.Url.ToString.Split("=&".ToCharArray)
             Dim authCode As String = uriString(1)
             'Αποθήκευση του authorization code σε αρχείο για μελλοντική χρήση
-            saveToFile(authCode, "c:\TEMP\authCode.txt")
+            saveToFile(authCode, "c:\TEMP\" & userName & "\authCode.txt")
 
             OneDriveAuth.Visible = False
             Dim url As String = String.Format("https://login.live.com/oauth20_token.srf?client_id={0}&client_secret={1}&code={2}&grant_type=authorization_code&redirect_uri=https://login.live.com/oauth20_desktop.srf", clientID, clientSecret, authCode)
@@ -56,7 +57,7 @@ Public Class OneDriveBrowser
         Next
 
         'Αποθηκευση του refresh token σε αρχείο
-        saveToFile(refreshToken, "c:\TEMP\OneDriveRefreshToken.txt")
+        saveToFile(refreshToken, "c:\TEMP\" & userName & "\OneDriveRefreshToken.txt")
 
     End Sub
 

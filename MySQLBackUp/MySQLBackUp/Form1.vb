@@ -7,7 +7,7 @@ Imports Ionic.Zip
 Public Class Form1
 #Region "Variables"
     Private username As String
-    Private CloudServices As List(Of CloudService)
+    Private CloudServices As List(Of CloudService) = New List(Of CloudService)
     Private xmlDocument As XmlDocument
     Private Hours() As String = {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}
     Private Minutes(60) As String
@@ -133,9 +133,9 @@ Public Class Form1
     End Sub
 
     Private Sub OneDriveButton_Click(sender As Object, e As EventArgs) Handles OneDriveButton.Click
-        Dim myserv As OneDrive = New OneDrive()
-        myserv.Authenticate()
-        CloudServices.Add(myserv)
+        Dim oneDRive As OneDrive = New OneDrive(username)
+        oneDRive.Authenticate()
+        CloudServices.Add(oneDRive)
         Cloudservice = True
         OneDriveButton.Enabled = False
     End Sub
@@ -214,7 +214,7 @@ Public Class Form1
             td.Settings.MultipleInstances = TaskInstancesPolicy.Parallel
             td.Settings.DisallowStartIfOnBatteries = False
             'edwwwwww
-            td.Actions.Add(New ExecAction("C:\Users\ILIAS\Documents\Visual Studio 2013\Projects\Base Application  For The Process\Base Application  For The Process\bin\Debug\Base Application  For The Process.exe", "ilias", Nothing))
+            td.Actions.Add(New ExecAction("C:\Users\Annie\Documents\Visual Studio 2013\Projects\Base Application  For The Process\Base Application  For The Process\bin\Debug\Base Application  For The Process.exe", "Annie", Nothing))
             td.Settings.WakeToRun = True
             td.Settings.Hidden = True
             td.Settings.StartWhenAvailable = True

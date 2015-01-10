@@ -2,13 +2,16 @@
 
 Public Class OneDrive
     Inherits CloudService
-    Private clientID As String = "*********************" ' client id της εφαρμογής
-    Private clientSecret As String = "*************************" ' client secret της εφαρμογής
+    Private clientID As String = "*******************" ' client id της εφαρμογής
+    Private clientSecret As String = "**********************" ' client secret της εφαρμογής
     'Φυλλομετρητής που εμφανίζεται για την ταυτοποίηση του χρήστη
-    Private oneDriveBrowser As OneDriveBrowser = New OneDriveBrowser(clientID, clientSecret)
+    Private userName As String
+    Private oneDriveBrowser As OneDriveBrowser
 
-    Sub New()
+    Sub New(ByVal username As String)
         Me.AppID = "onedrive"
+        username = username
+        oneDriveBrowser = New OneDriveBrowser(clientID, clientSecret, username)
     End Sub
 
     'Μέθοδος για την αυθευντικοποίηση του χρήστη στο OneDrive
@@ -32,8 +35,8 @@ Public Class OneDrive
 
         Dim authCodePathNode As XmlElement = XmlDoc.CreateElement("authCodePath")
         Dim refreshTokenPathNode As XmlElement = XmlDoc.CreateElement("refreshTokenPath")
-        Dim authCodePathText As XmlText = XmlDoc.CreateTextNode("C:\TEMP\authCode.txt")
-        Dim refreshTokenPathText As XmlText = XmlDoc.CreateTextNode("C:\TEMP\OneDriveRefreshToken.txt")
+        Dim authCodePathText As XmlText = XmlDoc.CreateTextNode("C:\TEMP\" & userName & "\authCode.txt")
+        Dim refreshTokenPathText As XmlText = XmlDoc.CreateTextNode("C:\TEMP\" & userName & "\OneDriveRefreshToken.txt")
 
         taskNode.AppendChild(authCodePathNode)
         taskNode.AppendChild(refreshTokenPathNode)
