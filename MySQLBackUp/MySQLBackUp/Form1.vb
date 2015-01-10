@@ -7,7 +7,7 @@ Imports Ionic.Zip
 Public Class Form1
 #Region "Variables"
     Private username As String
-    Private CloudeServices As List(Of CloudService)
+    Private CloudServices As List(Of CloudService)
     Private xmlDocument As XmlDocument
     Private Hours() As String = {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}
     Private Minutes(60) As String
@@ -103,7 +103,7 @@ Public Class Form1
 
     Private Sub ThirdTab_Click(sender As Object, e As EventArgs) Handles ThirdTab.Click
         createNodeWithText("email", Tab3Email.Text)
-        createNode("tasks")
+        createNode("cloudServices")
         TabControl1.TabPages("TabPage4").Enabled = True
         TabControl1.TabPages("TabPage3").Enabled = False
         TabControl1.SelectedTab = TabControl1.TabPages("TabPage4")
@@ -112,25 +112,22 @@ Public Class Form1
     '(Google drive, One Drive, DropBox, Box, Sftp)
     'swzoume ta token tou ka8e xrhsth
     Private Sub FourtTab_Click(sender As Object, e As EventArgs) Handles FourtTab.Click
-        'grapse ta trela sou
         If Cloudservice = False Then
             MessageBox.Show("Please select at Least One Upload Provider!")
         Else
-            For i As Integer = 0 To CloudeServices.Count - 1
-                CloudeServices.Item(i).Save(xmlDocument)
+            For i As Integer = 0 To CloudServices.Count - 1
+                CloudServices.Item(i).Save(xmlDocument)
             Next
-            'trela start 
             TabControl1.TabPages("TabPage4").Enabled = False
             TabControl1.TabPages("TabPage5").Enabled = True
             TabControl1.SelectedTab = TabControl1.TabPages("TabPage5")
-            'trela end
         End If
     End Sub
 #Region "Call auth classes and add @ CloudeServices List"
     Private Sub GoogleDriveButton_Click(sender As Object, e As EventArgs) Handles GoogleDriveButton.Click
         Dim GDrive As GoogleDrive = New GoogleDrive(username)
         GDrive.Authenticate()
-        CloudeServices.Add(GDrive)
+        CloudServices.Add(GDrive)
         Cloudservice = True
         GoogleDriveButton.Enabled = False
     End Sub
@@ -138,7 +135,7 @@ Public Class Form1
     Private Sub OneDriveButton_Click(sender As Object, e As EventArgs) Handles OneDriveButton.Click
         Dim myserv As OneDrive = New OneDrive()
         myserv.Authenticate()
-        CloudeServices.Add(myserv)
+        CloudServices.Add(myserv)
         Cloudservice = True
         OneDriveButton.Enabled = False
     End Sub
@@ -146,7 +143,7 @@ Public Class Form1
     Private Sub SFTPButton_Click(sender As Object, e As EventArgs) Handles SFTPButton.Click
         Dim sftp As MyNewSftpClient = New MyNewSftpClient()
         sftp.Authenticate()
-        CloudeServices.Add(sftp)
+        CloudServices.Add(sftp)
         Cloudservice = True
         SFTPButton.Enabled = False
     End Sub
@@ -154,7 +151,7 @@ Public Class Form1
     Private Sub DropBoxButton_Click(sender As Object, e As EventArgs) Handles DropBoxButton.Click
         Dim dropBox As DropBox = New DropBox(username)
         dropBox.Authenticate()
-        CloudeServices.Add(dropBox)
+        CloudServices.Add(dropBox)
         Cloudservice = True
         DropBoxButton.Enabled = False
     End Sub
@@ -162,7 +159,7 @@ Public Class Form1
     Private Sub BoxButton_Click(sender As Object, e As EventArgs) Handles BoxButton.Click
         Dim box As MyBoxClient = New MyBoxClient(username)
         box.Authenticate()
-        CloudeServices.Add(box)
+        CloudServices.Add(box)
         Cloudservice = True
         BoxButton.Enabled = False
     End Sub

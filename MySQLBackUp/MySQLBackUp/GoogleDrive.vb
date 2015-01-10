@@ -68,24 +68,19 @@ Public Class GoogleDrive
 
     Public Overrides Sub Save(ByRef XmlDoc As XmlDocument)
         'Pernoume ton <tasks> node
-        Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("tasks").Item(0)
-
+        Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("cloudServices").Item(0)
         'Dimiourgeia komvou <task>
-        Dim taskNode As XmlElement = XmlDoc.CreateElement("task")
+        Dim taskNode As XmlElement = XmlDoc.CreateElement("cloudService")
         'Orismos enos atribute ston komvo
         taskNode.SetAttribute("id", Me.AppID)
         'Emfanisi tou komvou <task> kato apo ton komvo <tasks>
         tasksNode.AppendChild(taskNode)
-
         'Dimiourgeia komvon paidia tou komvou <task>
         Dim folderIDNode As XmlElement = XmlDoc.CreateElement("folderID")
-
         'Dimiourgeia ton timon tou kathe komvou (text)
         Dim folderIDText As XmlText = XmlDoc.CreateTextNode(folderID)
-
         'Eisagogei ton komvon kato apo ton patera (komvos <task>) xoris tis times tous
         taskNode.AppendChild(folderIDNode)
-
         'Eisagogi timon tou kathe komvou
         folderIDNode.AppendChild(folderIDText)
     End Sub

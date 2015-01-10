@@ -47,8 +47,8 @@ Public Class DropBox
 
     Public Overrides Sub Save(ByRef XmlDoc As XmlDocument)
         saveMyAuth()
-        Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("tasks").Item(0)
-        Dim taskNode As XmlElement = XmlDoc.CreateElement("task")
+        Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("cloudServices").Item(0)
+        Dim taskNode As XmlElement = XmlDoc.CreateElement("cloudService")
         taskNode.SetAttribute("id", Me.AppID)
         tasksNode.AppendChild(taskNode)
         Dim tokenPathNode As XmlElement = XmlDoc.CreateElement("tokenPath")

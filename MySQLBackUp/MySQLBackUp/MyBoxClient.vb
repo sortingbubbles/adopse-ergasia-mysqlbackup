@@ -32,8 +32,8 @@ Public Class MyBoxClient
 
     Public Overrides Sub Save(ByRef XmlDoc As XmlDocument)
         boxContinue()
-        Dim tasksnode As XmlNode = XmlDoc.GetElementsByTagName("tasks").Item(0)
-        Dim tasknode As XmlElement = XmlDoc.CreateElement("task")
+        Dim tasksnode As XmlNode = XmlDoc.GetElementsByTagName("cloudServices").Item(0)
+        Dim tasknode As XmlElement = XmlDoc.CreateElement("cloudService")
         tasknode.SetAttribute("id", Me.AppID)
         tasksnode.AppendChild(tasknode)
         Dim tokenpathnode As XmlElement = XmlDoc.CreateElement("tokenpath")
