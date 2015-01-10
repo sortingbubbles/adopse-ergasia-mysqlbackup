@@ -36,13 +36,13 @@ Public Module Module1
     Sub Main(ByVal sArgs() As String)
         If sArgs.Length > 0 Then  'elegxoume an yparxoun parametroi
             username = sArgs(0).ToString() 'to username pou tha pername
-            readXMLDoc("C:\TEMP\" & username & "\Name of xml file.xml")
-            'UnZipMe()
+            UnZipMe()
+            readXMLDoc("C:\TEMP\" & username & "\" & username & ".xml")
             Backup()
             ZipBackUpFile()
             uploadBackUpFile()
             SendMail()
-            'ZipMe()
+            ZipMe()
         End If
     End Sub
     'boh8htikh me8odos sthn opoia epistrefontai
