@@ -49,8 +49,15 @@ Module Module1
     End Sub
 
     Private Sub readXMLDoc(ByVal path As String)
+        '
         Dim xmlDoc As XmlDocument = New XmlDocument()
         xmlDoc.Load(path)
+        Dim emailNode As String = xmlDoc.GetElementsByTagName("mail").Item(0).Value
+        Dim conStringNode As String = xmlDoc.GetElementsByTagName("database").Item(0).Value
+        Dim databasesNode As String = xmlDoc.GetElementsByTagName("database").Item(1).Value
+        '
+        'Dim xmlDoc As XmlDocument = New XmlDocument()
+        'xmlDoc.Load(path)
         Dim userNode As XmlNode = xmlDoc.DocumentElement
         For Each node As XmlNode In userNode.ChildNodes
             Select Case node.Name
