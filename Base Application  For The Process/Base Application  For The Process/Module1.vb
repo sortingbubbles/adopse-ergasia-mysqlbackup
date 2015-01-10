@@ -61,7 +61,7 @@ Public Module Module1
         _conString = xmlDoc.GetElementsByTagName("conString").Item(0).InnerText
         _databases = xmlDoc.GetElementsByTagName("databases").Item(0).InnerText
 
-        Dim taskNodes As XmlNodeList = xmlDoc.GetElementsByTagName("task")
+        Dim taskNodes As XmlNodeList = xmlDoc.GetElementsByTagName("cloudService")
         For Each node As XmlNode In taskNodes
             Select Case node.Attributes.Item(0).Value
                 Case "sftp"

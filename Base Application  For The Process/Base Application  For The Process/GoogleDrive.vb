@@ -81,7 +81,7 @@ Public Class GoogleDrive
         DeleteFilesFromFolder(service, folderID)
         Dim body As New File()
         body.Title = "Backup.zip"
-        body.Description = "MySQLBackUpGr file"
+        body.Description = "MySQLBackUpGr backup file"
         body.MimeType = "application/zip"
 
         Dim newParent As ParentReference = New ParentReference
