@@ -3,6 +3,8 @@ Imports System.IO
 Imports Microsoft.Win32.TaskScheduler
 Imports System.Xml
 Imports Ionic.Zip
+Imports MySql.Data.MySqlClient
+
 #End Region
 Public Class Form1
 #Region "Variables"
@@ -13,6 +15,7 @@ Public Class Form1
     Private Minutes(60) As String
     Private Seconds(60) As String
     Private Cloudservice As Boolean
+    Private databasesCount As Integer = 0
     '8etei stous antistoixous pinakes ta lepta kai ta deyterolepta 
     'apo 0-9
     Private Sub fillMyfirstMinutesSeconds()
@@ -91,14 +94,26 @@ Public Class Form1
     End Sub
 
     Private Sub SecondTab_Click(sender As Object, e As EventArgs) Handles SecondTab.Click
-        ' Dim constring As String = "Server=192.168.6.153;Database=adopse;Uid=mysqlBackup;Pwd=;"
-        Dim constring As String = "Server=" & Tab2Server.Text & Tab2DataBase.Text & ";Uid=" & Tab2Uid.Text & ";Pwd=" & Tab2Pwd.Text & ";Database="
-        createNode("connection")
-        createNodeWithText("conString", constring, "connection")
-        createNodeWithText("databases", Tab2DataBase.Text, "connection")
-        TabControl1.TabPages("TabPage3").Enabled = True
-        TabControl1.TabPages("TabPage2").Enabled = False
-        TabControl1.SelectedTab = TabControl1.TabPages("TabPage3")
+        If databasesCount = 4 Then
+            If DatabasesCheckedListBox.CheckedItems.Count > 0 Then
+                Dim databases As String = String.Empty
+                ' Dim constring As String = "Server=192.168.6.153;Database=adopse;Uid=mysqlBackup;Pwd=;"
+                Dim constring As String = "Server=" & Tab2Server.Text & ";Uid=" & Tab2Uid.Text & ";Pwd=" & Tab2Pwd.Text & ";Database="
+                For Each _object As Object In DatabasesCheckedListBox.CheckedItems
+                    databases += _object.ToString & ","
+                Next
+                createNode("connection")
+                createNodeWithText("conString", constring, "connection")
+                createNodeWithText("databases", databases, "connection")
+                TabControl1.TabPages("TabPage3").Enabled = True
+                TabControl1.TabPages("TabPage2").Enabled = False
+                TabControl1.SelectedTab = TabControl1.TabPages("TabPage3")
+            Else
+                MessageBox.Show("Please Check At Least one Database To Continue")
+            End If
+        Else
+            MessageBox.Show("Please Fill TextBoxes Server,Username,Password To Continue")
+        End If
     End Sub
 
     Private Sub ThirdTab_Click(sender As Object, e As EventArgs) Handles ThirdTab.Click
@@ -121,6 +136,33 @@ Public Class Form1
             TabControl1.TabPages("TabPage4").Enabled = False
             TabControl1.TabPages("TabPage5").Enabled = True
             TabControl1.SelectedTab = TabControl1.TabPages("TabPage5")
+        End If
+    End Sub
+    Private Sub FifthTab_Click(sender As Object, e As EventArgs) Handles FifthTab.Click
+        CreateTaskAtWTS()
+        xmlDocument.Save("C:\TEMP\" & username & "\" & username & ".xml")
+        ZipMe() '' na to energopoihsw sto telos
+        TabControl1.TabPages("TabPage5").Enabled = False
+        TabControl1.TabPages("TabPage6").Enabled = True
+        TabControl1.SelectedTab = TabControl1.TabPages("TabPage6")
+    End Sub
+    Private Sub Tab2Server_Validated(sender As Object, e As EventArgs) Handles Tab2Server.Validated
+        databasesCount += 1
+        If databasesCount = 3 Then
+            ShowDatabases()
+        End If
+    End Sub
+    Private Sub Tab2Uid_Validated(sender As Object, e As EventArgs) Handles Tab2Uid.Validated
+        databasesCount += 1
+        If databasesCount = 3 Then
+            ShowDatabases()
+        End If
+    End Sub
+
+    Private Sub Tab2Pwd_Validated(sender As Object, e As EventArgs) Handles Tab2Pwd.Validated
+        databasesCount += 1
+        If databasesCount = 3 Then
+            ShowDatabases()
         End If
     End Sub
 #Region "Call auth classes and add @ CloudeServices List"
@@ -193,14 +235,6 @@ Public Class Form1
     End Sub
 #End Region
 
-    Private Sub FifthTab_Click(sender As Object, e As EventArgs) Handles FifthTab.Click
-        CreateTaskAtWTS()
-        xmlDocument.Save("C:\TEMP\" & username & "\" & username & ".xml")
-        ZipMe() '' na to energopoihsw sto telos
-        TabControl1.TabPages("TabPage5").Enabled = False
-        TabControl1.TabPages("TabPage6").Enabled = True
-        TabControl1.SelectedTab = TabControl1.TabPages("TabPage6")
-    End Sub
     Private Sub CreateTaskAtWTS()
         Dim strtime As String = " " & HourCombo.SelectedItem.ToString & ":" & MinuteCombo.SelectedItem.ToString & ":" & SecondsCombo.SelectedItem.ToString
         Using ts As New TaskService()
@@ -248,6 +282,30 @@ Public Class Form1
 
     Private Sub Twitter_Click(sender As Object, e As EventArgs) Handles Twitter.Click
         Process.Start("https://twitter.com/mysqlbackupgr")
+    End Sub
+
+    'syndesh me th bash me ta creds pou edwse o xrhsths 
+    'kai sth synexeia an den yparxei la8os 8a emfanizei 
+    ' se ena CheckedListBox tis baseis pou yparxoun
+    Private Sub ShowDatabases()
+        Dim dt As DataTable = New DataTable()
+        Dim con As String = "server=" & Tab2Server.Text & ";user=" & Tab2Uid.Text & ";pwd=" & Tab2Pwd.Text & ";"
+        Try
+            Dim conn As MySqlConnection = New MySqlConnection(con)
+            Dim cmd As MySqlCommand = New MySqlCommand()
+            cmd.Connection = conn
+            conn.Open()
+            cmd.CommandText = "show databases;"
+            Dim da As MySqlDataAdapter = New MySqlDataAdapter(cmd)
+            da.Fill(dt)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        DatabasesCheckedListBox.Visible = True
+        For Each _row As DataRow In dt.Rows
+            DatabasesCheckedListBox.Items.Add(_row(0))
+        Next _row
+        databasesCount += 1
     End Sub
 End Class
 
