@@ -1,4 +1,4 @@
-﻿#Region "Libraries"
+ #Region "Libraries"
 Imports MySql.Data.MySqlClient
 Imports System.IO
 Imports System.Net.Mail
@@ -57,7 +57,7 @@ Public Module Module1
         '
         Dim xmlDoc As XmlDocument = New XmlDocument()
         xmlDoc.Load(path)
-        email = xmlDoc.GetElementsByTagName("mail").Item(0).InnerText
+        email = xmlDoc.GetElementsByTagName("email").Item(0).InnerText
         _conString = xmlDoc.GetElementsByTagName("conString").Item(0).InnerText
         _databases = xmlDoc.GetElementsByTagName("databases").Item(0).InnerText
 
