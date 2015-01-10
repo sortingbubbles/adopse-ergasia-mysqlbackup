@@ -52,45 +52,26 @@ Module Module1
         '
         Dim xmlDoc As XmlDocument = New XmlDocument()
         xmlDoc.Load(path)
-        Dim emailNode As String = xmlDoc.GetElementsByTagName("mail").Item(0).Value
-        Dim conStringNode As String = xmlDoc.GetElementsByTagName("database").Item(0).Value
-        Dim databasesNode As String = xmlDoc.GetElementsByTagName("database").Item(1).Value
-        '
-        'Dim xmlDoc As XmlDocument = New XmlDocument()
-        'xmlDoc.Load(path)
-        Dim userNode As XmlNode = xmlDoc.DocumentElement
-        For Each node As XmlNode In userNode.ChildNodes
-            Select Case node.Name
-                Case "mail"
-                    email = node.InnerText
-                Case "database"
-                    For Each databaseNode As XmlNode In node.ChildNodes
-                        Select Case databaseNode.Name
-                            Case "conString"
-                                conString = databaseNode.InnerText
-                            Case "databases"
-                                databases = databaseNode.InnerText
-                        End Select
-                    Next
-                Case "tasks"
-                    For Each taskNode As XmlNode In node.ChildNodes
-                        Select Case taskNode.Attributes.Item(0).Value
-                            Case "sftp"
-                                'dimiourgia sftp antikeimenou kai klisi methodou read
-                            Case "dropbox"
-                                'dimiourgia sftp antikeimenou kai klisi methodou read
-                            Case "box"
-                                'dimiourgia sftp antikeimenou kai klisi methodou read
-                            Case "googledrive"
-                                Dim GDrive As GoogleDrive = New GoogleDrive(username)
-                                GDrive.read(xmlDoc)
-                                CloudServices.Add(GDrive)
-                            Case "onedrive"
-                                'dimiourgia sftp antikeimenou kai klisi methodou read
-                        End Select
-                    Next
-            End Select
+        email = xmlDoc.GetElementsByTagName("mail").Item(0).InnerText
+        conString = xmlDoc.GetElementsByTagName("conString").Item(0).InnerText
+        databases = xmlDoc.GetElementsByTagName("databases").Item(0).InnerText
 
+        Dim taskNodes As XmlNodeList = xmlDoc.GetElementsByTagName("task")
+        For Each node As XmlNode In taskNodes
+            Select Case node.Attributes.Item(0).Value
+                Case "sftp"
+                    'dimiourgia sftp antikeimenou kai klisi methodou read
+                Case "dropbox"
+                    'dimiourgia sftp antikeimenou kai klisi methodou read
+                Case "box"
+                    'dimiourgia sftp antikeimenou kai klisi methodou read
+                Case "googledrive"
+                    Dim GDrive As GoogleDrive = New GoogleDrive(username)
+                    GDrive.read(xmlDoc)
+                    CloudServices.Add(GDrive)
+                Case "onedrive"
+                    'dimiourgia sftp antikeimenou kai klisi methodou read
+            End Select
         Next
     End Sub
 
