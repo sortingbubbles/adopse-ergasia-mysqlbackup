@@ -128,6 +128,7 @@ Public Class Form1
         GDrive.Authenticate()
         CloudeServices.Add(GDrive)
         Cloudservice = True
+        GoogleDriveButton.Enabled = False
     End Sub
 
     Private Sub OneDriveButton_Click(sender As Object, e As EventArgs) Handles OneDriveButton.Click
@@ -135,6 +136,7 @@ Public Class Form1
         myserv.Authenticate()
         CloudeServices.Add(myserv)
         Cloudservice = True
+        OneDriveButton.Enabled = False
     End Sub
 
     Private Sub SFTPButton_Click(sender As Object, e As EventArgs) Handles SFTPButton.Click
@@ -142,6 +144,7 @@ Public Class Form1
         sftp.Authenticate()
         CloudeServices.Add(sftp)
         Cloudservice = True
+        SFTPButton.Enabled = False
     End Sub
 
     Private Sub DropBoxButton_Click(sender As Object, e As EventArgs) Handles DropBoxButton.Click
@@ -149,6 +152,7 @@ Public Class Form1
         dropBox.Authenticate()
         CloudeServices.Add(dropBox)
         Cloudservice = True
+        DropBoxButton.Enabled = False
     End Sub
 
     Private Sub BoxButton_Click(sender As Object, e As EventArgs) Handles BoxButton.Click
@@ -156,6 +160,7 @@ Public Class Form1
         box.Authenticate()
         CloudeServices.Add(box)
         Cloudservice = True
+        BoxButton.Enabled = False
     End Sub
 #End Region
 #End Region
