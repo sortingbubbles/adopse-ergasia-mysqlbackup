@@ -52,7 +52,7 @@ Module Module1
     Private Sub Backup(ByVal constring As String, ByVal databasesToBackUp As String)
         ' Dim constring As String = "Server=192.168.6.153;Database=adopse;Uid=mysqlBackup;Pwd=;"
         '  Dim constring As String = "Server=192.168.6.153;Uid=mysqlBackup;Pwd=;Database=;"
-        '  Backupfile = "C:\TEMP\backup(" + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ").sql"
+        ' Backupfile = "C:\TEMP\backup(" + database + "  " + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ").sql"
         Try
             Dim databases() As String = Split(databasesToBackUp, ",")
             For Each database As String In databases
