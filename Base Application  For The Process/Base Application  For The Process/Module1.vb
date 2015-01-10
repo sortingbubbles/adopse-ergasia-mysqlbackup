@@ -16,6 +16,8 @@ Imports BoxApi.V2.Model
 Imports System.Net
 Imports System.Text
 Imports Newtonsoft.Json.Linq
+Imports System.Xml
+
 #End Region
 
 Module Module1
@@ -26,18 +28,69 @@ Module Module1
     Private Backupfile As String = String.Empty
     Private ZippedBackupfile As String = String.Empty
     Private username As String = String.Empty
+    Private CloudServices As List(Of CloudService)
+    Private email As String
+    Private conString As String
+    Private databases As String
 #End Region
 
     Sub Main(ByVal sArgs() As String)
         If sArgs.Length > 0 Then  'elegxoume an yparxoun parametroi
-            username = sArgs(0).ToString() 'to username pou tha pername 
+            username = sArgs(0).ToString() 'to username pou tha pername
+            readXMLDoc("C:\TEMP\" & username & "\Name of xml file.xml")
             'UnZipMe()
-            '  Backup()
+            'Backup()
             ZipBackUpFile()
-            MySQLDropbox()
+            uploadBackUpFile()
+            'MySQLDropbox()
             SendMail()
             'ZipMe()
         End If
+    End Sub
+
+    Private Sub readXMLDoc(ByVal path As String)
+        Dim xmlDoc As XmlDocument = New XmlDocument()
+        xmlDoc.Load(path)
+        Dim userNode As XmlNode = xmlDoc.DocumentElement
+        For Each node As XmlNode In userNode.ChildNodes
+            Select Case node.Name
+                Case "mail"
+                    email = node.InnerText
+                Case "database"
+                    For Each databaseNode As XmlNode In node.ChildNodes
+                        Select Case databaseNode.Name
+                            Case "conString"
+                                conString = databaseNode.InnerText
+                            Case "databases"
+                                databases = databaseNode.InnerText
+                        End Select
+                    Next
+                Case "tasks"
+                    For Each taskNode As XmlNode In node.ChildNodes
+                        Select Case taskNode.Attributes.Item(0).Value
+                            Case "sftp"
+                                'dimiourgia sftp antikeimenou kai klisi methodou read
+                            Case "dropbox"
+                                'dimiourgia sftp antikeimenou kai klisi methodou read
+                            Case "box"
+                                'dimiourgia sftp antikeimenou kai klisi methodou read
+                            Case "googledrive"
+                                Dim GDrive As GoogleDrive = New GoogleDrive(username)
+                                GDrive.read(xmlDoc)
+                                CloudServices.Add(GDrive)
+                            Case "onedrive"
+                                'dimiourgia sftp antikeimenou kai klisi methodou read
+                        End Select
+                    Next
+            End Select
+
+        Next
+    End Sub
+
+    Private Sub uploadBackUpFile()
+        For Each service As CloudService In CloudServices
+            service.upload(ZippedBackupfile)
+        Next
     End Sub
 
 #Region "MySQLBackUp"
