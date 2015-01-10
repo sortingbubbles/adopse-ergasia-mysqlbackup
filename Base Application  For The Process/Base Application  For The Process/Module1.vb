@@ -31,10 +31,12 @@ Module Module1
     Sub Main(ByVal sArgs() As String)
         If sArgs.Length > 0 Then  'elegxoume an yparxoun parametroi
             username = sArgs(0).ToString() 'to username pou tha pername 
+            '  UnZipMe()
             Backup()
             ZipBackUpFile()
             MySQLDropbox()
             SendMail()
+            'ZipMe()
         End If
     End Sub
 
@@ -301,6 +303,6 @@ Module Module1
 
 
 
-#End Region 'teliko region'
+#End Region
 
 End Module
