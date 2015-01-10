@@ -240,7 +240,7 @@ Public Class Form1
     End Sub
 
     Private Sub GooglePlus_Click(sender As Object, e As EventArgs) Handles GooglePlus.Click
-        Process.Start("") 'na balw
+        Process.Start("https://plus.google.com/100757218376615905273/about")
     End Sub
 
     Private Sub Facebook_Click(sender As Object, e As EventArgs) Handles Facebook.Click
@@ -248,7 +248,7 @@ Public Class Form1
     End Sub
 
     Private Sub Twitter_Click(sender As Object, e As EventArgs) Handles Twitter.Click
-        Process.Start("") 'na balw
+        Process.Start("https://twitter.com/mysqlbackupgr")
     End Sub
 End Class
 
