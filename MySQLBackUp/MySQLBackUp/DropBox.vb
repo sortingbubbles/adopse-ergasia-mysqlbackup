@@ -14,7 +14,7 @@ Public Class DropBox
 
 
     Sub New(ByVal username As String)
-        Me.AppID = "dropbox"
+        ' Me.AppID = "dropbox"
         tokenPath = "C:\TEMP\" & username & "\MyDropBoxToken.txt"
     End Sub
 
@@ -47,13 +47,13 @@ Public Class DropBox
 
     Public Overrides Sub Save(ByRef XmlDoc As XmlDocument)
         saveMyAuth()
-        Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("tasks").Item(0)
-        Dim taskNode As XmlElement = XmlDoc.CreateElement("task")
-        taskNode.SetAttribute("app_id", Me.AppID)
-        tasksNode.AppendChild(taskNode)
-        Dim tokenPathNode As XmlElement = XmlDoc.CreateElement("tokenPath")
-        Dim tokenPathText As XmlText = XmlDoc.CreateTextNode(tokenPath)
-        taskNode.AppendChild(tokenPathNode)
-        tokenPathNode.AppendChild(tokenPathText)
+        'Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("tasks").Item(0)
+        'Dim taskNode As XmlElement = XmlDoc.CreateElement("task")
+        'taskNode.SetAttribute("app_id", Me.AppID)
+        'tasksNode.AppendChild(taskNode)
+        'Dim tokenPathNode As XmlElement = XmlDoc.CreateElement("tokenPath")
+        'Dim tokenPathText As XmlText = XmlDoc.CreateTextNode(tokenPath)
+        'taskNode.AppendChild(tokenPathNode)
+        'tokenPathNode.AppendChild(tokenPathText)
     End Sub
 End Class

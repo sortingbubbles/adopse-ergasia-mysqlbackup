@@ -11,7 +11,7 @@ Public Class MyBoxClient
     Private _tokenPath As String
     Private _code As String
     Sub New(ByVal username As String)
-        Me.AppID = "box"
+        '  Me.AppID = "box"
         _tokenPath = "C:\TEMP\" & username & "\BoxToken.txt"
     End Sub
 
@@ -32,14 +32,14 @@ Public Class MyBoxClient
 
     Public Overrides Sub Save(ByRef XmlDoc As XmlDocument)
         boxContinue()
-        Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("tasks").Item(0)
-        Dim taskNode As XmlElement = XmlDoc.CreateElement("task")
-        taskNode.SetAttribute("app_id", Me.AppID)
-        tasksNode.AppendChild(taskNode)
-        Dim tokenPathNode As XmlElement = XmlDoc.CreateElement("tokenPath")
-        Dim tokenPathText As XmlText = XmlDoc.CreateTextNode(_tokenPath)
-        taskNode.AppendChild(tokenPathNode)
-        tokenPathNode.AppendChild(tokenPathText)
+        'Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("tasks").Item(0)
+        'Dim taskNode As XmlElement = XmlDoc.CreateElement("task")
+        'taskNode.SetAttribute("app_id", Me.AppID)
+        'tasksNode.AppendChild(taskNode)
+        'Dim tokenPathNode As XmlElement = XmlDoc.CreateElement("tokenPath")
+        'Dim tokenPathText As XmlText = XmlDoc.CreateTextNode(_tokenPath)
+        'taskNode.AppendChild(tokenPathNode)
+        'tokenPathNode.AppendChild(tokenPathText)
     End Sub
     'me th me8odo boxContinue metatrepoume to code pou phrame 
     'apo to prohgoumeno bhma kai to metatrepoume se access_token 
