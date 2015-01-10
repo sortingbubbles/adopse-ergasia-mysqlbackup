@@ -182,6 +182,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="MyBox.vb" />
+    <Compile Include="MyDropBox.vb" />
+    <Compile Include="MySFTPClient.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
