@@ -32,7 +32,7 @@ Module Module1
         If sArgs.Length > 0 Then  'elegxoume an yparxoun parametroi
             username = sArgs(0).ToString() 'to username pou tha pername 
             'UnZipMe()
-            Backup()
+            '  Backup()
             ZipBackUpFile()
             MySQLDropbox()
             SendMail()
@@ -49,14 +49,16 @@ Module Module1
     'ston katalogo c:\temp me onoma arxeiou backup
     'kai to timestamp ths dhmiourgeias me format
     'yyyy-mm-dd hh-mm-ss
-    Private Sub Backup()
+    Private Sub Backup(ByVal constring As String, ByVal databasesToBackUp As String)
         ' Dim constring As String = "Server=192.168.6.153;Database=adopse;Uid=mysqlBackup;Pwd=;"
-        Dim constring As String = "Server=192.168.6.153;Uid=mysqlBackup;Pwd=;Database=;"
+        '  Dim constring As String = "Server=192.168.6.153;Uid=mysqlBackup;Pwd=;Database=;"
         Backupfile = "C:\TEMP\backup(" + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ").sql"
         Try
-            Dim databases() As String = Split("databases", ",")
+            Dim databases() As String = Split(databasesToBackUp, ",")
             For Each database As String In databases
-                constring = "Server=192.168.6.153;Uid=mysqlBackup;Pwd=;Database=" + database + ";"
+                constring = constring + database + ";"
+                ' h  constring += database + ";"
+                ' constring = "Server=192.168.6.153;Uid=mysqlBackup;Pwd=;Database=" + database + ";"
                 Backupfile = "C:\TEMP\backup(" + database + "  " + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ").sql"
                 Dim conn As MySqlConnection = New MySqlConnection(constring)
                 Dim cmd As MySqlCommand = New MySqlCommand()
@@ -83,15 +85,15 @@ Module Module1
     'sympiesmenou arxeiou 
     'pou periexei ta backup Files
     'diagrafh olwn twn .sql arxeiwn pou yparxoun ston katalogo 
-    '  C:\TEMP
+    '  C:\TEMP\<username>
     Private Sub ZipBackUpFile()
-        ZippedBackupfile = "C:\TEMP\backup.zip"
+        ZippedBackupfile = "C:\TEMP\" & username & "\backup.zip"
         Try
             Dim zip As ZipFile = New ZipFile()
             zip.AddSelectedFiles("*.sql", "C:\TEMP")
             zip.Save(ZippedBackupfile)
             Dim myFile As String
-            Dim mydir As String = "C:\TEMP"
+            Dim mydir As String = "C:\TEMP\" & username
             For Each myFile In Directory.GetFiles(mydir, "*.sql")
                 'File.Delete(myFile)
                 System.IO.File.Delete(myFile)
@@ -169,19 +171,23 @@ Module Module1
     'Syndesh me to sftp server , dhmiourgeia tou katalogou
     'MySQLBackup kai apostolh tou zipparismenou arxeiou
     'pou periexei tis entoles ths mysql
-    Private Sub MySFTP()
-        Dim url As String = String.Empty
+    Private Sub MySFTP(ByVal url As String, ByVal uname As String, ByVal passwd As String)
+        '  Dim url As String = String.Empty
         Try
-            url = "***********"
-            Dim uname As String = "***********"
-            Dim passwd As String = "**********"
+            'url = "***********"
+            'Dim uname As String = "***********"
+            'Dim passwd As String = "**********"
             'Dim port As Integer = 22
             Dim RemoteDirectory As String = "MySQLBackup"
             Dim sshCp As SshTransferProtocolBase
             sshCp = New Sftp(url, uname)
             sshCp.Password = passwd
             sshCp.Connect()
-            'sshCp.Mkdir(RemoteDirectory)
+            Try
+                sshCp.Mkdir(RemoteDirectory)
+            Catch ex As Exception
+
+            End Try
             sshCp.Put(ZippedBackupfile, RemoteDirectory & "/" & "backup.zip") ''''''''''''''''''''''
             sshCp.Close()
             msg += "File Succesfully Uploaded @ FTP SERVER " & url & " !!!<br/>"
@@ -203,7 +209,7 @@ Module Module1
             Dim config As DropBoxConfiguration = TryCast(CloudStorage.GetCloudConfigurationEasy(nSupportedCloudConfigurations.DropBox), DropBoxConfiguration)
             Dim DropboxStorage As New CloudStorage()
             Dim accessToken As ICloudStorageAccessToken
-            Using fs = System.IO.File.Open("C:\TEMP\DropBoxToken.txt", FileMode.Open, FileAccess.Read, FileShare.None)
+            Using fs = System.IO.File.Open("C:\TEMP\" & username & "DropBoxToken.txt", FileMode.Open, FileAccess.Read, FileShare.None)
                 accessToken = DropboxStorage.DeserializeSecurityToken(fs)
             End Using
             DropboxStorage.Open(config, accessToken)
@@ -228,7 +234,7 @@ Module Module1
     'na anebasoume
     Private Sub MySQLBox()
         Try
-            Dim fileName As String = "C:\TEMP\backup.zip"
+            Dim fileName As String = "C:\TEMP\" & username & "\backup.zip"
             Dim currentFileStream As System.IO.Stream = System.IO.File.Open(fileName, FileMode.Open)
             UploadToBox(fileName, currentFileStream)
             currentFileStream.Close()
@@ -280,11 +286,11 @@ Module Module1
         Dim newToken As BoxApi.V2.Authentication.OAuth2.OAuthToken
         Dim tokenProvider As New TokenProvider(clientID, clientSecret)
         Dim streamReader As StreamReader
-        streamReader = System.IO.File.OpenText("C:\TEMP\BoxToken.txt")
+        streamReader = System.IO.File.OpenText("C:\TEMP\" & username & "\BoxToken.txt")
         oldRefreshToken = streamReader.ReadToEnd()
         streamReader.Close()
         newToken = tokenProvider.RefreshAccessToken(oldRefreshToken)
-        Dim streamWriter As New StreamWriter("C:\TEMP\BoxToken.txt")
+        Dim streamWriter As New StreamWriter("C:\TEMP\" & username & "\BoxToken.txt")
         streamWriter.Write(newToken.RefreshToken)
         streamWriter.Close()
         Return newToken
