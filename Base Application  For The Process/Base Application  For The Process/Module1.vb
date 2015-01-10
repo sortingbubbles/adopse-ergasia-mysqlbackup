@@ -27,7 +27,7 @@ Public Module Module1
     Private msg As String = String.Empty
     Private ZippedBackupfile As String = String.Empty
     Private username As String = String.Empty
-    Private CloudServices As List(Of CloudService)
+    Private CloudServices As List(Of CloudService) = New List(Of CloudService)
     Private email As String
     Private _conString As String
     Private _databases As String
@@ -84,7 +84,9 @@ Public Module Module1
                     GDrive.read(xmlDoc)
                     CloudServices.Add(GDrive)
                 Case "onedrive"
-                    'dimiourgia sftp antikeimenou kai klisi methodou read
+                    Dim oneDRive As ΟneDrive = New ΟneDrive(username)
+                    oneDRive.read(xmlDoc)
+                    CloudServices.Add(oneDRive)
             End Select
         Next
     End Sub
