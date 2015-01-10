@@ -14,7 +14,7 @@ Public Class DropBox
 
 
     Sub New(ByVal username As String)
-        ' Me.AppID = "dropbox"
+        Me.AppID = "dropbox"
         tokenPath = "C:\TEMP\" & username & "\MyDropBoxToken.txt"
     End Sub
 
@@ -36,7 +36,7 @@ Public Class DropBox
     'ta credential tou user kai sth synexeia apo8hkeyoume se ena arxeio 
     'tis plhrofories pou xreiazomaste
     Private Sub saveMyAuth()
-        '  tokenPath = "C:\TEMP\" & & "\MyDropBoxToken.txt"
+        ' tokenPath = "C:\TEMP\" & & "\MyDropBoxToken.txt"
         Dim accessToken As ICloudStorageAccessToken = DropBoxStorageProviderTools.ExchangeDropBoxRequestTokenIntoAccessToken(config, ConsumerKey, ConsumerSecret, requestToken)
         Dim DropboxStorage As New CloudStorage()
         DropboxStorage.Open(config, accessToken)
@@ -47,13 +47,13 @@ Public Class DropBox
 
     Public Overrides Sub Save(ByRef XmlDoc As XmlDocument)
         saveMyAuth()
-        'Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("tasks").Item(0)
-        'Dim taskNode As XmlElement = XmlDoc.CreateElement("task")
-        'taskNode.SetAttribute("app_id", Me.AppID)
-        'tasksNode.AppendChild(taskNode)
-        'Dim tokenPathNode As XmlElement = XmlDoc.CreateElement("tokenPath")
-        'Dim tokenPathText As XmlText = XmlDoc.CreateTextNode(tokenPath)
-        'taskNode.AppendChild(tokenPathNode)
-        'tokenPathNode.AppendChild(tokenPathText)
+        Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("tasks").Item(0)
+        Dim taskNode As XmlElement = XmlDoc.CreateElement("task")
+        taskNode.SetAttribute("id", Me.AppID)
+        tasksNode.AppendChild(taskNode)
+        Dim tokenPathNode As XmlElement = XmlDoc.CreateElement("tokenPath")
+        Dim tokenPathText As XmlText = XmlDoc.CreateTextNode(tokenPath)
+        taskNode.AppendChild(tokenPathNode)
+        tokenPathNode.AppendChild(tokenPathText)
     End Sub
 End Class
