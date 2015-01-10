@@ -22,6 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.FirstTabUsername = New System.Windows.Forms.TextBox()
@@ -44,24 +45,32 @@ Partial Class Form1
         Me.Label7 = New System.Windows.Forms.Label()
         Me.ThirdTab = New System.Windows.Forms.Button()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.DropBoxButton = New System.Windows.Forms.Button()
-        Me.BoxButton = New System.Windows.Forms.Button()
-        Me.SFTPButton = New System.Windows.Forms.Button()
-        Me.OneDriveButton = New System.Windows.Forms.Button()
-        Me.GoogleDriveButton = New System.Windows.Forms.Button()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.FourtTab = New System.Windows.Forms.Button()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
         Me.DaysInterval = New System.Windows.Forms.NumericUpDown()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.CreateTaskAtWTS = New System.Windows.Forms.Button()
+        Me.FifthTab = New System.Windows.Forms.Button()
         Me.SecondsCombo = New System.Windows.Forms.ComboBox()
         Me.MinuteCombo = New System.Windows.Forms.ComboBox()
         Me.HourCombo = New System.Windows.Forms.ComboBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Hour = New System.Windows.Forms.Label()
+        Me.ToolTipDatabases = New System.Windows.Forms.ToolTip(Me.components)
+        Me.ToolTipEmail = New System.Windows.Forms.ToolTip(Me.components)
+        Me.TabPage6 = New System.Windows.Forms.TabPage()
+        Me.GooglePlus = New System.Windows.Forms.Button()
+        Me.Facebook = New System.Windows.Forms.Button()
+        Me.Twitter = New System.Windows.Forms.Button()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.DropBoxButton = New System.Windows.Forms.Button()
+        Me.BoxButton = New System.Windows.Forms.Button()
+        Me.SFTPButton = New System.Windows.Forms.Button()
+        Me.OneDriveButton = New System.Windows.Forms.Button()
+        Me.GoogleDriveButton = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -69,6 +78,7 @@ Partial Class Form1
         Me.TabPage4.SuspendLayout()
         Me.TabPage5.SuspendLayout()
         CType(Me.DaysInterval, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage6.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -79,6 +89,7 @@ Partial Class Form1
         Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Controls.Add(Me.TabPage4)
         Me.TabControl1.Controls.Add(Me.TabPage5)
+        Me.TabControl1.Controls.Add(Me.TabPage6)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
         Me.TabControl1.ItemSize = New System.Drawing.Size(30, 120)
@@ -86,7 +97,7 @@ Partial Class Form1
         Me.TabControl1.Multiline = True
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(371, 267)
+        Me.TabControl1.Size = New System.Drawing.Size(390, 267)
         Me.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.TabControl1.TabIndex = 0
         '
@@ -99,7 +110,7 @@ Partial Class Form1
         Me.TabPage1.Location = New System.Drawing.Point(124, 4)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(243, 259)
+        Me.TabPage1.Size = New System.Drawing.Size(262, 259)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "STEP 1"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -152,7 +163,7 @@ Partial Class Form1
         Me.TabPage2.Location = New System.Drawing.Point(124, 4)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(243, 259)
+        Me.TabPage2.Size = New System.Drawing.Size(262, 259)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "STEP 2"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -222,6 +233,7 @@ Partial Class Form1
         Me.Tab2DataBase.Name = "Tab2DataBase"
         Me.Tab2DataBase.Size = New System.Drawing.Size(100, 20)
         Me.Tab2DataBase.TabIndex = 1
+        Me.ToolTipDatabases.SetToolTip(Me.Tab2DataBase, "Seperate the databases  with a ','")
         '
         'Tab2Server
         '
@@ -239,7 +251,7 @@ Partial Class Form1
         Me.TabPage3.Location = New System.Drawing.Point(124, 4)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(243, 259)
+        Me.TabPage3.Size = New System.Drawing.Size(262, 259)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "STEP 3"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -250,6 +262,7 @@ Partial Class Form1
         Me.Tab3Email.Name = "Tab3Email"
         Me.Tab3Email.Size = New System.Drawing.Size(172, 20)
         Me.Tab3Email.TabIndex = 3
+        Me.ToolTipEmail.SetToolTip(Me.Tab3Email, "Seperate the databases  with a ','")
         '
         'Label8
         '
@@ -290,56 +303,10 @@ Partial Class Form1
         Me.TabPage4.Location = New System.Drawing.Point(124, 4)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(243, 259)
+        Me.TabPage4.Size = New System.Drawing.Size(262, 259)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "STEP 4"
         Me.TabPage4.UseVisualStyleBackColor = True
-        '
-        'DropBoxButton
-        '
-        Me.DropBoxButton.Image = Global.MySQLBackUp.My.Resources.Resources.dropbox
-        Me.DropBoxButton.Location = New System.Drawing.Point(16, 136)
-        Me.DropBoxButton.Name = "DropBoxButton"
-        Me.DropBoxButton.Size = New System.Drawing.Size(54, 50)
-        Me.DropBoxButton.TabIndex = 11
-        Me.DropBoxButton.UseVisualStyleBackColor = True
-        '
-        'BoxButton
-        '
-        Me.BoxButton.Image = Global.MySQLBackUp.My.Resources.Resources.box
-        Me.BoxButton.Location = New System.Drawing.Point(169, 136)
-        Me.BoxButton.Name = "BoxButton"
-        Me.BoxButton.Size = New System.Drawing.Size(56, 50)
-        Me.BoxButton.TabIndex = 10
-        Me.BoxButton.UseVisualStyleBackColor = True
-        '
-        'SFTPButton
-        '
-        Me.SFTPButton.Image = Global.MySQLBackUp.My.Resources.Resources.sftp
-        Me.SFTPButton.Location = New System.Drawing.Point(172, 64)
-        Me.SFTPButton.Name = "SFTPButton"
-        Me.SFTPButton.Size = New System.Drawing.Size(53, 55)
-        Me.SFTPButton.TabIndex = 9
-        Me.SFTPButton.UseVisualStyleBackColor = True
-        '
-        'OneDriveButton
-        '
-        Me.OneDriveButton.Image = Global.MySQLBackUp.My.Resources.Resources.onedrive
-        Me.OneDriveButton.Location = New System.Drawing.Point(90, 64)
-        Me.OneDriveButton.Name = "OneDriveButton"
-        Me.OneDriveButton.Size = New System.Drawing.Size(65, 55)
-        Me.OneDriveButton.TabIndex = 8
-        Me.OneDriveButton.UseVisualStyleBackColor = True
-        '
-        'GoogleDriveButton
-        '
-        Me.GoogleDriveButton.Image = Global.MySQLBackUp.My.Resources.Resources.googledrive
-        Me.GoogleDriveButton.Location = New System.Drawing.Point(16, 64)
-        Me.GoogleDriveButton.Name = "GoogleDriveButton"
-        Me.GoogleDriveButton.Size = New System.Drawing.Size(52, 55)
-        Me.GoogleDriveButton.TabIndex = 7
-        Me.GoogleDriveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.GoogleDriveButton.UseVisualStyleBackColor = True
         '
         'Label9
         '
@@ -364,7 +331,7 @@ Partial Class Form1
         Me.TabPage5.Controls.Add(Me.DaysInterval)
         Me.TabPage5.Controls.Add(Me.Label13)
         Me.TabPage5.Controls.Add(Me.Label10)
-        Me.TabPage5.Controls.Add(Me.CreateTaskAtWTS)
+        Me.TabPage5.Controls.Add(Me.FifthTab)
         Me.TabPage5.Controls.Add(Me.SecondsCombo)
         Me.TabPage5.Controls.Add(Me.MinuteCombo)
         Me.TabPage5.Controls.Add(Me.HourCombo)
@@ -374,7 +341,7 @@ Partial Class Form1
         Me.TabPage5.Location = New System.Drawing.Point(124, 4)
         Me.TabPage5.Name = "TabPage5"
         Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage5.Size = New System.Drawing.Size(243, 259)
+        Me.TabPage5.Size = New System.Drawing.Size(262, 259)
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "STEP5"
         Me.TabPage5.UseVisualStyleBackColor = True
@@ -408,14 +375,14 @@ Partial Class Form1
         Me.Label10.TabIndex = 7
         Me.Label10.Text = "BackUp Every : "
         '
-        'CreateTaskAtWTS
+        'FifthTab
         '
-        Me.CreateTaskAtWTS.Location = New System.Drawing.Point(80, 228)
-        Me.CreateTaskAtWTS.Name = "CreateTaskAtWTS"
-        Me.CreateTaskAtWTS.Size = New System.Drawing.Size(75, 23)
-        Me.CreateTaskAtWTS.TabIndex = 6
-        Me.CreateTaskAtWTS.Text = "Finish"
-        Me.CreateTaskAtWTS.UseVisualStyleBackColor = True
+        Me.FifthTab.Location = New System.Drawing.Point(80, 228)
+        Me.FifthTab.Name = "FifthTab"
+        Me.FifthTab.Size = New System.Drawing.Size(75, 23)
+        Me.FifthTab.TabIndex = 6
+        Me.FifthTab.Text = "Finish"
+        Me.FifthTab.UseVisualStyleBackColor = True
         '
         'SecondsCombo
         '
@@ -468,11 +435,127 @@ Partial Class Form1
         Me.Hour.TabIndex = 0
         Me.Hour.Text = "Hour"
         '
+        'ToolTipDatabases
+        '
+        Me.ToolTipDatabases.ToolTipTitle = "Seperate the databases  with a ','"
+        '
+        'ToolTipEmail
+        '
+        Me.ToolTipEmail.ToolTipTitle = "Seperate the emails  with a ','"
+        '
+        'TabPage6
+        '
+        Me.TabPage6.Controls.Add(Me.Label15)
+        Me.TabPage6.Controls.Add(Me.Label14)
+        Me.TabPage6.Controls.Add(Me.Twitter)
+        Me.TabPage6.Controls.Add(Me.Facebook)
+        Me.TabPage6.Controls.Add(Me.GooglePlus)
+        Me.TabPage6.Location = New System.Drawing.Point(124, 4)
+        Me.TabPage6.Name = "TabPage6"
+        Me.TabPage6.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage6.Size = New System.Drawing.Size(262, 259)
+        Me.TabPage6.TabIndex = 5
+        Me.TabPage6.Text = "TabPage6"
+        Me.TabPage6.UseVisualStyleBackColor = True
+        '
+        'GooglePlus
+        '
+        Me.GooglePlus.Image = Global.MySQLBackUp.My.Resources.Resources.googlePlus
+        Me.GooglePlus.Location = New System.Drawing.Point(45, 98)
+        Me.GooglePlus.Name = "GooglePlus"
+        Me.GooglePlus.Size = New System.Drawing.Size(58, 63)
+        Me.GooglePlus.TabIndex = 0
+        Me.GooglePlus.UseVisualStyleBackColor = True
+        '
+        'Facebook
+        '
+        Me.Facebook.Image = Global.MySQLBackUp.My.Resources.Resources.facebook
+        Me.Facebook.Location = New System.Drawing.Point(151, 98)
+        Me.Facebook.Name = "Facebook"
+        Me.Facebook.Size = New System.Drawing.Size(62, 62)
+        Me.Facebook.TabIndex = 1
+        Me.Facebook.UseVisualStyleBackColor = True
+        '
+        'Twitter
+        '
+        Me.Twitter.Image = Global.MySQLBackUp.My.Resources.Resources.twitter
+        Me.Twitter.Location = New System.Drawing.Point(96, 177)
+        Me.Twitter.Name = "Twitter"
+        Me.Twitter.Size = New System.Drawing.Size(57, 59)
+        Me.Twitter.TabIndex = 2
+        Me.Twitter.UseVisualStyleBackColor = True
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Monotype Corsiva", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.Label14.Location = New System.Drawing.Point(71, 21)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(98, 18)
+        Me.Label14.TabIndex = 3
+        Me.Label14.Text = "Task Created !!!"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Monotype Corsiva", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.Label15.Location = New System.Drawing.Point(48, 61)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(133, 25)
+        Me.Label15.TabIndex = 4
+        Me.Label15.Text = "Find  us  on  :"
+        '
+        'DropBoxButton
+        '
+        Me.DropBoxButton.Image = Global.MySQLBackUp.My.Resources.Resources.dropbox
+        Me.DropBoxButton.Location = New System.Drawing.Point(16, 136)
+        Me.DropBoxButton.Name = "DropBoxButton"
+        Me.DropBoxButton.Size = New System.Drawing.Size(54, 50)
+        Me.DropBoxButton.TabIndex = 11
+        Me.DropBoxButton.UseVisualStyleBackColor = True
+        '
+        'BoxButton
+        '
+        Me.BoxButton.Image = Global.MySQLBackUp.My.Resources.Resources.box
+        Me.BoxButton.Location = New System.Drawing.Point(169, 136)
+        Me.BoxButton.Name = "BoxButton"
+        Me.BoxButton.Size = New System.Drawing.Size(56, 50)
+        Me.BoxButton.TabIndex = 10
+        Me.BoxButton.UseVisualStyleBackColor = True
+        '
+        'SFTPButton
+        '
+        Me.SFTPButton.Image = Global.MySQLBackUp.My.Resources.Resources.sftp
+        Me.SFTPButton.Location = New System.Drawing.Point(172, 64)
+        Me.SFTPButton.Name = "SFTPButton"
+        Me.SFTPButton.Size = New System.Drawing.Size(53, 55)
+        Me.SFTPButton.TabIndex = 9
+        Me.SFTPButton.UseVisualStyleBackColor = True
+        '
+        'OneDriveButton
+        '
+        Me.OneDriveButton.Image = Global.MySQLBackUp.My.Resources.Resources.onedrive
+        Me.OneDriveButton.Location = New System.Drawing.Point(90, 64)
+        Me.OneDriveButton.Name = "OneDriveButton"
+        Me.OneDriveButton.Size = New System.Drawing.Size(65, 55)
+        Me.OneDriveButton.TabIndex = 8
+        Me.OneDriveButton.UseVisualStyleBackColor = True
+        '
+        'GoogleDriveButton
+        '
+        Me.GoogleDriveButton.Image = Global.MySQLBackUp.My.Resources.Resources.googledrive
+        Me.GoogleDriveButton.Location = New System.Drawing.Point(16, 64)
+        Me.GoogleDriveButton.Name = "GoogleDriveButton"
+        Me.GoogleDriveButton.Size = New System.Drawing.Size(52, 55)
+        Me.GoogleDriveButton.TabIndex = 7
+        Me.GoogleDriveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.GoogleDriveButton.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(371, 267)
+        Me.ClientSize = New System.Drawing.Size(390, 267)
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "Form1"
         Me.Text = "MySQLBackUp"
@@ -488,6 +571,8 @@ Partial Class Form1
         Me.TabPage5.ResumeLayout(False)
         Me.TabPage5.PerformLayout()
         CType(Me.DaysInterval, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage6.ResumeLayout(False)
+        Me.TabPage6.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -516,7 +601,7 @@ Partial Class Form1
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents FourtTab As System.Windows.Forms.Button
     Friend WithEvents TabPage5 As System.Windows.Forms.TabPage
-    Friend WithEvents CreateTaskAtWTS As System.Windows.Forms.Button
+    Friend WithEvents FifthTab As System.Windows.Forms.Button
     Friend WithEvents SecondsCombo As System.Windows.Forms.ComboBox
     Friend WithEvents MinuteCombo As System.Windows.Forms.ComboBox
     Friend WithEvents HourCombo As System.Windows.Forms.ComboBox
@@ -531,5 +616,13 @@ Partial Class Form1
     Friend WithEvents DaysInterval As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents ToolTipDatabases As System.Windows.Forms.ToolTip
+    Friend WithEvents ToolTipEmail As System.Windows.Forms.ToolTip
+    Friend WithEvents TabPage6 As System.Windows.Forms.TabPage
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents Twitter As System.Windows.Forms.Button
+    Friend WithEvents Facebook As System.Windows.Forms.Button
+    Friend WithEvents GooglePlus As System.Windows.Forms.Button
 
 End Class

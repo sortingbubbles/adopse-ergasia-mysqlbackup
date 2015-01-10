@@ -79,11 +79,15 @@ Public Class Form1
 
     Private Sub FirstTab_Click(sender As Object, e As EventArgs) Handles FirstTab.Click
         username = FirstTabUsername.Text
-        My.Computer.FileSystem.CreateDirectory("C:\TEMP\" & username)
-        xmlDocument = createXmlDoc()
-        TabControl1.TabPages("TabPage2").Enabled = True
-        TabControl1.TabPages("TabPage1").Enabled = False
-        TabControl1.SelectedTab = TabControl1.TabPages("TabPage2")
+        If My.Computer.FileSystem.FileExists("C:\TEMP\" & username & ".zip") Then
+            MessageBox.Show("Enter a different username !!")
+        Else
+            My.Computer.FileSystem.CreateDirectory("C:\TEMP\" & username)
+            xmlDocument = createXmlDoc()
+            TabControl1.TabPages("TabPage2").Enabled = True
+            TabControl1.TabPages("TabPage1").Enabled = False
+            TabControl1.SelectedTab = TabControl1.TabPages("TabPage2")
+        End If
     End Sub
 
     Private Sub SecondTab_Click(sender As Object, e As EventArgs) Handles SecondTab.Click
@@ -192,7 +196,13 @@ Public Class Form1
     End Sub
 #End Region
 
-    Private Sub CreateTaskAtWTS_Click(sender As Object, e As EventArgs) Handles CreateTaskAtWTS.Click
+    Private Sub FifthTab_Click(sender As Object, e As EventArgs) Handles FifthTab.Click
+        CreateTaskAtWTS()
+        TabControl1.TabPages("TabPage5").Enabled = False
+        TabControl1.TabPages("TabPage6").Enabled = True
+        TabControl1.SelectedTab = TabControl1.TabPages("TabPage6")
+    End Sub
+    Private Sub CreateTaskAtWTS()
         Dim strtime As String = " " & HourCombo.SelectedItem.ToString & ":" & MinuteCombo.SelectedItem.ToString & ":" & SecondsCombo.SelectedItem.ToString
         Using ts As New TaskService()
             Dim td As TaskDefinition = ts.NewTask()
@@ -213,8 +223,6 @@ Public Class Form1
 
         End Using
         'ZipMe() '' na to energopoihsw sto telos
-        MessageBox.Show("Task Created!!!")
-        Me.Close()
     End Sub
 
     'Zip for data protection
@@ -231,6 +239,17 @@ Public Class Form1
 
     End Sub
 
+    Private Sub GooglePlus_Click(sender As Object, e As EventArgs) Handles GooglePlus.Click
+        Process.Start("") 'na balw
+    End Sub
+
+    Private Sub Facebook_Click(sender As Object, e As EventArgs) Handles Facebook.Click
+        Process.Start("https://www.facebook.com/mysqlbackupgr")
+    End Sub
+
+    Private Sub Twitter_Click(sender As Object, e As EventArgs) Handles Twitter.Click
+        Process.Start("") 'na balw
+    End Sub
 End Class
 
 
