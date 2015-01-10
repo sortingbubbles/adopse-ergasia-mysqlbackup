@@ -17,7 +17,7 @@ Public Class GoogleDrive
 
     Private CLIENT_ID As String = "*******************************************************"
     Private CLIENT_SECRET As String = "************************"
-    Private APP_USER_AGENT As String = "Drive API Sample"
+    Private APP_USER_AGENT As String = "MySQLBackUpGr"
     Private SCOPES As String() = New String() {DriveService.Scope.Drive}
 
     'Domitis. Me tin dimiourgeia tou antikeimenou pernountai san parametroi
@@ -31,14 +31,11 @@ Public Class GoogleDrive
 
 
 #Region "Utilities methods"
+
     'Voithitiki methodos tis MySQLGoogleDrive i opoia kanei to authorization
     'kai epistrefei antikeimeno tupou DriveService me to opoio 
     'mporoume na diaxiristoume to Google Drive
     Private Function getGoogleDriveService() As DriveService
-        Dim CLIENT_ID As String = "**********************************************"
-        Dim CLIENT_SECRET As String = "************************"
-        Dim APP_USER_AGENT As String = "Drive API Sample"
-        Dim SCOPES As String() = New String() {DriveService.Scope.Drive}
         Dim credential As UserCredential = GoogleWebAuthorizationBroker.AuthorizeAsync(New ClientSecrets() With { _
                 .ClientId = CLIENT_ID, _
                 .ClientSecret = CLIENT_SECRET _
@@ -68,8 +65,8 @@ Public Class GoogleDrive
 
     Private Sub DeleteFile(ByVal service As DriveService, ByVal fileId As String)
         service.Files.Delete(fileId).Execute()
-        Console.WriteLine(("An error occurred: " + e.Message))
     End Sub
+
 #End Region
 
 
@@ -84,7 +81,7 @@ Public Class GoogleDrive
         DeleteFilesFromFolder(service, folderID)
         Dim body As New File()
         body.Title = "Backup.zip"
-        body.Description = "MySQLBackup file"
+        body.Description = "MySQLBackUpGr file"
         body.MimeType = "application/zip"
 
         Dim newParent As ParentReference = New ParentReference
