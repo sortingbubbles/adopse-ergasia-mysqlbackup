@@ -9,7 +9,6 @@ Public Class MyDropBox
     Private _username As String = String.Empty
     Private msg As String = String.Empty
     Private tokenPath As String = String.Empty
-    Private AppID As String = String.Empty
     Sub New(ByVal username As String)
         _username = username
         Me.AppID = "dropbox"
