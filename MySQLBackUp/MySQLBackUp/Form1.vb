@@ -15,7 +15,7 @@ Public Class Form1
     Private Minutes(60) As String
     Private Seconds(60) As String
     Private Cloudservice As Boolean
-    Private databasesCount As Integer = 0
+    Private databasesCount As Boolean = False
     '8etei stous antistoixous pinakes ta lepta kai ta deyterolepta 
     'apo 0-9
     Private Sub fillMyfirstMinutesSeconds()
@@ -94,7 +94,7 @@ Public Class Form1
     End Sub
 
     Private Sub SecondTab_Click(sender As Object, e As EventArgs) Handles SecondTab.Click
-        If databasesCount = 4 Then
+        If databasesCount Then
             If DatabasesCheckedListBox.CheckedItems.Count > 0 Then
                 Dim databases As String = String.Empty
                 ' Dim constring As String = "Server=192.168.6.153;Database=adopse;Uid=mysqlBackup;Pwd=;"
@@ -146,25 +146,15 @@ Public Class Form1
         TabControl1.TabPages("TabPage6").Enabled = True
         TabControl1.SelectedTab = TabControl1.TabPages("TabPage6")
     End Sub
-    Private Sub Tab2Server_Validated(sender As Object, e As EventArgs) Handles Tab2Server.Validated
-        databasesCount += 1
-        If databasesCount = 3 Then
+    Private Sub ShowDB_Click(sender As Object, e As EventArgs) Handles ShowDB.Click
+        If (String.IsNullOrEmpty(Tab2Server.Text)) And (String.IsNullOrEmpty(Tab2Uid.Text)) And (String.IsNullOrEmpty(Tab2Pwd.Text)) Then
             ShowDatabases()
+            databasesCount = True
+        Else
+            MessageBox.Show("Please Fill TextBoxes Server,Username,Password To Continue")
         End If
     End Sub
-    Private Sub Tab2Uid_Validated(sender As Object, e As EventArgs) Handles Tab2Uid.Validated
-        databasesCount += 1
-        If databasesCount = 3 Then
-            ShowDatabases()
-        End If
-    End Sub
-
-    Private Sub Tab2Pwd_Validated(sender As Object, e As EventArgs) Handles Tab2Pwd.Validated
-        databasesCount += 1
-        If databasesCount = 3 Then
-            ShowDatabases()
-        End If
-    End Sub
+    
 #Region "Call auth classes and add @ CloudeServices List"
     Private Sub GoogleDriveButton_Click(sender As Object, e As EventArgs) Handles GoogleDriveButton.Click
         Dim GDrive As GoogleDrive = New GoogleDrive(username)
@@ -271,7 +261,7 @@ Public Class Form1
         My.Computer.FileSystem.DeleteDirectory(Userfolder, FileIO.DeleteDirectoryOption.DeleteAllContents)
 
     End Sub
-
+#Region "Social Media"
     Private Sub GooglePlus_Click(sender As Object, e As EventArgs) Handles GooglePlus.Click
         Process.Start("https://plus.google.com/100757218376615905273/about")
     End Sub
@@ -283,7 +273,7 @@ Public Class Form1
     Private Sub Twitter_Click(sender As Object, e As EventArgs) Handles Twitter.Click
         Process.Start("https://twitter.com/mysqlbackupgr")
     End Sub
-
+#End Region
     'syndesh me th bash me ta creds pou edwse o xrhsths 
     'kai sth synexeia an den yparxei la8os 8a emfanizei 
     ' se ena CheckedListBox tis baseis pou yparxoun
@@ -305,7 +295,6 @@ Public Class Form1
         For Each _row As DataRow In dt.Rows
             DatabasesCheckedListBox.Items.Add(_row(0))
         Next _row
-        databasesCount += 1
     End Sub
 End Class
 

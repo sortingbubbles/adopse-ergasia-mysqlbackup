@@ -72,6 +72,7 @@ Partial Class Form1
         Me.Facebook = New System.Windows.Forms.Button()
         Me.GooglePlus = New System.Windows.Forms.Button()
         Me.ToolTipEmail = New System.Windows.Forms.ToolTip(Me.components)
+        Me.ShowDB = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -152,6 +153,7 @@ Partial Class Form1
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.ShowDB)
         Me.TabPage2.Controls.Add(Me.DatabasesCheckedListBox)
         Me.TabPage2.Controls.Add(Me.Label16)
         Me.TabPage2.Controls.Add(Me.SecondTab)
@@ -560,6 +562,15 @@ Partial Class Form1
         '
         Me.ToolTipEmail.ToolTipTitle = "Seperate the emails  with a ','"
         '
+        'ShowDB
+        '
+        Me.ShowDB.Location = New System.Drawing.Point(266, 105)
+        Me.ShowDB.Name = "ShowDB"
+        Me.ShowDB.Size = New System.Drawing.Size(56, 23)
+        Me.ShowDB.TabIndex = 11
+        Me.ShowDB.Text = "Show Databases"
+        Me.ShowDB.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -634,5 +645,6 @@ Partial Class Form1
     Friend WithEvents GooglePlus As System.Windows.Forms.Button
     Friend WithEvents Label16 As System.Windows.Forms.Label
     Friend WithEvents DatabasesCheckedListBox As System.Windows.Forms.CheckedListBox
+    Friend WithEvents ShowDB As System.Windows.Forms.Button
 
 End Class
