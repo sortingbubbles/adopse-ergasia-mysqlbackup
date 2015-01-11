@@ -18,7 +18,7 @@ Public Class MyDropBox
         tokenPath = taskNode.ChildNodes.Item(0).InnerText
     End Sub
 
-    Public Overrides Function upload(filePath As String) As String
+    Public Overrides Function upload(ByVal filePath As String) As String
         Return MySQLDropbox(filePath)
         '  Module1.addToMail(msg)
     End Function
