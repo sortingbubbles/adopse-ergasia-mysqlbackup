@@ -50,9 +50,9 @@ Public Module Module1
     'pou ylopoioyn thn CloudService kai ta 
     'pros8etei sto msg poy 8a apostalei
     'ston xrhsth
-    Public Sub addToMail(ByVal _msg As String)
-        msg += _msg
-    End Sub
+    'Public Sub addToMail(ByVal _msg As String)
+    '    msg += _msg
+    'End Sub
     Private Sub readXMLDoc(ByVal path As String)
         '
         Dim xmlDoc As XmlDocument = New XmlDocument()
@@ -90,10 +90,15 @@ Public Module Module1
             End Select
         Next
     End Sub
-
+    'h me8odos sthn opoia kaleitai h
+    'antistoixh me8odos gia na ginei upload to arxeio
+    'kai epistrefontai ta success/error messages apo 
+    'tis klaseis pou ylopoioyn thn CloudService kai ta 
+    'pros8etei sto msg poy 8a apostalei
+    'ston xrhsth
     Private Sub uploadBackUpFile()
         For Each service As CloudService In CloudServices
-            service.upload(ZippedBackupfile)
+            msg +=service.upload(ZippedBackupfile)
         Next
     End Sub
 

@@ -18,14 +18,15 @@ Public Class MyDropBox
         tokenPath = taskNode.ChildNodes.Item(0).InnerText
     End Sub
 
-    Public Overrides Sub upload(filePath As String)
-        MySQLDropbox(filePath)
+    Public Overrides Function upload(filePath As String) As String
+        Return MySQLDropbox(filePath)
         '  Module1.addToMail(msg)
-    End Sub
+    End Function
     'Apostolh tou zip arxeiou pou periexei to backup ston
     'logariasmo tou xrhsth ston katalogo "MySQLBackUp"
     'ka8ws kai thn diagrafh prohgoumenou backup
-    Private Sub MySQLDropbox(ByVal ZippedBackupfile As String)
+    Private Function MySQLDropbox(ByVal ZippedBackupfile As String) As String
+        Dim Msg As String = String.Empty
         Try
             Dim config As DropBoxConfiguration = TryCast(CloudStorage.GetCloudConfigurationEasy(nSupportedCloudConfigurations.DropBox), DropBoxConfiguration)
             Dim DropboxStorage As New CloudStorage()
@@ -39,10 +40,11 @@ Public Class MyDropBox
             DropboxStorage.CreateFolder("/MySQLBackUp")
             DropboxStorage.UploadFile(ZippedBackupfile, "/MySQLBackUp")
             DropboxStorage.Close()
-            msg += "File Succesfully Uploaded @ DropBox !!!<br/>"
+            Msg += "File Succesfully Uploaded @ DropBox !!!<br/>"
         Catch ex As Exception
-            msg += "!!!!!!!!!!ERROR @ FILE Uploaded @ DropBox !!!!<br>"
-            msg += ex.Message & "<br/>"
+            Msg += "!!!!!!!!!!ERROR @ FILE Uploaded @ DropBox !!!!<br>"
+            Msg += ex.Message & "<br/>"
         End Try
-    End Sub
+        Return Msg
+    End Function
 End Class

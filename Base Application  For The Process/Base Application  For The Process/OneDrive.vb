@@ -7,7 +7,6 @@ Public Class ΟneDrive
     Inherits CloudService
     Private refreshTokenPath As String = String.Empty
     Private authCodePath As String = String.Empty
-    Private msg As String = String.Empty
     Private userName As String
 
     Sub New(ByVal username As String)
@@ -21,7 +20,8 @@ Public Class ΟneDrive
 
     End Sub
 
-    Public Overrides Sub upload(filePath As String)
+    Public Overrides Function upload(filePath As String) As String
+        Dim Msg As String = String.Empty
         Try
             'Αποθήκευση του αναγνωριστικού του φακέλου στον οποίο θέλουμε να ανεβεί το αρχείο backup.zip
             'Σε περίπτωση που δεν υπάρχει, επιστρέφει κενό String ("")
@@ -44,13 +44,13 @@ Public Class ΟneDrive
                 client.UploadDataAsync(New Uri(url), "PUT", System.IO.File.ReadAllBytes(filePath))
                 client.GetType()
             End Using
-            msg += "File Succesfully Uploaded @ OneDrive !!!<br/>"
+            Msg += "File Succesfully Uploaded @ OneDrive !!!<br/>"
         Catch ex As Exception
-            msg += "!!!!!!!!!!ERROR @ FILE Uploaded @ OneDrive !!!!<br>"
-            msg += ex.Message & "<br/>"
+            Msg += "!!!!!!!!!!ERROR @ FILE Uploaded @ OneDrive !!!!<br>"
+            Msg += ex.Message & "<br/>"
         End Try
-        Module1.addToMail(msg)
-    End Sub
+        Return Msg
+    End Function
 
 
 

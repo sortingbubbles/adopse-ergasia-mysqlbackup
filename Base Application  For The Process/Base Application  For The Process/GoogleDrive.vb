@@ -76,24 +76,33 @@ Public Class GoogleDrive
         folderID = folderIDNode.InnerText
     End Sub
 
-    Public Overrides Sub upload(filePath As String)
-        Dim service As DriveService = getGoogleDriveService()
-        DeleteFilesFromFolder(service, folderID)
-        Dim body As New File()
-        body.Title = "Backup.zip"
-        body.Description = "MySQLBackUpGr backup file"
-        body.MimeType = "application/zip"
+    Public Overrides Function upload(filePath As String) As String
+        Dim Msg As String = String.Empty
+        Try
+            Dim service As DriveService = getGoogleDriveService()
+            DeleteFilesFromFolder(service, folderID)
+            Dim body As New File()
+            body.Title = "Backup.zip"
+            body.Description = "MySQLBackUpGr backup file"
+            body.MimeType = "application/zip"
 
-        Dim newParent As ParentReference = New ParentReference
-        newParent.Id = folderID
+            Dim newParent As ParentReference = New ParentReference
+            newParent.Id = folderID
 
-        body.Parents = {newParent}
+            body.Parents = {newParent}
 
-        Dim byteArray As Byte() = System.IO.File.ReadAllBytes(filePath)
-        Dim stream As New System.IO.MemoryStream(byteArray)
-        Dim request As FilesResource.InsertMediaUpload = service.Files.Insert(body, stream, "application/zip")
-        request.Upload()
+            Dim byteArray As Byte() = System.IO.File.ReadAllBytes(filePath)
+            Dim stream As New System.IO.MemoryStream(byteArray)
+            Dim request As FilesResource.InsertMediaUpload = service.Files.Insert(body, stream, "application/zip")
+            request.Upload()
 
-        Dim file As File = request.ResponseBody
-    End Sub
+            Dim file As File = request.ResponseBody
+            Msg += "File Succesfully Uploaded @ Google Drive !!!<br/>"
+        Catch ex As Exception
+            Msg += "!!!!!!!!!!ERROR @ FILE Uploaded @ Google Drive !!!!<br>"
+            Msg += ex.Message & "<br/>"
+
+        End Try
+        Return Msg
+    End Function
 End Class

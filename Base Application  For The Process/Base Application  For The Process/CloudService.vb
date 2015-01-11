@@ -2,16 +2,7 @@
 
 Public MustInherit Class CloudService
     Private _appID As String
-    Private _msg As String = String.Empty
 
-    Property Msg() As String
-        Get
-            Return _msg
-        End Get
-        Set(value As String)
-            _msg = value
-        End Set
-    End Property
     Property AppID() As String
         Get
             Return _appID
@@ -25,6 +16,6 @@ Public MustInherit Class CloudService
     Public MustOverride Sub read(ByRef XmlDoc As XmlDocument)
 
     'Anevasma arxeiou pou vriskete stin thesi filePath
-    Public MustOverride Sub upload(ByVal filePath As String)
+    Public MustOverride Function upload(ByVal filePath As String) As String
 
 End Class

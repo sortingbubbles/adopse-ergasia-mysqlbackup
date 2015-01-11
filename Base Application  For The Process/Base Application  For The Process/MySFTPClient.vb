@@ -16,15 +16,15 @@ Public Class MySFTPClient
         url = XmlDoc.GetElementsByTagName("url").Item(0).InnerText
     End Sub
 
-    Public Overrides Sub upload(filePath As String)
-        MySFTP(filePath)
-        'Module1.addToMail(msg)
-    End Sub
+    Public Overrides Function upload(filePath As String) As String
+        Return MySFTP(filePath)
+        'Module1.addToMail(Msg)
+    End Function
     'Syndesh me to sftp server , dhmiourgeia tou katalogou
     'MySQLBackup kai apostolh tou zipparismenou arxeiou
     'pou periexei tis entoles ths mysql
-    Private Sub MySFTP(ByVal ZippedBackupfile As String)
-        '  Dim url As String = String.Empty
+    Private Function MySFTP(ByVal ZippedBackupfile As String) As String
+        Dim Msg As String = String.Empty
         Try
             'url = "***********"
             'Dim uname As String = "***********"
@@ -42,10 +42,11 @@ Public Class MySFTPClient
             End Try
             sshCp.Put(ZippedBackupfile, RemoteDirectory & "/" & "backup.zip") ''''''''''''''''''''''
             sshCp.Close()
-            msg += "File Succesfully Uploaded @ FTP SERVER " & url & " !!!<br/>"
+            Msg += "File Succesfully Uploaded @ FTP SERVER " & url & " !!!<br/>"
         Catch ex As Exception
-            msg += "!!!!!!!!!!ERROR @ FILE Uploaded @ FTP SERVER " & url & "!!!!<br>"
-            msg += ex.Message & "<br/>"
+            Msg += "!!!!!!!!!!ERROR @ FILE Uploaded @ FTP SERVER " & url & "!!!!<br>"
+            Msg += ex.Message & "<br/>"
         End Try
-    End Sub
+        Return Msg
+    End Function
 End Class

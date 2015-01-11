@@ -19,25 +19,26 @@ Public Class MyBox
         tokenPath = taskNode.ChildNodes.Item(0).InnerText
     End Sub
 
-    Public Overrides Sub upload(filePath As String)
-        MySQLBox(filePath)
+    Public Overrides Function upload(filePath As String) As String
+        Return MySQLBox(filePath)
         'Module1.addToMail(msg)
-    End Sub
+    End Function
     'h me8odos pou ekkinei th diadikasia tou upload sto box.com
     'opou metatrepoume se System.IO.Stream to arxeio pou 8eloume 
     'na anebasoume
-    Private Sub MySQLBox(ByVal fileName As String)
+    Private Function MySQLBox(ByVal fileName As String) As String
+        Dim Msg As String = String.Empty
         Try
-            ' Dim fileName As String = "C:\TEMP\" & _username & "\backup.zip"
             Dim currentFileStream As System.IO.Stream = System.IO.File.Open(fileName, FileMode.Open)
             UploadToBox(fileName, currentFileStream)
             currentFileStream.Close()
-            msg += "File Succesfully Uploaded @ Box !!!<br/>"
+            Msg += "File Succesfully Uploaded @ Box !!!<br/>"
         Catch ex As Exception
-            msg += "!!!!!!!!!!ERROR @ FILE Uploaded @ Box !!!!<br>"
-            msg += ex.Message & "<br/>"
+            Msg += "!!!!!!!!!!ERROR @ FILE Uploaded @ Box !!!!<br>"
+            Msg += ex.Message & "<br/>"
         End Try
-    End Sub
+        Return Msg
+    End Function
 
     'h basikh me8odos me thn opoia ginetai to upload
     'tou zipped backup file sto box.com ston katalogo MySQLBackUp
