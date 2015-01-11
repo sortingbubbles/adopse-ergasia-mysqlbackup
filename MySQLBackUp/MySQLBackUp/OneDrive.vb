@@ -2,8 +2,8 @@ Imports System.Xml
 
 Public Class OneDrive
     Inherits CloudService
-    Private clientID As String = "0000000040139D3E" ' client id της εφαρμογής
-    Private clientSecret As String = "qkMMeEhpLbM5GAfVJRWVPfo9PzuIjEGD" ' client secret της εφαρμογής
+    Private clientID As String = "********************" ' client id της εφαρμογής
+    Private clientSecret As String = "**************************" ' client secret της εφαρμογής
     'Φυλλομετρητής που εμφανίζεται για την ταυτοποίηση του χρήστη
     Private userName As String
     Private oneDriveBrowser As OneDriveBrowser
