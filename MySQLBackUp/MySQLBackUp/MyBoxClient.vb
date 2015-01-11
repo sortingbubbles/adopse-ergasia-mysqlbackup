@@ -5,6 +5,7 @@ Imports System.Collections.Specialized
 Imports System.Net
 Imports System.Text
 Imports System.IO
+Imports System.Threading
 
 Public Class MyBoxClient
     Inherits CloudService
@@ -25,6 +26,7 @@ Public Class MyBoxClient
     End Property
 
     Public Overrides Sub Authenticate()
+
         Dim br As New BoxAuth(Me)
         br.wb.Url = New Uri("https://app.box.com/api/oauth2/authorize?response_type=code&client_id=0sl2q9wxpjq6cun6khctch1sg0g86g2u")
         br.ShowDialog()

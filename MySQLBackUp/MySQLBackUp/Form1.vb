@@ -4,6 +4,14 @@ Imports Microsoft.Win32.TaskScheduler
 Imports System.Xml
 Imports Ionic.Zip
 Imports MySql.Data.MySqlClient
+Imports System.Threading
+Imports Google.Apis.Drive.v2
+Imports Google.Apis.Auth.OAuth2
+Imports Google.Apis.Auth.OAuth2.ComputeCredential
+Imports Google.Apis.Util.Store
+Imports Google
+Imports Google.Apis.Drive.v2.Data
+Imports Google.Apis.Services
 
 #End Region
 Public Class Form1
@@ -148,7 +156,7 @@ Public Class Form1
         TabControl1.SelectedTab = TabControl1.TabPages("TabPage6")
     End Sub
     Private Sub ShowDB_Click(sender As Object, e As EventArgs) Handles ShowDB.Click
-        If (String.IsNullOrEmpty(Tab2Server.Text)) And (String.IsNullOrEmpty(Tab2Uid.Text)) And (String.IsNullOrEmpty(Tab2Pwd.Text)) Then
+        If Not (String.IsNullOrEmpty(Tab2Server.Text)) And (String.IsNullOrEmpty(Tab2Uid.Text)) And (String.IsNullOrEmpty(Tab2Pwd.Text)) Then
             ShowDatabases()
             databasesCount = True
         Else
@@ -156,12 +164,24 @@ Public Class Form1
         End If
     End Sub
 
-#Region "Call auth classes and add @ CloudeServices List"
-    Private Sub GoogleDriveButton_Click(sender As Object, e As EventArgs) Handles GoogleDriveButton.Click
+    Private Sub gplus()
         Dim GDrive As GoogleDrive = New GoogleDrive(username)
         GDrive.Authenticate()
-        CloudServices.Add(GDrive)
-        Cloudservice = True
+        ' CloudServices.Add(GDrive)
+        GDrive.Save(xmlDocument)
+    End Sub
+#Region "Call auth classes and add @ CloudeServices List"
+    Private Sub GoogleDriveButton_Click(sender As Object, e As EventArgs) Handles GoogleDriveButton.Click
+        'Dim onedrivethread As Thread = New Thread(New ThreadStart(AddressOf gplus))
+        'onedrivethread.SetApartmentState(ApartmentState.STA)
+        'onedrivethread.Start()
+
+        '  Dim GDrive As GoogleDrive = New GoogleDrive(username)
+        'GDrive.Authenticate()
+        'CloudServices.Add(GDrive)
+        'GDrive.Save(xmlDocument)
+        'Cloudservice = True
+
         GoogleDriveButton.Enabled = False
     End Sub
 
@@ -188,13 +208,24 @@ Public Class Form1
         Cloudservice = True
         DropBoxButton.Enabled = False
     End Sub
-
-    Private Sub BoxButton_Click(sender As Object, e As EventArgs) Handles BoxButton.Click
+    Private Sub BoxHelp()
         Dim box As MyBoxClient = New MyBoxClient(username)
         box.Authenticate()
         CloudServices.Add(box)
         Cloudservice = True
+    End Sub
+    Private Sub BoxButton_Click(sender As Object, e As EventArgs) Handles BoxButton.Click
+
+        Dim onedrivethread As Thread = New Thread(New ThreadStart(AddressOf BoxHelp))
+        onedrivethread.SetApartmentState(ApartmentState.STA)
+        onedrivethread.Start()
         BoxButton.Enabled = False
+
+        'Dim box As MyBoxClient = New MyBoxClient(username)
+        'box.Authenticate()
+        'CloudServices.Add(box)
+        'Cloudservice = True
+        'BoxButton.Enabled = False
     End Sub
 #End Region
 #End Region
@@ -297,6 +328,9 @@ Public Class Form1
             DatabasesCheckedListBox.Items.Add(_row(0))
         Next _row
     End Sub
+
+
+
 End Class
 
 

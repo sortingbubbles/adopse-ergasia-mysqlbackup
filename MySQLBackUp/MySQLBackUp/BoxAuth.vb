@@ -4,12 +4,13 @@ Imports System.Collections.Specialized
 Imports System.Net
 Imports System.Text
 Imports System.IO
+Imports System.Xml
 Public Class BoxAuth
-    'Private tokenPath As String
+    Private tokenPath As String
+    Private xmlD As XmlDocument
     Private _MyBoxClient As MyBoxClient
-    Public Sub New(ByVal MBox As MyBoxClient)
+    Public Sub New(ByRef MBox As MyBoxClient)
         InitializeComponent()
-        '    tokenPath = value
         _MyBoxClient = MBox
     End Sub
     '''''''START OF TAKING THE TOKEN
@@ -22,17 +23,17 @@ Public Class BoxAuth
             Dim parms As NameValueCollection = HttpUtility.ParseQueryString(e.Url.Query)
             If (parms.AllKeys.Contains("error")) Then
                 MessageBox.Show("ERROR")
-                Else
-                'boxContinue(parms("code"))
+            Else
+                ' boxContinue(parms("code"))
                 _MyBoxClient.Code = parms("code")
             End If
             Me.Close()
         End If
     End Sub
-    ''me th me8odo boxContinue metatrepoume to code pou phrame 
-    ''apo to prohgoumeno bhma kai to metatrepoume se access_token 
-    ''kai se refresh_token ta opoia 8a xrhsimopoih8oun gia 
-    ''thn syndesh sto box 
+    'me th me8odo boxContinue metatrepoume to code pou phrame 
+    'apo to prohgoumeno bhma kai to metatrepoume se access_token 
+    'kai se refresh_token ta opoia 8a xrhsimopoih8oun gia 
+    'thn syndesh sto box 
     'Public Sub boxContinue(code As String)
     '    Dim BoxClientId As String = "*************************" '''''''''''''''''''''
     '    Dim BoxSecret As String = "***************************" '''''''''''''''''''''
@@ -50,7 +51,8 @@ Public Class BoxAuth
     '    Dim info As Byte() = New UTF8Encoding(True).GetBytes(access_token & vbCrLf & refresh_token)
     '    fs.Write(info, 0, info.Length)
     '    fs.Close()
-    '    Me.Close()
+
+    '    ' Me.Close()
     'End Sub
 
     'Private Function postToUrl(url As String, data As String) As String
@@ -69,5 +71,5 @@ Public Class BoxAuth
     '    results = reader.ReadToEnd()
     '    Return results
     'End Function
-    '''''''END OF TAKING THE TOKEN
+    ' '''''''END OF TAKING THE TOKEN
 End Class

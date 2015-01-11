@@ -45,14 +45,16 @@ Public Class GoogleDrive
     'kai epistrefei antikeimeno tupou DriveService me to opoio 
     'mporoume na diaxiristoume to Google Drive
     Private Function getGoogleDriveService() As DriveService
-        Dim credential As UserCredential = GoogleWebAuthorizationBroker.AuthorizeAsync(New ClientSecrets() With { _
-                .ClientId = CLIENT_ID, _
-                .ClientSecret = CLIENT_SECRET _
-            }, SCOPES, UserID, CancellationToken.None, getPersistentCredentialStore()).Result
-        Dim service As DriveService = New DriveService(New BaseClientService.Initializer() With { _
-                .HttpClientInitializer = credential, _
-                .ApplicationName = APP_USER_AGENT _
-            })
+        Dim service As DriveService
+            Dim credential As UserCredential = GoogleWebAuthorizationBroker.AuthorizeAsync(New ClientSecrets() With { _
+                    .ClientId = CLIENT_ID, _
+                    .ClientSecret = CLIENT_SECRET _
+                }, SCOPES, UserID, CancellationToken.None, getPersistentCredentialStore()).Result
+            service = New DriveService(New BaseClientService.Initializer() With { _
+                    .HttpClientInitializer = credential, _
+                    .ApplicationName = APP_USER_AGENT _
+                })
+            '  Return service
         Return service
     End Function
 
