@@ -98,7 +98,7 @@ Public Module Module1
     'ston xrhsth
     Private Sub uploadBackUpFile()
         For Each service As CloudService In CloudServices
-            msg +=service.upload(ZippedBackupfile)
+            msg += service.upload(ZippedBackupfile)
         Next
     End Sub
 
