@@ -119,16 +119,18 @@ Public Module Module1
         Try
             Dim databases() As String = Split(_databases, ",")
             For Each database As String In databases
-                tempconString = _conString + database + ";"
-                ' constring = "Server=192.168.6.153;Uid=mysqlBackup;Pwd=;Database=" + database + ";"
-                Dim Backupfile As String = "C:\TEMP\backup(" + database + "  " + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ").sql"
-                Dim conn As MySqlConnection = New MySqlConnection(tempconString)
-                Dim cmd As MySqlCommand = New MySqlCommand()
-                Dim mb As MySqlBackup = New MySqlBackup(cmd)
-                cmd.Connection = conn
-                conn.Open()
-                mb.ExportToFile(Backupfile)
-                conn.Close()
+                If Not String.IsNullOrEmpty(database) Then
+                    tempconString = _conString + database + ";"
+                    ' constring = "Server=192.168.6.153;Uid=mysqlBackup;Pwd=;Database=" + database + ";"
+                    Dim Backupfile As String = "C:\TEMP\backup(" + database + "  " + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ").sql"
+                    Dim conn As MySqlConnection = New MySqlConnection(tempconString)
+                    Dim cmd As MySqlCommand = New MySqlCommand()
+                    Dim mb As MySqlBackup = New MySqlBackup(cmd)
+                    cmd.Connection = conn
+                    conn.Open()
+                    mb.ExportToFile(Backupfile)
+                    conn.Close()
+                End If
             Next
 
 
@@ -215,7 +217,9 @@ Public Module Module1
             e_mail.From = New MailAddress("mysqlbackupgr.adopse@gmail.com")
             Dim mails() As String = Split(email, ",")
             For Each _email As String In mails
-                e_mail.To.Add(_email)
+                If Not String.IsNullOrEmpty(_email) Then
+                    e_mail.To.Add(_email)
+                End If
             Next
             ' e_mail.To.Add("iliasseitanidis@gmail.com") ''
             e_mail.Subject = "MySQLBackUp Service Report"
