@@ -1,4 +1,4 @@
-﻿Imports System.Xml
+ Imports System.Xml
 
 Public Class OneDrive
     Inherits CloudService
@@ -30,7 +30,7 @@ Public Class OneDrive
     Public Overrides Sub Save(ByRef XmlDoc As XmlDocument)
         Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("cloudServices").Item(0)
         Dim taskNode As XmlElement = XmlDoc.CreateElement("cloudService")
-        taskNode.SetAttribute("app_id", Me.AppID)
+        taskNode.SetAttribute("id", Me.AppID)
         tasksNode.AppendChild(taskNode)
 
         Dim authCodePathNode As XmlElement = XmlDoc.CreateElement("authCodePath")
