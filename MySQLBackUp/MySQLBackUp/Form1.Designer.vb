@@ -31,6 +31,7 @@ Partial Class Form1
         Me.FirstTab = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.ShowDB = New System.Windows.Forms.Button()
         Me.DatabasesCheckedListBox = New System.Windows.Forms.CheckedListBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.SecondTab = New System.Windows.Forms.Button()
@@ -72,7 +73,6 @@ Partial Class Form1
         Me.Facebook = New System.Windows.Forms.Button()
         Me.GooglePlus = New System.Windows.Forms.Button()
         Me.ToolTipEmail = New System.Windows.Forms.ToolTip(Me.components)
-        Me.ShowDB = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -99,7 +99,7 @@ Partial Class Form1
         Me.TabControl1.Multiline = True
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(476, 295)
+        Me.TabControl1.Size = New System.Drawing.Size(433, 295)
         Me.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.TabControl1.TabIndex = 0
         '
@@ -112,7 +112,7 @@ Partial Class Form1
         Me.TabPage1.Location = New System.Drawing.Point(124, 4)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(348, 287)
+        Me.TabPage1.Size = New System.Drawing.Size(305, 287)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "STEP 1"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -167,18 +167,27 @@ Partial Class Form1
         Me.TabPage2.Location = New System.Drawing.Point(124, 4)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(348, 287)
+        Me.TabPage2.Size = New System.Drawing.Size(305, 287)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "STEP 2"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'ShowDB
+        '
+        Me.ShowDB.Location = New System.Drawing.Point(125, 142)
+        Me.ShowDB.Name = "ShowDB"
+        Me.ShowDB.Size = New System.Drawing.Size(120, 23)
+        Me.ShowDB.TabIndex = 11
+        Me.ShowDB.Text = "Show Databases"
+        Me.ShowDB.UseVisualStyleBackColor = True
         '
         'DatabasesCheckedListBox
         '
         Me.DatabasesCheckedListBox.CheckOnClick = True
         Me.DatabasesCheckedListBox.FormattingEnabled = True
-        Me.DatabasesCheckedListBox.Location = New System.Drawing.Point(125, 147)
+        Me.DatabasesCheckedListBox.Location = New System.Drawing.Point(125, 177)
         Me.DatabasesCheckedListBox.Name = "DatabasesCheckedListBox"
-        Me.DatabasesCheckedListBox.Size = New System.Drawing.Size(120, 94)
+        Me.DatabasesCheckedListBox.Size = New System.Drawing.Size(120, 64)
         Me.DatabasesCheckedListBox.TabIndex = 10
         Me.DatabasesCheckedListBox.Visible = False
         '
@@ -203,7 +212,7 @@ Partial Class Form1
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(25, 109)
+        Me.Label6.Location = New System.Drawing.Point(26, 109)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(59, 13)
         Me.Label6.TabIndex = 7
@@ -221,7 +230,7 @@ Partial Class Form1
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(26, 157)
+        Me.Label4.Location = New System.Drawing.Point(26, 177)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(60, 13)
         Me.Label4.TabIndex = 5
@@ -230,7 +239,7 @@ Partial Class Form1
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(25, 37)
+        Me.Label3.Location = New System.Drawing.Point(26, 37)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(44, 13)
         Me.Label3.TabIndex = 4
@@ -238,23 +247,23 @@ Partial Class Form1
         '
         'Tab2Pwd
         '
-        Me.Tab2Pwd.Location = New System.Drawing.Point(135, 109)
+        Me.Tab2Pwd.Location = New System.Drawing.Point(125, 106)
         Me.Tab2Pwd.Name = "Tab2Pwd"
-        Me.Tab2Pwd.Size = New System.Drawing.Size(100, 20)
+        Me.Tab2Pwd.Size = New System.Drawing.Size(120, 20)
         Me.Tab2Pwd.TabIndex = 3
         '
         'Tab2Uid
         '
-        Me.Tab2Uid.Location = New System.Drawing.Point(135, 73)
+        Me.Tab2Uid.Location = New System.Drawing.Point(125, 70)
         Me.Tab2Uid.Name = "Tab2Uid"
-        Me.Tab2Uid.Size = New System.Drawing.Size(100, 20)
+        Me.Tab2Uid.Size = New System.Drawing.Size(120, 20)
         Me.Tab2Uid.TabIndex = 2
         '
         'Tab2Server
         '
-        Me.Tab2Server.Location = New System.Drawing.Point(135, 37)
+        Me.Tab2Server.Location = New System.Drawing.Point(125, 34)
         Me.Tab2Server.Name = "Tab2Server"
-        Me.Tab2Server.Size = New System.Drawing.Size(100, 20)
+        Me.Tab2Server.Size = New System.Drawing.Size(120, 20)
         Me.Tab2Server.TabIndex = 0
         '
         'TabPage3
@@ -266,7 +275,7 @@ Partial Class Form1
         Me.TabPage3.Location = New System.Drawing.Point(124, 4)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(348, 287)
+        Me.TabPage3.Size = New System.Drawing.Size(305, 287)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "STEP 3"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -318,7 +327,7 @@ Partial Class Form1
         Me.TabPage4.Location = New System.Drawing.Point(124, 4)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(348, 287)
+        Me.TabPage4.Size = New System.Drawing.Size(305, 287)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "STEP 4"
         Me.TabPage4.UseVisualStyleBackColor = True
@@ -402,7 +411,7 @@ Partial Class Form1
         Me.TabPage5.Location = New System.Drawing.Point(124, 4)
         Me.TabPage5.Name = "TabPage5"
         Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage5.Size = New System.Drawing.Size(348, 287)
+        Me.TabPage5.Size = New System.Drawing.Size(305, 287)
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "STEP5"
         Me.TabPage5.UseVisualStyleBackColor = True
@@ -506,7 +515,7 @@ Partial Class Form1
         Me.TabPage6.Location = New System.Drawing.Point(124, 4)
         Me.TabPage6.Name = "TabPage6"
         Me.TabPage6.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage6.Size = New System.Drawing.Size(348, 287)
+        Me.TabPage6.Size = New System.Drawing.Size(305, 287)
         Me.TabPage6.TabIndex = 5
         Me.TabPage6.Text = "TabPage6"
         Me.TabPage6.UseVisualStyleBackColor = True
@@ -562,20 +571,11 @@ Partial Class Form1
         '
         Me.ToolTipEmail.ToolTipTitle = "Seperate the emails  with a ','"
         '
-        'ShowDB
-        '
-        Me.ShowDB.Location = New System.Drawing.Point(266, 105)
-        Me.ShowDB.Name = "ShowDB"
-        Me.ShowDB.Size = New System.Drawing.Size(56, 23)
-        Me.ShowDB.TabIndex = 11
-        Me.ShowDB.Text = "Show Databases"
-        Me.ShowDB.UseVisualStyleBackColor = True
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(476, 295)
+        Me.ClientSize = New System.Drawing.Size(433, 295)
         Me.Controls.Add(Me.TabControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
