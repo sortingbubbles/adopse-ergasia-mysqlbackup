@@ -187,7 +187,7 @@ Partial Class Form1
         Me.DatabasesCheckedListBox.FormattingEnabled = True
         Me.DatabasesCheckedListBox.Location = New System.Drawing.Point(125, 177)
         Me.DatabasesCheckedListBox.Name = "DatabasesCheckedListBox"
-        Me.DatabasesCheckedListBox.Size = New System.Drawing.Size(120, 64)
+        Me.DatabasesCheckedListBox.Size = New System.Drawing.Size(158, 64)
         Me.DatabasesCheckedListBox.TabIndex = 10
         Me.DatabasesCheckedListBox.Visible = False
         '
