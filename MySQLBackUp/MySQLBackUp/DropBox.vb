@@ -28,7 +28,7 @@ Public Class DropBox
         requestToken = DropBoxStorageProviderTools.GetDropBoxRequestToken(config, ConsumerKey, ConsumerSecret)
         Dim AuthorizationUrl As String = DropBoxStorageProviderTools.GetDropBoxAuthorizationUrl(config, requestToken)
         Process.Start(AuthorizationUrl)
-        Thread.Sleep(50000)
+        'Thread.Sleep(50000)
     End Sub
     'pairnoume to requestToken apo to prohgoumeno  bhma kai
     'to metasxhmatizoume se accessToken etsi wste na exoume prosbash ston 
