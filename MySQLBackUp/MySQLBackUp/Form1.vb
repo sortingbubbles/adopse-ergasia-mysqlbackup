@@ -102,6 +102,7 @@ Public Class Form1
                 For Each _object As Object In DatabasesCheckedListBox.CheckedItems
                     databases += _object.ToString & ","
                 Next
+                '''''''''
                 createNode("connection")
                 createNodeWithText("conString", constring, "connection")
                 createNodeWithText("databases", databases, "connection")
