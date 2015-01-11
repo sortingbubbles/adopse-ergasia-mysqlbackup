@@ -1,9 +1,9 @@
- Imports System.Xml
+Imports System.Xml
 
 Public Class OneDrive
     Inherits CloudService
-    Private clientID As String = "*******************" ' client id της εφαρμογής
-    Private clientSecret As String = "**********************" ' client secret της εφαρμογής
+    Private clientID As String = "0000000040139D3E" ' client id της εφαρμογής
+    Private clientSecret As String = "qkMMeEhpLbM5GAfVJRWVPfo9PzuIjEGD" ' client secret της εφαρμογής
     'Φυλλομετρητής που εμφανίζεται για την ταυτοποίηση του χρήστη
     Private userName As String
     Private oneDriveBrowser As OneDriveBrowser
@@ -21,7 +21,7 @@ Public Class OneDrive
         Dim url As String = String.Format("https://login.live.com/oauth20_authorize.srf?client_id={0}&scope=wl.skydrive_update%20wl.offline_access&response_type=code&redirect_uri=https://login.live.com/oauth20_desktop.srf", clientID)
         oneDriveBrowser.OneDriveAuth.Url = New Uri(url)
         'Εμφάνιση του browser για την εισαγωγή των στοιχείων του χρήστη
-        oneDriveBrowser.Show()
+        oneDriveBrowser.ShowDialog()
     End Sub
 
 
