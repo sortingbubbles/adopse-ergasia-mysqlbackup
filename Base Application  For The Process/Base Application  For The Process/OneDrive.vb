@@ -1,4 +1,4 @@
-﻿Imports System.Net
+ Imports System.Net
 Imports System.Text
 Imports Newtonsoft.Json.Linq
 Imports System.IO
@@ -49,7 +49,7 @@ Public Class ΟneDrive
             msg += "!!!!!!!!!!ERROR @ FILE Uploaded @ OneDrive !!!!<br>"
             msg += ex.Message & "<br/>"
         End Try
-        
+        Module1.addToMail(msg)
     End Sub
 
 
