@@ -7,7 +7,6 @@ Imports System.Xml
 Public Class MyDropBox
     Inherits CloudService
     Private _username As String = String.Empty
-    Private msg As String = String.Empty
     Private tokenPath As String = String.Empty
     Sub New(ByVal username As String)
         _username = username
@@ -21,7 +20,7 @@ Public Class MyDropBox
 
     Public Overrides Sub upload(filePath As String)
         MySQLDropbox(filePath)
-        Module1.addToMail(msg)
+        '  Module1.addToMail(msg)
     End Sub
     'Apostolh tou zip arxeiou pou periexei to backup ston
     'logariasmo tou xrhsth ston katalogo "MySQLBackUp"

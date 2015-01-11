@@ -2,7 +2,6 @@
 Public Class MySFTPClient
     Inherits CloudService
     Private _username As String = String.Empty
-    Private msg As String = String.Empty
     Private uname As String = String.Empty
     Private url As String = String.Empty
     Private passwd As String = String.Empty
@@ -19,7 +18,7 @@ Public Class MySFTPClient
 
     Public Overrides Sub upload(filePath As String)
         MySFTP(filePath)
-        Module1.addToMail(msg)
+        'Module1.addToMail(msg)
     End Sub
     'Syndesh me to sftp server , dhmiourgeia tou katalogou
     'MySQLBackup kai apostolh tou zipparismenou arxeiou

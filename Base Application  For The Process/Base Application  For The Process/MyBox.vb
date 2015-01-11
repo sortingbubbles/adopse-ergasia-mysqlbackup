@@ -6,7 +6,6 @@ Imports System.Xml
 
 Public Class MyBox
     Inherits CloudService
-    Private msg As String = String.Empty
     Private _username As String = String.Empty
     Private tokenPath As String = String.Empty
 
@@ -22,7 +21,7 @@ Public Class MyBox
 
     Public Overrides Sub upload(filePath As String)
         MySQLBox(filePath)
-        Module1.addToMail(msg)
+        'Module1.addToMail(msg)
     End Sub
     'h me8odos pou ekkinei th diadikasia tou upload sto box.com
     'opou metatrepoume se System.IO.Stream to arxeio pou 8eloume 
