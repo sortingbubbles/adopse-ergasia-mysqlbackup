@@ -1,4 +1,4 @@
- #Region "Libraries"
+﻿#Region "Libraries"
 Imports MySql.Data.MySqlClient
 Imports System.IO
 Imports System.Net.Mail
