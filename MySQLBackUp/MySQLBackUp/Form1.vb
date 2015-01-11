@@ -156,12 +156,12 @@ Public Class Form1
         TabControl1.SelectedTab = TabControl1.TabPages("TabPage6")
     End Sub
     Private Sub ShowDB_Click(sender As Object, e As EventArgs) Handles ShowDB.Click
-        'If Not (String.IsNullOrEmpty(Tab2Server.Text)) And (String.IsNullOrEmpty(Tab2Uid.Text)) And (String.IsNullOrEmpty(Tab2Pwd.Text)) Then
-        ShowDatabases()
-        databasesCount = True
-        'Else
-        'MessageBox.Show("Please Fill TextBoxes Server,Username,Password To Continue")
-        'End If
+        If Not ((String.IsNullOrEmpty(Tab2Server.Text)) And (String.IsNullOrEmpty(Tab2Uid.Text)) And (String.IsNullOrEmpty(Tab2Pwd.Text))) Then
+            ShowDatabases()
+            databasesCount = True
+        Else
+            MessageBox.Show("Please Fill TextBoxes Server,Username,Password To Continue")
+        End If
     End Sub
 
     Private Sub gplus()
