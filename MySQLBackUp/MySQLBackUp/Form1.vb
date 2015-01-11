@@ -156,12 +156,12 @@ Public Class Form1
         TabControl1.SelectedTab = TabControl1.TabPages("TabPage6")
     End Sub
     Private Sub ShowDB_Click(sender As Object, e As EventArgs) Handles ShowDB.Click
-        If (Not String.IsNullOrEmpty(Tab2Server.Text)) And (Not String.IsNullOrEmpty(Tab2Uid.Text)) And (Not String.IsNullOrEmpty(Tab2Pwd.Text)) Then
-            ShowDatabases()
-            databasesCount = True
-        Else
-            MessageBox.Show("Please Fill TextBoxes Server,Username,Password To Continue")
-        End If
+        'If Not (String.IsNullOrEmpty(Tab2Server.Text)) And (String.IsNullOrEmpty(Tab2Uid.Text)) And (String.IsNullOrEmpty(Tab2Pwd.Text)) Then
+        ShowDatabases()
+        databasesCount = True
+        'Else
+        'MessageBox.Show("Please Fill TextBoxes Server,Username,Password To Continue")
+        'End If
     End Sub
 
     Private Sub gplus()
@@ -172,15 +172,11 @@ Public Class Form1
     End Sub
 #Region "Call auth classes and add @ CloudeServices List"
     Private Sub GoogleDriveButton_Click(sender As Object, e As EventArgs) Handles GoogleDriveButton.Click
-        'Dim onedrivethread As Thread = New Thread(New ThreadStart(AddressOf gplus))
-        'onedrivethread.SetApartmentState(ApartmentState.STA)
-        'onedrivethread.Start()
-
-        '  Dim GDrive As GoogleDrive = New GoogleDrive(username)
-        'GDrive.Authenticate()
-        'CloudServices.Add(GDrive)
-        'GDrive.Save(xmlDocument)
-        'Cloudservice = True
+        Dim GDrive As GoogleDrive = New GoogleDrive(username)
+        GDrive.Authenticate()
+        CloudServices.Add(GDrive)
+        GDrive.Save(xmlDocument)
+        Cloudservice = True
 
         GoogleDriveButton.Enabled = False
     End Sub
@@ -190,7 +186,7 @@ Public Class Form1
         Dim onedrivethread As Thread = New Thread(New ThreadStart(AddressOf OneDriveHelp))
         onedrivethread.SetApartmentState(ApartmentState.STA)
         onedrivethread.Start()
-       
+
         OneDriveButton.Enabled = False
     End Sub
 
@@ -338,7 +334,6 @@ Public Class Form1
         Next _row
     End Sub
 
-   
 
 
 End Class
