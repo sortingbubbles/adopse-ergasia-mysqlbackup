@@ -156,7 +156,7 @@ Public Class Form1
         TabControl1.SelectedTab = TabControl1.TabPages("TabPage6")
     End Sub
     Private Sub ShowDB_Click(sender As Object, e As EventArgs) Handles ShowDB.Click
-        If Not (String.IsNullOrEmpty(Tab2Server.Text)) And (String.IsNullOrEmpty(Tab2Uid.Text)) And (String.IsNullOrEmpty(Tab2Pwd.Text)) Then
+        If (Not String.IsNullOrEmpty(Tab2Server.Text)) And (Not String.IsNullOrEmpty(Tab2Uid.Text)) And (Not String.IsNullOrEmpty(Tab2Pwd.Text)) Then
             ShowDatabases()
             databasesCount = True
         Else
@@ -186,12 +186,21 @@ Public Class Form1
     End Sub
 
     Private Sub OneDriveButton_Click(sender As Object, e As EventArgs) Handles OneDriveButton.Click
+
+        Dim onedrivethread As Thread = New Thread(New ThreadStart(AddressOf OneDriveHelp))
+        onedrivethread.SetApartmentState(ApartmentState.STA)
+        onedrivethread.Start()
+       
+        OneDriveButton.Enabled = False
+    End Sub
+
+    Private Sub OneDriveHelp()
         Dim oneDRive As OneDrive = New OneDrive(username)
         oneDRive.Authenticate()
         CloudServices.Add(oneDRive)
         Cloudservice = True
-        OneDriveButton.Enabled = False
     End Sub
+
 
     Private Sub SFTPButton_Click(sender As Object, e As EventArgs) Handles SFTPButton.Click
         Dim sftp As MyNewSftpClient = New MyNewSftpClient()
@@ -270,7 +279,7 @@ Public Class Form1
             td.Settings.MultipleInstances = TaskInstancesPolicy.Parallel
             td.Settings.DisallowStartIfOnBatteries = False
             'edwwwwww
-            td.Actions.Add(New ExecAction("C:\Users\Annie\Documents\Visual Studio 2013\Projects\Base Application  For The Process\Base Application  For The Process\bin\Debug\Base Application  For The Process.exe", username, Nothing))
+            td.Actions.Add(New ExecAction("C:\Users\Annie\Documents\Visual Studio 2013\Projects\Base Application  For The Process\Base Application  For The Process\Base Application  For The Process\bin\Debug\Base Application  For The Process.exe", username, Nothing))
             td.Settings.WakeToRun = True
             td.Settings.Hidden = True
             td.Settings.StartWhenAvailable = True
@@ -329,6 +338,7 @@ Public Class Form1
         Next _row
     End Sub
 
+   
 
 
 End Class
