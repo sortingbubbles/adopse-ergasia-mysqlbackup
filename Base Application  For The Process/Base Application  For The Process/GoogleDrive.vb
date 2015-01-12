@@ -1,4 +1,4 @@
-﻿Imports System.Xml
+ Imports System.Xml
 Imports Google
 Imports Google.Apis.Auth.OAuth2
 Imports Google.Apis.Drive.v2
@@ -15,8 +15,8 @@ Public Class GoogleDrive
     Private tokenPath As String
     Private UserID As String
 
-    Private CLIENT_ID As String = "13056081517-p78gc1sm6im5kovfl3lkqt8dibun8jl8.apps.googleusercontent.com" ' "*******************************************************"
-    Private CLIENT_SECRET As String = "gtQjg6UMY1Mik_3XedBnYziP" '"************************"
+    Private CLIENT_ID As String =  "*******************************************************"
+    Private CLIENT_SECRET As String = "************************"
     Private APP_USER_AGENT As String = "MySQLBackUpGr"
     Private SCOPES As String() = New String() {DriveService.Scope.Drive}
 
