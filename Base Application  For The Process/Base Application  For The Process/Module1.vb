@@ -160,7 +160,8 @@ Public Module Module1
             Dim mydir As String = "C:\TEMP\" & username
             For Each myFile In Directory.GetFiles(mydir, "*.sql")
                 'File.Delete(myFile)
-                System.IO.File.Delete(myFile)
+                'File.Delete(myFile)
+                My.Computer.FileSystem.DeleteFile(myFile)
             Next
             msg += "File Succesfully Zipped !!!<br/>"
         Catch ex As Exception
