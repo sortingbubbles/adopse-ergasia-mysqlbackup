@@ -1,4 +1,4 @@
-﻿Imports System.Net
+ Imports System.Net
 Imports System.Text
 Imports Newtonsoft.Json.Linq
 Imports System.IO
@@ -9,8 +9,8 @@ Public Class ΟneDrive
     Private authCodePath As String = String.Empty
     Private userName As String
 
-    Sub New(ByVal username As String)
-        username = username
+    Sub New(ByVal _username As String)
+        userName = _username
         Me.AppID = "onedrive"
     End Sub
 
