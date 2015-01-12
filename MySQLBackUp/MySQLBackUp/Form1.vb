@@ -19,7 +19,7 @@ Public Class Form1
     Private username As String
     Private CloudServices As List(Of CloudService) = New List(Of CloudService)
     Private xmlDocument As XmlDocument
-    Private Hours() As String = {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}
+    Private Hours() As String = {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}
     Private Minutes(60) As String
     Private Seconds(60) As String
     Private Cloudservice As Boolean
