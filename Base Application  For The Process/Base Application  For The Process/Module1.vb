@@ -1,4 +1,4 @@
-#Region "Libraries"
+﻿#Region "Libraries"
 Imports MySql.Data.MySqlClient
 Imports System.IO
 Imports System.Net.Mail
@@ -28,6 +28,7 @@ Public Module Module1
     Private email As String
     Private _conString As String
     Private _databases As String
+
 #End Region
 
     Sub Main(ByVal sArgs() As String)
@@ -101,7 +102,7 @@ Public Module Module1
     'kai to timestamp ths dhmiourgeias me format
     'yyyy-mm-dd hh-mm-ss
     Private Sub Backup()
-       
+
         Dim tempconString As String
         Try
             Dim databases() As String = Split(_databases, ",")
@@ -122,7 +123,7 @@ Public Module Module1
 
             msg = "File Succesfully Copied !!!<br/>"
         Catch ex As Exception
-            msg = "!!!!!!!!!!ERROR @ FILE COPY!!!!<br>"
+            msg = "<strong><span style='color: red;'>!!!!!!!!!!ERROR @ FILE COPY!!!!</span></strong><br>"
             msg += ex.Message & "<br/>"
         End Try
     End Sub
@@ -149,7 +150,7 @@ Public Module Module1
             Next
             msg += "File Succesfully Zipped !!!<br/>"
         Catch ex As Exception
-            msg += "!!!!!!!!!!ERROR @ FILE ZIP!!!!<br>"
+            msg += "<strong><span style='color: red;'>!!!!!!!!!!ERROR @ FILE ZIP!!!!</span></strong><br>"
             msg += ex.Message & "<br/>"
         End Try
     End Sub
@@ -193,11 +194,11 @@ Public Module Module1
             Dim Smtp_Server As New SmtpClient
             Dim e_mail As New MailMessage()
             Smtp_Server.UseDefaultCredentials = False
-            Smtp_Server.Credentials = New Net.NetworkCredential("mysqlbackupgr.adopse@gmail.com", "********") ''''''
+            Smtp_Server.Credentials = New Net.NetworkCredential("mysqlbackupgr.adopse@gmail.com", "************") ''''''
             Smtp_Server.Port = 587
             Smtp_Server.EnableSsl = True
             Smtp_Server.Host = "smtp.gmail.com"
-            msg += " <br/> Wait for the next Report<br/> Thank you for your preference "
+
             e_mail = New MailMessage()
             e_mail.From = New MailAddress("mysqlbackupgr.adopse@gmail.com")
             Dim mails() As String = Split(email, ",")
@@ -206,13 +207,28 @@ Public Module Module1
                     e_mail.To.Add(_email)
                 End If
             Next
+
             e_mail.Subject = "MySQLBackUp Service Report"
             e_mail.IsBodyHtml = True
-            e_mail.Body = msg
+            e_mail.Body = createEmailBody()
             Smtp_Server.Send(e_mail)
         Catch ex As Exception
         End Try
     End Sub
+
+
+    'Μέθοδος που δημιουργεί το σώμα του html email
+    'Το html mail έχει χωριστεί σε δύο text αρχεία και ενδιάμεσα τους μπαίνουν τα μηνύματα του report (msg)
+    Private Function createEmailBody()
+        Dim mailBody As String = String.Empty
+        'Φόρτωση του πρώτου κομματιού από αρχείο
+        mailBody = System.IO.File.ReadAllText("C:\Debug\htmlpart1.txt")
+        'Προσθήκη όλων των μηνυμάτων από τις παραπάνω λειτουργίες
+        mailBody += msg
+        'Φόρτωση και πρόσθεση του τελευταίου κομματιού από αρχείο
+        mailBody += System.IO.File.ReadAllText("C:\Debug\htmlpart2.txt")
+        Return mailBody
+    End Function
 
 #End Region
 
