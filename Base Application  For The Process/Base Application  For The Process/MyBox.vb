@@ -75,8 +75,8 @@ Public Class MyBox
     'me bash to palio RefreshToken po exoume apo8hkeysei sto arxeio C:\TEMP\MyTest12.txt 
     'sth synexeia apo8hkeyoume to neo RefreshToken gia to epomeno backup
     Private Function GetToken() As BoxApi.V2.Authentication.OAuth2.OAuthToken
-        Dim clientID As String = "*************************" ''''''''''''''
-        Dim clientSecret As String = "***********************" '''''''''''''''
+        Dim clientID As String = "0sl2q9wxpjq6cun6khctch1sg0g86g2u" '"*************************" ''''''''''''''
+        Dim clientSecret As String = "6mkebcnsb3HiyA96dWHodXcixTYPwe4v" ' "***********************" '''''''''''''''
         Dim oldRefreshToken As String
         Dim newToken As BoxApi.V2.Authentication.OAuth2.OAuthToken
         Dim tokenProvider As New TokenProvider(clientID, clientSecret)

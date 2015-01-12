@@ -10,9 +10,9 @@ Imports System
 Imports Ionic.Zip
 Imports AppLimit.CloudComputing.SharpBox
 Imports AppLimit.CloudComputing.SharpBox.StorageProvider.DropBox
-Imports BoxApi.V2
-Imports BoxApi.V2.Authentication.OAuth2
-Imports BoxApi.V2.Model
+'Imports BoxApi.V2
+'Imports BoxApi.V2.Authentication.OAuth2
+'Imports BoxApi.V2.Model
 Imports System.Net
 Imports System.Text
 Imports Newtonsoft.Json.Linq
@@ -158,11 +158,12 @@ Public Module Module1
             zip.Save(ZippedBackupfile)
             Dim myFile As String
             Dim mydir As String = "C:\TEMP\" & username
-            For Each myFile In Directory.GetFiles(mydir, "*.sql")
-                'File.Delete(myFile)
+            For Each myFile In Directory.GetFiles(mydir, "back*.sql")
+                ' File.Delete(myFile)
                 'File.Delete(myFile)
                 My.Computer.FileSystem.DeleteFile(myFile)
             Next
+            '  My.Computer.FileSystem.
             msg += "File Succesfully Zipped !!!<br/>"
         Catch ex As Exception
             msg += "!!!!!!!!!!ERROR @ FILE ZIP!!!!<br>"
@@ -208,7 +209,7 @@ Public Module Module1
             Dim Smtp_Server As New SmtpClient
             Dim e_mail As New MailMessage()
             Smtp_Server.UseDefaultCredentials = False
-            Smtp_Server.Credentials = New Net.NetworkCredential("mysqlbackupgr.adopse@gmail.com", "************")
+            Smtp_Server.Credentials = New Net.NetworkCredential("mysqlbackupgr.adopse@gmail.com", "ADOPSE8adopse")
             Smtp_Server.Port = 587
             Smtp_Server.EnableSsl = True
             Smtp_Server.Host = "smtp.gmail.com"

@@ -1,4 +1,5 @@
 ﻿Imports Tamir.SharpSsh
+
 Public Class MySFTPClient
     Inherits CloudService
     Private _username As String = String.Empty
@@ -23,12 +24,12 @@ Public Class MySFTPClient
     'Syndesh me to sftp server , dhmiourgeia tou katalogou
     'MySQLBackup kai apostolh tou zipparismenou arxeiou
     'pou periexei tis entoles ths mysql
-    Private Function MySFTP(ByVal ZippedBackupfile As String) As String
+    Private Function MySFTP(ByVal ZippedBackupfile As String)
         Dim Msg As String = String.Empty
         Try
-            'url = "***********"
-            'Dim uname As String = "***********"
-            'Dim passwd As String = "**********"
+            url = "aetos.it.teithe.gr"
+            uname = "iseitani"
+            passwd = "azoe4oGo"
             'Dim port As Integer = 22
             Dim RemoteDirectory As String = "MySQLBackup"
             Dim sshCp As SshTransferProtocolBase
@@ -40,7 +41,7 @@ Public Class MySFTPClient
             Catch ex As Exception
 
             End Try
-            sshCp.Put(ZippedBackupfile, RemoteDirectory & "/" & "backup.zip") ''''''''''''''''''''''
+            sshCp.Put(ZippedBackupfile, RemoteDirectory & "backup.zip") ''''''''''''''''''''''
             sshCp.Close()
             Msg += "File Succesfully Uploaded @ FTP SERVER " & url & " !!!<br/>"
         Catch ex As Exception
