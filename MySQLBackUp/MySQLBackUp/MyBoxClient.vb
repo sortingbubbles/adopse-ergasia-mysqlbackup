@@ -61,7 +61,7 @@ Public Class MyBoxClient
         Dim fs As FileStream = File.Create(_tokenPath)
 
         ' Add text to the file. 
-        Dim info As Byte() = New UTF8Encoding(True).GetBytes(access_token & vbCrLf & refresh_token)
+        Dim info As Byte() = New UTF8Encoding(True).GetBytes(refresh_token)
         fs.Write(info, 0, info.Length)
         fs.Close()
     End Sub
