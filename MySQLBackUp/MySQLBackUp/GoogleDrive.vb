@@ -54,7 +54,6 @@ Public Class GoogleDrive
                     .HttpClientInitializer = credential, _
                     .ApplicationName = APP_USER_AGENT _
                 })
-            '  Return service
         Return service
     End Function
 

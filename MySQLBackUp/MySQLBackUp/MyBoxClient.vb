@@ -51,11 +51,9 @@ Public Class MyBoxClient
         Dim BoxClientId As String = "*************************" '''''''''''''''''''''
         Dim BoxSecret As String = "***************************" '''''''''''''''''''''
         Dim json As String = postToUrl("https://www.box.com/api/oauth2/token", "grant_type=authorization_code&code=" + _code + "&client_id=" + BoxClientId + "&client_secret=" + BoxSecret)
-        'postToUrl("https://www.box.com/api/oauth2/token", "client_id=" & BoxClientId & "&client_secret=" & BoxSecret & "&grant_type=urn:box:oauth2:grant-type:provision&username=mysqlbackupgr.adopse@gmail.com")
         Dim token As JToken = JObject.Parse(json)
         Dim access_token As String = token.SelectToken("access_token").ToString
         Dim refresh_token As String = token.SelectToken("refresh_token").ToString
-        ' Dim path As String = "C:\TEMP\BoxToken.txt"
 
         ' Create or overwrite the file. 
         Dim fs As FileStream = File.Create(_tokenPath)

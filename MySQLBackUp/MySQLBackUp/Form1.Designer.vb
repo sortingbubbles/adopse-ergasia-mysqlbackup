@@ -73,6 +73,7 @@ Partial Class Form1
         Me.Facebook = New System.Windows.Forms.Button()
         Me.GooglePlus = New System.Windows.Forms.Button()
         Me.ToolTipEmail = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Label17 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -145,9 +146,10 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(63, 21)
+        Me.Label1.Font = New System.Drawing.Font("Monotype Corsiva", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.Label1.Location = New System.Drawing.Point(19, 21)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(202, 13)
+        Me.Label1.Size = New System.Drawing.Size(285, 18)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Define a username to identify the process"
         '
@@ -194,9 +196,10 @@ Partial Class Form1
         'Label16
         '
         Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Monotype Corsiva", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(161, Byte))
         Me.Label16.Location = New System.Drawing.Point(62, 5)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(117, 13)
+        Me.Label16.Size = New System.Drawing.Size(192, 22)
         Me.Label16.TabIndex = 9
         Me.Label16.Text = "MySQL Databases Info"
         '
@@ -301,9 +304,10 @@ Partial Class Form1
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(88, 24)
+        Me.Label7.Font = New System.Drawing.Font("Monotype Corsiva", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.Label7.Location = New System.Drawing.Point(58, 24)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(143, 13)
+        Me.Label7.Size = New System.Drawing.Size(206, 18)
         Me.Label7.TabIndex = 1
         Me.Label7.Text = "Define the confirmation email"
         '
@@ -382,9 +386,10 @@ Partial Class Form1
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(99, 22)
+        Me.Label9.Font = New System.Drawing.Font("Monotype Corsiva", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.Label9.Location = New System.Drawing.Point(67, 14)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(122, 13)
+        Me.Label9.Size = New System.Drawing.Size(165, 18)
         Me.Label9.TabIndex = 6
         Me.Label9.Text = "Select the cloud storage"
         '
@@ -399,6 +404,7 @@ Partial Class Form1
         '
         'TabPage5
         '
+        Me.TabPage5.Controls.Add(Me.Label17)
         Me.TabPage5.Controls.Add(Me.DaysInterval)
         Me.TabPage5.Controls.Add(Me.Label13)
         Me.TabPage5.Controls.Add(Me.Label10)
@@ -518,7 +524,7 @@ Partial Class Form1
         Me.TabPage6.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage6.Size = New System.Drawing.Size(323, 287)
         Me.TabPage6.TabIndex = 5
-        Me.TabPage6.Text = "TabPage6"
+        Me.TabPage6.Text = "STEP6"
         Me.TabPage6.UseVisualStyleBackColor = True
         '
         'Label15
@@ -534,10 +540,10 @@ Partial Class Form1
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Monotype Corsiva", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.Label14.Location = New System.Drawing.Point(106, 25)
+        Me.Label14.Font = New System.Drawing.Font("Monotype Corsiva", 14.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.Label14.Location = New System.Drawing.Point(84, 21)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(98, 18)
+        Me.Label14.Size = New System.Drawing.Size(117, 22)
         Me.Label14.TabIndex = 3
         Me.Label14.Text = "Task Created !!!"
         '
@@ -571,6 +577,16 @@ Partial Class Form1
         'ToolTipEmail
         '
         Me.ToolTipEmail.ToolTipTitle = "Seperate the emails  with a ','"
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Monotype Corsiva", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Location = New System.Drawing.Point(26, 15)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(261, 25)
+        Me.Label17.TabIndex = 10
+        Me.Label17.Text = "Create The BackUp Scheduler"
         '
         'Form1
         '
@@ -647,5 +663,6 @@ Partial Class Form1
     Friend WithEvents Label16 As System.Windows.Forms.Label
     Friend WithEvents DatabasesCheckedListBox As System.Windows.Forms.CheckedListBox
     Friend WithEvents ShowDB As System.Windows.Forms.Button
+    Friend WithEvents Label17 As System.Windows.Forms.Label
 
 End Class

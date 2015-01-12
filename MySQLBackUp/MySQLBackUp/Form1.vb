@@ -105,12 +105,10 @@ Public Class Form1
         If databasesCount Then
             If DatabasesCheckedListBox.CheckedItems.Count > 0 Then
                 Dim databases As String = String.Empty
-                ' Dim constring As String = "Server=192.168.6.153;Database=adopse;Uid=mysqlBackup;Pwd=;"
                 Dim constring As String = "Server=" & Tab2Server.Text & ";Uid=" & Tab2Uid.Text & ";Pwd=" & Tab2Pwd.Text & ";Database="
                 For Each _object As Object In DatabasesCheckedListBox.CheckedItems
                     databases += _object.ToString & ","
                 Next
-                '''''''''
                 createNode("connection")
                 createNodeWithText("conString", constring, "connection")
                 createNodeWithText("databases", databases, "connection")
@@ -150,7 +148,7 @@ Public Class Form1
     Private Sub FifthTab_Click(sender As Object, e As EventArgs) Handles FifthTab.Click
         CreateTaskAtWTS()
         xmlDocument.Save("C:\TEMP\" & username & "\" & username & ".xml")
-        ZipMe() '' na to energopoihsw sto telos
+        ZipMe()
         TabControl1.TabPages("TabPage5").Enabled = False
         TabControl1.TabPages("TabPage6").Enabled = True
         TabControl1.SelectedTab = TabControl1.TabPages("TabPage6")
@@ -164,20 +162,12 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub gplus()
-        Dim GDrive As GoogleDrive = New GoogleDrive(username)
-        GDrive.Authenticate()
-        ' CloudServices.Add(GDrive)
-        GDrive.Save(xmlDocument)
-    End Sub
 #Region "Call auth classes and add @ CloudeServices List"
     Private Sub GoogleDriveButton_Click(sender As Object, e As EventArgs) Handles GoogleDriveButton.Click
         Dim GDrive As GoogleDrive = New GoogleDrive(username)
         GDrive.Authenticate()
         CloudServices.Add(GDrive)
-        GDrive.Save(xmlDocument)
         Cloudservice = True
-
         GoogleDriveButton.Enabled = False
     End Sub
 
@@ -186,7 +176,6 @@ Public Class Form1
         Dim onedrivethread As Thread = New Thread(New ThreadStart(AddressOf OneDriveHelp))
         onedrivethread.SetApartmentState(ApartmentState.STA)
         onedrivethread.Start()
-
         OneDriveButton.Enabled = False
     End Sub
 
@@ -220,17 +209,10 @@ Public Class Form1
         Cloudservice = True
     End Sub
     Private Sub BoxButton_Click(sender As Object, e As EventArgs) Handles BoxButton.Click
-
         Dim onedrivethread As Thread = New Thread(New ThreadStart(AddressOf BoxHelp))
         onedrivethread.SetApartmentState(ApartmentState.STA)
         onedrivethread.Start()
         BoxButton.Enabled = False
-
-        'Dim box As MyBoxClient = New MyBoxClient(username)
-        'box.Authenticate()
-        'CloudServices.Add(box)
-        'Cloudservice = True
-        'BoxButton.Enabled = False
     End Sub
 #End Region
 #End Region
@@ -274,14 +256,12 @@ Public Class Form1
             td.Triggers.Add(daily)
             td.Settings.MultipleInstances = TaskInstancesPolicy.Parallel
             td.Settings.DisallowStartIfOnBatteries = False
-            'edwwwwww
             td.Actions.Add(New ExecAction("C:\Users\ILIAS\Documents\Visual Studio 2013\Projects\MySQLBackUp(1)\Base Application  For The Process\Base Application  For The Process\bin\Debug\Base Application  For The Process.exe", username, Nothing))
             td.Settings.WakeToRun = True
             td.Settings.Hidden = True
             td.Settings.StartWhenAvailable = True
             td.Settings.Priority = ProcessPriorityClass.High
             ts.RootFolder.RegisterTaskDefinition(username, td)
-
         End Using
     End Sub
 

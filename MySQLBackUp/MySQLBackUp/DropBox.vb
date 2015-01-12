@@ -6,11 +6,11 @@ Imports System.Xml
 
 Public Class DropBox
     Inherits CloudService
-    Dim ConsumerKey As String = "************"
-    Dim ConsumerSecret As String = "**********"
-    Dim config As DropBoxConfiguration = TryCast(CloudStorage.GetCloudConfigurationEasy(nSupportedCloudConfigurations.DropBox), DropBoxConfiguration)
-    Dim requestToken As DropBoxRequestToken
-    Dim tokenPath As String
+    Private ConsumerKey As String = "************"
+    Private ConsumerSecret As String = "**********"
+    Private config As DropBoxConfiguration = TryCast(CloudStorage.GetCloudConfigurationEasy(nSupportedCloudConfigurations.DropBox), DropBoxConfiguration)
+    Private requestToken As DropBoxRequestToken
+    Private tokenPath As String
 
 
     Sub New(ByVal username As String)
@@ -28,7 +28,6 @@ Public Class DropBox
         requestToken = DropBoxStorageProviderTools.GetDropBoxRequestToken(config, ConsumerKey, ConsumerSecret)
         Dim AuthorizationUrl As String = DropBoxStorageProviderTools.GetDropBoxAuthorizationUrl(config, requestToken)
         Process.Start(AuthorizationUrl)
-        'Thread.Sleep(50000)
     End Sub
     'pairnoume to requestToken apo to prohgoumeno  bhma kai
     'to metasxhmatizoume se accessToken etsi wste na exoume prosbash ston 
@@ -36,7 +35,6 @@ Public Class DropBox
     'ta credential tou user kai sth synexeia apo8hkeyoume se ena arxeio 
     'tis plhrofories pou xreiazomaste
     Private Sub saveMyAuth()
-        ' tokenPath = "C:\TEMP\" & & "\MyDropBoxToken.txt"
         Dim accessToken As ICloudStorageAccessToken = DropBoxStorageProviderTools.ExchangeDropBoxRequestTokenIntoAccessToken(config, ConsumerKey, ConsumerSecret, requestToken)
         Dim DropboxStorage As New CloudStorage()
         DropboxStorage.Open(config, accessToken)
