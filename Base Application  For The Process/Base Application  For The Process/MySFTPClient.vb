@@ -11,9 +11,9 @@ Public Class MySFTPClient
     End Sub
 
     Public Overrides Sub read(ByRef XmlDoc As Xml.XmlDocument)
-        uname = XmlDoc.GetElementsByTagName("username").Item(0).InnerText
-        passwd = XmlDoc.GetElementsByTagName("password").Item(0).InnerText
-        url = XmlDoc.GetElementsByTagName("url").Item(0).InnerText
+        uname = XmlDoc.GetElementsByTagName("Username").Item(0).InnerText
+        passwd = XmlDoc.GetElementsByTagName("Password").Item(0).InnerText
+        url = XmlDoc.GetElementsByTagName("Server").Item(0).InnerText
     End Sub
 
     Public Overrides Function upload(filePath As String) As String
