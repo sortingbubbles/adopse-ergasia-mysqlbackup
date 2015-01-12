@@ -27,8 +27,8 @@ Public Class MySFTPClient
     Private Function MySFTP(ByVal ZippedBackupfile As String)
         Dim Msg As String = String.Empty
         Try
-            url = "aetos.it.teithe.gr"
-            uname = "iseitani"
+            url = "ewedwedwe"
+            uname = "fyhqd"
             passwd = "***"
             'Dim port As Integer = 22
             Dim RemoteDirectory As String = "MySQLBackup"
