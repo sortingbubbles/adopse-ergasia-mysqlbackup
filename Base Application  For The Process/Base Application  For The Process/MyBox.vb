@@ -15,7 +15,7 @@ Public Class MyBox
     End Sub
 
     Public Overrides Sub read(ByRef XmlDoc As Xml.XmlDocument)
-        Dim taskNode As XmlNode = XmlDoc.GetElementById(Me.AppID)
+        Dim taskNode As XmlNode = XmlDoc.SelectSingleNode("//*[@id='" & Me.AppID & "']") '.SelectSingleNode("//*[@id='" & strID & "']")
         tokenPath = taskNode.ChildNodes.Item(0).InnerText
     End Sub
 

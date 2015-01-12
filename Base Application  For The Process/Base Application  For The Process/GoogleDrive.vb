@@ -24,6 +24,7 @@ Public Class GoogleDrive
     'to TokenPath: O fakelos opou tha topothetithoun ta token (json arxeia) kai
     'to Username: To onoma xristi pou exei eisagei o xristis stin forma
     Sub New(ByVal Username As String)
+
         Me.AppID = "googledrive"
         Me.tokenPath = "C:\TEMP\" & Username
         Me.UserID = Username
@@ -71,7 +72,7 @@ Public Class GoogleDrive
 
 
     Public Overrides Sub read(ByRef XmlDoc As XmlDocument)
-        Dim taskNode As XmlNode = XmlDoc.GetElementById(Me.AppID)
+        Dim taskNode As XmlNode = XmlDoc.SelectSingleNode("//*[@id='" & Me.AppID & "']") '.SelectSingleNode("//*[@id='" & strID & "']")
         Dim folderIDNode = taskNode.ChildNodes.Item(0)
         folderID = folderIDNode.InnerText
     End Sub
