@@ -8,9 +8,9 @@ Public Class OneDrive
     Private userName As String
     Private oneDriveBrowser As OneDriveBrowser
 
-    Sub New(ByVal username As String)
+    Sub New(ByVal _username As String)
         Me.AppID = "onedrive"
-        username = username
+        username = _username
         oneDriveBrowser = New OneDriveBrowser(clientID, clientSecret, username)
     End Sub
 
