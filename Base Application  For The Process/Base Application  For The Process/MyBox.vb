@@ -15,13 +15,12 @@ Public Class MyBox
     End Sub
 
     Public Overrides Sub read(ByRef XmlDoc As Xml.XmlDocument)
-        Dim taskNode As XmlNode = XmlDoc.SelectSingleNode("//*[@id='" & Me.AppID & "']") '.SelectSingleNode("//*[@id='" & strID & "']")
+        Dim taskNode As XmlNode = XmlDoc.SelectSingleNode("//*[@id='" & Me.AppID & "']")
         tokenPath = taskNode.ChildNodes.Item(0).InnerText
     End Sub
 
     Public Overrides Function upload(filePath As String) As String
         Return MySQLBox(filePath)
-        'Module1.addToMail(msg)
     End Function
     'h me8odos pou ekkinei th diadikasia tou upload sto box.com
     'opou metatrepoume se System.IO.Stream to arxeio pou 8eloume 
@@ -50,10 +49,8 @@ Public Class MyBox
         Dim newToken As BoxApi.V2.Authentication.OAuth2.OAuthToken = GetToken()
         Dim boxManager As New BoxManager(newToken.AccessToken)
         Dim rootFolder As Folder
-        'Dim Fid As String
         For Each Fold As Folder In boxManager.GetFolder(Folder.Root).Folders
             If Fold.Name = "MySQLBackUp" Then
-                'Fid = Fold.Id
                 boxManager.DeleteFolder(Fold.Id, True)
             End If
         Next

@@ -14,13 +14,12 @@ Public Class MyDropBox
     End Sub
 
     Public Overrides Sub read(ByRef XmlDoc As Xml.XmlDocument)
-        Dim taskNode As XmlNode = XmlDoc.SelectSingleNode("//*[@id='" & Me.AppID & "']") 'mXmlDoc.SelectSingleNode("//*[@id='" & strID & "']")
+        Dim taskNode As XmlNode = XmlDoc.SelectSingleNode("//*[@id='" & Me.AppID & "']")
         tokenPath = taskNode.ChildNodes.Item(0).InnerText
     End Sub
 
     Public Overrides Function upload(ByVal filePath As String) As String
         Return MySQLDropbox(filePath)
-        '  Module1.addToMail(msg)
     End Function
     'Apostolh tou zip arxeiou pou periexei to backup ston
     'logariasmo tou xrhsth ston katalogo "MySQLBackUp"

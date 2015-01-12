@@ -19,7 +19,6 @@ Public Class MySFTPClient
 
     Public Overrides Function upload(filePath As String) As String
         Return MySFTP(filePath)
-        'Module1.addToMail(Msg)
     End Function
     'Syndesh me to sftp server , dhmiourgeia tou katalogou
     'MySQLBackup kai apostolh tou zipparismenou arxeiou
@@ -27,10 +26,6 @@ Public Class MySFTPClient
     Private Function MySFTP(ByVal ZippedBackupfile As String)
         Dim Msg As String = String.Empty
         Try
-            'url = "ewedwedwe"
-            'uname = "fyhqd"
-            'passwd = "***"
-            'Dim port As Integer = 22
             Dim RemoteDirectory As String = "MySQLBackup"
             Dim sshCp As SshTransferProtocolBase
             sshCp = New Sftp(url, uname)
@@ -41,7 +36,7 @@ Public Class MySFTPClient
             Catch ex As Exception
 
             End Try
-            sshCp.Put(ZippedBackupfile, RemoteDirectory & "backup.zip") ''''''''''''''''''''''
+            sshCp.Put(ZippedBackupfile, RemoteDirectory & "backup.zip")
             sshCp.Close()
             Msg += "File Succesfully Uploaded @ FTP SERVER " & url & " !!!<br/>"
         Catch ex As Exception
