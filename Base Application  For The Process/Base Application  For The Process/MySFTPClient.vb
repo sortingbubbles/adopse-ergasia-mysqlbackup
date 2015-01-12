@@ -1,4 +1,4 @@
-﻿Imports Tamir.SharpSsh
+ Imports Tamir.SharpSsh
 
 Public Class MySFTPClient
     Inherits CloudService
@@ -29,7 +29,7 @@ Public Class MySFTPClient
         Try
             url = "aetos.it.teithe.gr"
             uname = "iseitani"
-            passwd = "azoe4oGo"
+            passwd = "***"
             'Dim port As Integer = 22
             Dim RemoteDirectory As String = "MySQLBackup"
             Dim sshCp As SshTransferProtocolBase
