@@ -1,4 +1,4 @@
- Imports System.IO
+﻿Imports System.IO
 Imports BoxApi.V2
 Imports BoxApi.V2.Model
 Imports BoxApi.V2.Authentication.OAuth2
@@ -75,7 +75,7 @@ Public Class MyBox
     'me bash to palio RefreshToken po exoume apo8hkeysei sto arxeio C:\TEMP\MyTest12.txt 
     'sth synexeia apo8hkeyoume to neo RefreshToken gia to epomeno backup
     Private Function GetToken() As BoxApi.V2.Authentication.OAuth2.OAuthToken
-        Dim clientID As String ="*************************" ''''''''''''''
+        Dim clientID As String = "*************************" ''''''''''''''
         Dim clientSecret As String = "***********************" '''''''''''''''
         Dim oldRefreshToken As String
         Dim newToken As BoxApi.V2.Authentication.OAuth2.OAuthToken

@@ -1,4 +1,4 @@
- Imports Tamir.SharpSsh
+﻿Imports Tamir.SharpSsh
 
 Public Class MySFTPClient
     Inherits CloudService
@@ -27,9 +27,9 @@ Public Class MySFTPClient
     Private Function MySFTP(ByVal ZippedBackupfile As String)
         Dim Msg As String = String.Empty
         Try
-            url = "ewedwedwe"
-            uname = "fyhqd"
-            passwd = "***"
+            'url = "ewedwedwe"
+            'uname = "fyhqd"
+            'passwd = "***"
             'Dim port As Integer = 22
             Dim RemoteDirectory As String = "MySQLBackup"
             Dim sshCp As SshTransferProtocolBase
