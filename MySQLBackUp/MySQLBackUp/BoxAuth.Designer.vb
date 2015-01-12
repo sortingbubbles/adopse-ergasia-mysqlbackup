@@ -22,6 +22,7 @@ Partial Class BoxAuth
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(BoxAuth))
         Me.wb = New System.Windows.Forms.WebBrowser()
         Me.SuspendLayout()
         '
@@ -31,15 +32,17 @@ Partial Class BoxAuth
         Me.wb.Location = New System.Drawing.Point(0, 0)
         Me.wb.MinimumSize = New System.Drawing.Size(20, 20)
         Me.wb.Name = "wb"
-        Me.wb.Size = New System.Drawing.Size(284, 261)
+        Me.wb.Size = New System.Drawing.Size(584, 616)
         Me.wb.TabIndex = 0
         '
         'BoxAuth
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.ClientSize = New System.Drawing.Size(584, 616)
         Me.Controls.Add(Me.wb)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "BoxAuth"
         Me.Text = "BoxAuth"
         Me.ResumeLayout(False)

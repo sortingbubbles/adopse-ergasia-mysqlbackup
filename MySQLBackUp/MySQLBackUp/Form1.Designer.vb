@@ -99,7 +99,7 @@ Partial Class Form1
         Me.TabControl1.Multiline = True
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(433, 295)
+        Me.TabControl1.Size = New System.Drawing.Size(451, 295)
         Me.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.TabControl1.TabIndex = 0
         '
@@ -112,22 +112,22 @@ Partial Class Form1
         Me.TabPage1.Location = New System.Drawing.Point(124, 4)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(305, 287)
+        Me.TabPage1.Size = New System.Drawing.Size(323, 287)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "STEP 1"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
         'FirstTabUsername
         '
-        Me.FirstTabUsername.Location = New System.Drawing.Point(72, 67)
+        Me.FirstTabUsername.Location = New System.Drawing.Point(100, 64)
         Me.FirstTabUsername.Name = "FirstTabUsername"
-        Me.FirstTabUsername.Size = New System.Drawing.Size(154, 20)
+        Me.FirstTabUsername.Size = New System.Drawing.Size(180, 20)
         Me.FirstTabUsername.TabIndex = 3
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(7, 67)
+        Me.Label2.Location = New System.Drawing.Point(19, 67)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(59, 13)
         Me.Label2.TabIndex = 2
@@ -135,7 +135,7 @@ Partial Class Form1
         '
         'FirstTab
         '
-        Me.FirstTab.Location = New System.Drawing.Point(81, 192)
+        Me.FirstTab.Location = New System.Drawing.Point(120, 200)
         Me.FirstTab.Name = "FirstTab"
         Me.FirstTab.Size = New System.Drawing.Size(75, 23)
         Me.FirstTab.TabIndex = 1
@@ -145,7 +145,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(19, 20)
+        Me.Label1.Location = New System.Drawing.Point(63, 21)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(202, 13)
         Me.Label1.TabIndex = 0
@@ -167,7 +167,7 @@ Partial Class Form1
         Me.TabPage2.Location = New System.Drawing.Point(124, 4)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(305, 287)
+        Me.TabPage2.Size = New System.Drawing.Size(323, 287)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "STEP 2"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -176,7 +176,7 @@ Partial Class Form1
         '
         Me.ShowDB.Location = New System.Drawing.Point(125, 142)
         Me.ShowDB.Name = "ShowDB"
-        Me.ShowDB.Size = New System.Drawing.Size(120, 23)
+        Me.ShowDB.Size = New System.Drawing.Size(158, 23)
         Me.ShowDB.TabIndex = 11
         Me.ShowDB.Text = "Show Databases"
         Me.ShowDB.UseVisualStyleBackColor = True
@@ -249,21 +249,22 @@ Partial Class Form1
         '
         Me.Tab2Pwd.Location = New System.Drawing.Point(125, 106)
         Me.Tab2Pwd.Name = "Tab2Pwd"
-        Me.Tab2Pwd.Size = New System.Drawing.Size(120, 20)
+        Me.Tab2Pwd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.Tab2Pwd.Size = New System.Drawing.Size(158, 20)
         Me.Tab2Pwd.TabIndex = 3
         '
         'Tab2Uid
         '
         Me.Tab2Uid.Location = New System.Drawing.Point(125, 70)
         Me.Tab2Uid.Name = "Tab2Uid"
-        Me.Tab2Uid.Size = New System.Drawing.Size(120, 20)
+        Me.Tab2Uid.Size = New System.Drawing.Size(158, 20)
         Me.Tab2Uid.TabIndex = 2
         '
         'Tab2Server
         '
         Me.Tab2Server.Location = New System.Drawing.Point(125, 34)
         Me.Tab2Server.Name = "Tab2Server"
-        Me.Tab2Server.Size = New System.Drawing.Size(120, 20)
+        Me.Tab2Server.Size = New System.Drawing.Size(158, 20)
         Me.Tab2Server.TabIndex = 0
         '
         'TabPage3
@@ -275,23 +276,23 @@ Partial Class Form1
         Me.TabPage3.Location = New System.Drawing.Point(124, 4)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(305, 287)
+        Me.TabPage3.Size = New System.Drawing.Size(323, 287)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "STEP 3"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
         'Tab3Email
         '
-        Me.Tab3Email.Location = New System.Drawing.Point(63, 86)
+        Me.Tab3Email.Location = New System.Drawing.Point(91, 67)
         Me.Tab3Email.Name = "Tab3Email"
-        Me.Tab3Email.Size = New System.Drawing.Size(172, 20)
+        Me.Tab3Email.Size = New System.Drawing.Size(194, 20)
         Me.Tab3Email.TabIndex = 3
         Me.ToolTipEmail.SetToolTip(Me.Tab3Email, "Seperate the databases  with a ','")
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(19, 86)
+        Me.Label8.Location = New System.Drawing.Point(40, 70)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(38, 13)
         Me.Label8.TabIndex = 2
@@ -300,7 +301,7 @@ Partial Class Form1
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(50, 25)
+        Me.Label7.Location = New System.Drawing.Point(88, 24)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(143, 13)
         Me.Label7.TabIndex = 1
@@ -308,7 +309,7 @@ Partial Class Form1
         '
         'ThirdTab
         '
-        Me.ThirdTab.Location = New System.Drawing.Point(67, 223)
+        Me.ThirdTab.Location = New System.Drawing.Point(124, 198)
         Me.ThirdTab.Name = "ThirdTab"
         Me.ThirdTab.Size = New System.Drawing.Size(75, 23)
         Me.ThirdTab.TabIndex = 0
@@ -327,7 +328,7 @@ Partial Class Form1
         Me.TabPage4.Location = New System.Drawing.Point(124, 4)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(305, 287)
+        Me.TabPage4.Size = New System.Drawing.Size(323, 287)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "STEP 4"
         Me.TabPage4.UseVisualStyleBackColor = True
@@ -335,7 +336,7 @@ Partial Class Form1
         'DropBoxButton
         '
         Me.DropBoxButton.Image = Global.MySQLBackUp.My.Resources.Resources.dropbox
-        Me.DropBoxButton.Location = New System.Drawing.Point(16, 136)
+        Me.DropBoxButton.Location = New System.Drawing.Point(91, 140)
         Me.DropBoxButton.Name = "DropBoxButton"
         Me.DropBoxButton.Size = New System.Drawing.Size(54, 50)
         Me.DropBoxButton.TabIndex = 11
@@ -344,7 +345,7 @@ Partial Class Form1
         'BoxButton
         '
         Me.BoxButton.Image = Global.MySQLBackUp.My.Resources.Resources.box
-        Me.BoxButton.Location = New System.Drawing.Point(169, 136)
+        Me.BoxButton.Location = New System.Drawing.Point(176, 140)
         Me.BoxButton.Name = "BoxButton"
         Me.BoxButton.Size = New System.Drawing.Size(56, 50)
         Me.BoxButton.TabIndex = 10
@@ -353,7 +354,7 @@ Partial Class Form1
         'SFTPButton
         '
         Me.SFTPButton.Image = Global.MySQLBackUp.My.Resources.Resources.sftp
-        Me.SFTPButton.Location = New System.Drawing.Point(172, 64)
+        Me.SFTPButton.Location = New System.Drawing.Point(225, 68)
         Me.SFTPButton.Name = "SFTPButton"
         Me.SFTPButton.Size = New System.Drawing.Size(53, 55)
         Me.SFTPButton.TabIndex = 9
@@ -362,7 +363,7 @@ Partial Class Form1
         'OneDriveButton
         '
         Me.OneDriveButton.Image = Global.MySQLBackUp.My.Resources.Resources.onedrive
-        Me.OneDriveButton.Location = New System.Drawing.Point(90, 64)
+        Me.OneDriveButton.Location = New System.Drawing.Point(127, 68)
         Me.OneDriveButton.Name = "OneDriveButton"
         Me.OneDriveButton.Size = New System.Drawing.Size(65, 55)
         Me.OneDriveButton.TabIndex = 8
@@ -371,7 +372,7 @@ Partial Class Form1
         'GoogleDriveButton
         '
         Me.GoogleDriveButton.Image = Global.MySQLBackUp.My.Resources.Resources.googledrive
-        Me.GoogleDriveButton.Location = New System.Drawing.Point(16, 64)
+        Me.GoogleDriveButton.Location = New System.Drawing.Point(43, 68)
         Me.GoogleDriveButton.Name = "GoogleDriveButton"
         Me.GoogleDriveButton.Size = New System.Drawing.Size(52, 55)
         Me.GoogleDriveButton.TabIndex = 7
@@ -381,7 +382,7 @@ Partial Class Form1
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(61, 18)
+        Me.Label9.Location = New System.Drawing.Point(99, 22)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(122, 13)
         Me.Label9.TabIndex = 6
@@ -389,7 +390,7 @@ Partial Class Form1
         '
         'FourtTab
         '
-        Me.FourtTab.Location = New System.Drawing.Point(80, 217)
+        Me.FourtTab.Location = New System.Drawing.Point(127, 217)
         Me.FourtTab.Name = "FourtTab"
         Me.FourtTab.Size = New System.Drawing.Size(75, 23)
         Me.FourtTab.TabIndex = 5
@@ -411,14 +412,14 @@ Partial Class Form1
         Me.TabPage5.Location = New System.Drawing.Point(124, 4)
         Me.TabPage5.Name = "TabPage5"
         Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage5.Size = New System.Drawing.Size(305, 287)
+        Me.TabPage5.Size = New System.Drawing.Size(323, 287)
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "STEP5"
         Me.TabPage5.UseVisualStyleBackColor = True
         '
         'DaysInterval
         '
-        Me.DaysInterval.Location = New System.Drawing.Point(97, 156)
+        Me.DaysInterval.Location = New System.Drawing.Point(138, 151)
         Me.DaysInterval.Maximum = New Decimal(New Integer() {5, 0, 0, 0})
         Me.DaysInterval.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.DaysInterval.Name = "DaysInterval"
@@ -430,7 +431,7 @@ Partial Class Form1
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(159, 158)
+        Me.Label13.Location = New System.Drawing.Point(200, 153)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(31, 13)
         Me.Label13.TabIndex = 8
@@ -439,7 +440,7 @@ Partial Class Form1
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(7, 158)
+        Me.Label10.Location = New System.Drawing.Point(48, 153)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(85, 13)
         Me.Label10.TabIndex = 7
@@ -447,7 +448,7 @@ Partial Class Form1
         '
         'FifthTab
         '
-        Me.FifthTab.Location = New System.Drawing.Point(80, 228)
+        Me.FifthTab.Location = New System.Drawing.Point(121, 223)
         Me.FifthTab.Name = "FifthTab"
         Me.FifthTab.Size = New System.Drawing.Size(75, 23)
         Me.FifthTab.TabIndex = 6
@@ -457,7 +458,7 @@ Partial Class Form1
         'SecondsCombo
         '
         Me.SecondsCombo.FormattingEnabled = True
-        Me.SecondsCombo.Location = New System.Drawing.Point(183, 102)
+        Me.SecondsCombo.Location = New System.Drawing.Point(224, 97)
         Me.SecondsCombo.Name = "SecondsCombo"
         Me.SecondsCombo.Size = New System.Drawing.Size(42, 21)
         Me.SecondsCombo.TabIndex = 5
@@ -465,7 +466,7 @@ Partial Class Form1
         'MinuteCombo
         '
         Me.MinuteCombo.FormattingEnabled = True
-        Me.MinuteCombo.Location = New System.Drawing.Point(97, 102)
+        Me.MinuteCombo.Location = New System.Drawing.Point(138, 97)
         Me.MinuteCombo.Name = "MinuteCombo"
         Me.MinuteCombo.Size = New System.Drawing.Size(42, 21)
         Me.MinuteCombo.TabIndex = 4
@@ -473,7 +474,7 @@ Partial Class Form1
         'HourCombo
         '
         Me.HourCombo.FormattingEnabled = True
-        Me.HourCombo.Location = New System.Drawing.Point(22, 102)
+        Me.HourCombo.Location = New System.Drawing.Point(63, 97)
         Me.HourCombo.Name = "HourCombo"
         Me.HourCombo.Size = New System.Drawing.Size(42, 21)
         Me.HourCombo.TabIndex = 3
@@ -481,7 +482,7 @@ Partial Class Form1
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(181, 61)
+        Me.Label12.Location = New System.Drawing.Point(222, 56)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(44, 13)
         Me.Label12.TabIndex = 2
@@ -490,7 +491,7 @@ Partial Class Form1
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(94, 61)
+        Me.Label11.Location = New System.Drawing.Point(135, 56)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(39, 13)
         Me.Label11.TabIndex = 1
@@ -499,7 +500,7 @@ Partial Class Form1
         'Hour
         '
         Me.Hour.AutoSize = True
-        Me.Hour.Location = New System.Drawing.Point(19, 61)
+        Me.Hour.Location = New System.Drawing.Point(60, 56)
         Me.Hour.Name = "Hour"
         Me.Hour.Size = New System.Drawing.Size(30, 13)
         Me.Hour.TabIndex = 0
@@ -515,7 +516,7 @@ Partial Class Form1
         Me.TabPage6.Location = New System.Drawing.Point(124, 4)
         Me.TabPage6.Name = "TabPage6"
         Me.TabPage6.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage6.Size = New System.Drawing.Size(305, 287)
+        Me.TabPage6.Size = New System.Drawing.Size(323, 287)
         Me.TabPage6.TabIndex = 5
         Me.TabPage6.Text = "TabPage6"
         Me.TabPage6.UseVisualStyleBackColor = True
@@ -524,7 +525,7 @@ Partial Class Form1
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Monotype Corsiva", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.Label15.Location = New System.Drawing.Point(48, 61)
+        Me.Label15.Location = New System.Drawing.Point(83, 65)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(133, 25)
         Me.Label15.TabIndex = 4
@@ -534,7 +535,7 @@ Partial Class Form1
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Monotype Corsiva", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.Label14.Location = New System.Drawing.Point(71, 21)
+        Me.Label14.Location = New System.Drawing.Point(106, 25)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(98, 18)
         Me.Label14.TabIndex = 3
@@ -543,7 +544,7 @@ Partial Class Form1
         'Twitter
         '
         Me.Twitter.Image = Global.MySQLBackUp.My.Resources.Resources.twitter
-        Me.Twitter.Location = New System.Drawing.Point(96, 177)
+        Me.Twitter.Location = New System.Drawing.Point(131, 181)
         Me.Twitter.Name = "Twitter"
         Me.Twitter.Size = New System.Drawing.Size(57, 59)
         Me.Twitter.TabIndex = 2
@@ -552,7 +553,7 @@ Partial Class Form1
         'Facebook
         '
         Me.Facebook.Image = Global.MySQLBackUp.My.Resources.Resources.facebook
-        Me.Facebook.Location = New System.Drawing.Point(151, 98)
+        Me.Facebook.Location = New System.Drawing.Point(186, 102)
         Me.Facebook.Name = "Facebook"
         Me.Facebook.Size = New System.Drawing.Size(62, 62)
         Me.Facebook.TabIndex = 1
@@ -561,7 +562,7 @@ Partial Class Form1
         'GooglePlus
         '
         Me.GooglePlus.Image = Global.MySQLBackUp.My.Resources.Resources.googlePlus
-        Me.GooglePlus.Location = New System.Drawing.Point(45, 98)
+        Me.GooglePlus.Location = New System.Drawing.Point(80, 102)
         Me.GooglePlus.Name = "GooglePlus"
         Me.GooglePlus.Size = New System.Drawing.Size(58, 63)
         Me.GooglePlus.TabIndex = 0
@@ -575,7 +576,7 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(433, 295)
+        Me.ClientSize = New System.Drawing.Size(451, 295)
         Me.Controls.Add(Me.TabControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"

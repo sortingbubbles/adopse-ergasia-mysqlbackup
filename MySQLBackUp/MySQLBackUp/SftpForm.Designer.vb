@@ -22,6 +22,7 @@ Partial Class SftpForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SftpForm))
         Me.SFTPOKButton = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -44,7 +45,7 @@ Partial Class SftpForm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(24, 45)
+        Me.Label1.Location = New System.Drawing.Point(27, 48)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(64, 13)
         Me.Label1.TabIndex = 1
@@ -77,15 +78,15 @@ Partial Class SftpForm
         '
         'SFTPPassword
         '
-        Me.SFTPPassword.Location = New System.Drawing.Point(145, 97)
+        Me.SFTPPassword.Location = New System.Drawing.Point(145, 94)
         Me.SFTPPassword.Name = "SFTPPassword"
-        Me.SFTPPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(64)
+        Me.SFTPPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.SFTPPassword.Size = New System.Drawing.Size(100, 20)
         Me.SFTPPassword.TabIndex = 5
         '
         'SFTPServer
         '
-        Me.SFTPServer.Location = New System.Drawing.Point(145, 149)
+        Me.SFTPServer.Location = New System.Drawing.Point(145, 146)
         Me.SFTPServer.Name = "SFTPServer"
         Me.SFTPServer.Size = New System.Drawing.Size(100, 20)
         Me.SFTPServer.TabIndex = 6
@@ -112,6 +113,7 @@ Partial Class SftpForm
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.SFTPOKButton)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "SftpForm"
         Me.Text = "SFTP CREDENTIALS"
         Me.ResumeLayout(False)

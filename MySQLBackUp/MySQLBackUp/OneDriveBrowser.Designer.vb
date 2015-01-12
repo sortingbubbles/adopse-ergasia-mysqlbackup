@@ -22,6 +22,7 @@ Partial Class OneDriveBrowser
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(OneDriveBrowser))
         Me.OneDriveAuth = New System.Windows.Forms.WebBrowser()
         Me.SuspendLayout()
         '
@@ -34,14 +35,15 @@ Partial Class OneDriveBrowser
         Me.OneDriveAuth.Size = New System.Drawing.Size(484, 513)
         Me.OneDriveAuth.TabIndex = 0
         '
-        'Form2
+        'OneDriveBrowser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(484, 513)
         Me.Controls.Add(Me.OneDriveAuth)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
-        Me.Name = "Form2"
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Name = "OneDriveBrowser"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "OneDriveAuth"
         Me.ResumeLayout(False)
