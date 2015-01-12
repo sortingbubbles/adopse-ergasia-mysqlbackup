@@ -40,8 +40,8 @@ Public Class MyNewSftpClient
     End Sub
 
     Public Overrides Sub Save(ByRef XmlDoc As XmlDocument)
-        Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("tasks").Item(0)
-        Dim taskNode As XmlElement = XmlDoc.CreateElement("task")
+        Dim tasksNode As XmlNode = XmlDoc.GetElementsByTagName("cloudServices").Item(0)
+        Dim taskNode As XmlElement = XmlDoc.CreateElement("cloudService")
         taskNode.SetAttribute("id", Me.AppID)
         tasksNode.AppendChild(taskNode)
         Dim serverNode As XmlElement = XmlDoc.CreateElement("Server")
