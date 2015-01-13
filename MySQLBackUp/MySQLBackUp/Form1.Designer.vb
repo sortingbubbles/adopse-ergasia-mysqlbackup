@@ -56,6 +56,7 @@ Partial Class Form1
         Me.Label9 = New System.Windows.Forms.Label()
         Me.FourtTab = New System.Windows.Forms.Button()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.Label17 = New System.Windows.Forms.Label()
         Me.DaysInterval = New System.Windows.Forms.NumericUpDown()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -73,7 +74,6 @@ Partial Class Form1
         Me.Facebook = New System.Windows.Forms.Button()
         Me.GooglePlus = New System.Windows.Forms.Button()
         Me.ToolTipEmail = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Label17 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -420,8 +420,18 @@ Partial Class Form1
         Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage5.Size = New System.Drawing.Size(323, 287)
         Me.TabPage5.TabIndex = 4
-        Me.TabPage5.Text = "STEP5"
+        Me.TabPage5.Text = "STEP 5"
         Me.TabPage5.UseVisualStyleBackColor = True
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Monotype Corsiva", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Location = New System.Drawing.Point(26, 15)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(261, 25)
+        Me.Label17.TabIndex = 10
+        Me.Label17.Text = "Create The BackUp Scheduler"
         '
         'DaysInterval
         '
@@ -524,7 +534,7 @@ Partial Class Form1
         Me.TabPage6.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage6.Size = New System.Drawing.Size(323, 287)
         Me.TabPage6.TabIndex = 5
-        Me.TabPage6.Text = "STEP6"
+        Me.TabPage6.Text = "STEP 6"
         Me.TabPage6.UseVisualStyleBackColor = True
         '
         'Label15
@@ -577,16 +587,6 @@ Partial Class Form1
         'ToolTipEmail
         '
         Me.ToolTipEmail.ToolTipTitle = "Seperate the emails  with a ','"
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Monotype Corsiva", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(26, 15)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(261, 25)
-        Me.Label17.TabIndex = 10
-        Me.Label17.Text = "Create The BackUp Scheduler"
         '
         'Form1
         '

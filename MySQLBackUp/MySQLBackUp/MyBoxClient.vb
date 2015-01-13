@@ -49,7 +49,7 @@ Public Class MyBoxClient
     'thn syndesh sto box 
     Private Sub boxContinue()
         Dim BoxClientId As String = "*************************" '''''''''''''''''''''
-        Dim BoxSecret As String = "***************************" '''''''''''''''''''''
+        Dim BoxSecret As String = "*************************" '''''''''''''''''''''
         Dim json As String = postToUrl("https://www.box.com/api/oauth2/token", "grant_type=authorization_code&code=" + _code + "&client_id=" + BoxClientId + "&client_secret=" + BoxSecret)
         Dim token As JToken = JObject.Parse(json)
         Dim access_token As String = token.SelectToken("access_token").ToString
