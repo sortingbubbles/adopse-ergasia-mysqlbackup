@@ -15,7 +15,7 @@ Public Class GoogleDrive
     Private tokenPath As String
     Private UserID As String
 
-    Private CLIENT_ID As String =  "*******************************************************"
+    Private CLIENT_ID As String = "*******************************************************"
     Private CLIENT_SECRET As String = "************************"
     Private APP_USER_AGENT As String = "MySQLBackUpGr"
     Private SCOPES As String() = New String() {DriveService.Scope.Drive}
