@@ -1,7 +1,7 @@
 # MySQLBackUpGR
 *Automatically exported from https://code.google.com/p/adopse-ergasia-mysqlbackup/*
 
-##What's this?
+## What's this?
 This is a VB.NET Windows Form application for scheduling database backups on a PC.
 
 Backups can be sent to an FTP server and/or uploaded to one or more cloud services.
@@ -12,12 +12,12 @@ Currently, the application supports the following cloud services:
 * Google Drive
 * OneDrive 
 
-##Installation Info
+## Installation Info
 
 Installation files can be found [here](https://www.dropbox.com/sh/dfz7yen9pzg7lxv/AAC8SxqcwoOaQVYmSVMLeiBda?dl=0).
 Please, read the README.txt file before taking any actions.
 
-##Credits
+## Credits
 
 For the HTML email we used [Ink](http://zurb.com/ink/).
 
